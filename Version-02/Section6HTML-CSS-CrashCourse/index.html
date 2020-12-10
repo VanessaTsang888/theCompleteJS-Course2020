@@ -1,0 +1,79 @@
+<!-- THE STRUCTURE: -->
+<!-- Its been a whilst since I've touched HTML5 and CSS as I've been busy on project work and upskilling on JavaScript, Excel VBA, SQL. Therefore this Section 6: HTML and CSS Crash Course
+    is a nice refresher for me. -->
+
+<!-- Other things I should put into the title tag is: CSS styles, fav icons (icons that appear in the browser tabs).
+Body tag: what will be visible on the web page, i.e. headings, paragraphs, images, links etc -->
+
+<!-- I can write the basic HTML structure in VSCode by type this cmd: ! + tab -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link HTML file to CSS file -->
+    <link href="style.css" rel="stylesheet" />
+    <title>hatever go into the head tag is the settings of the page, i.e. the title using the title tag</title>
+
+</head>
+<body>
+    <h1> h1 element. This is heading 1, the largest heading</h1>
+    <p class="first">To learn DOM manipulation it's useful to have some basic idea of HTML & CSS.</p>
+    <h2>Another heading this time heading 2 element.</h2>
+    <p class="second">Check out Vanessa's GitHub today:
+        <a href="https://github.com/Cyber-Cohort-Projects/ParkingTrackApp/tree/vanessa_dev_branch">Vanessa's GitHub</a>.
+    </p>
+    <h6>This is heading 6, the smallest heading element. Smaller than paragraph inside the paragraph tag. Of course in real life I would use a larger heading, i.e. h3 or h4.</h6>
+    <p class="third">Vanessa's GitHub Profile Photo:</p>
+        <img id="course-image" src="https://avatars0.githubusercontent.com/u/48724277?s=460&u=8bf81a487eb927a43ef143bfeb8725fcbd4c6194&v=4" />
+
+        <form id="your-name">
+            <h2>Your name here</h2>
+            <p>Please complete this form</p>
+
+            <input type="text" placeholder="Your name">
+            <button>Submit</button>
+
+        </form>
+
+        <!-- Creating HTML Form -->
+        <!-- Creating boxes. We want the content of this form to be in a box. There are a number of ways of creating boxes in HTML. The most generic box is a div.  -->
+
+
+</body>
+</html>
+
+<!-- MY NOTES:
+We now have a basic structure with the DOCTTYPE which identifies this document being HTML 5. Also the language tag that in this case its telling the browser I'm using the English language.
+This is why we call the anchor element an inline element - it flows inline with the other text.
+The h2 is called a Block element as the heading is NOT inline with the previous text.
+The image element also needs an attribute. This link takes the user to my GitHub profile photo. The image element dose not have a closing tag.
+
+There are two important attributes which we can use on all elements, to identify them. These are Classes and id's:
+We use Classes and id's to name elements so that we can then select them in CSS in order to style them.
+The difference between classes and id's is that id's MUST be unique. Each id can ONLY be used once on a web page, whilst classes can be used multiple times. So I can have more paragraphs
+called second, but I can't have another element called: course-image. In practice we actually almost never use id's to style elements or to select them from JS, as its best practice to use
+classes.
+
+Now create HTML Form so I can use more attributes. 
+Creating boxes. We want the content of this form to be in a box. There are a number of ways of creating boxes in HTML. The most generic box is a div.
+Within the input element we use the type attribute to describe this element, use the text attribute, then specify the a placeholder, called it: Your name. This element don't have a closing tag as it don't need it, its self-closing.
+
+Use the button element, add my content. This element has a closing tag as its NOT self-closing.
+Now I need some JS code to make this button to work but this is not the point of this HTML/CSS Crash Course.
+
+This is a form as it has an input and button elements. In HTML we have a special element for that - the form element: <form id="your-name">
+This is more semantic - meaning the form element better describes the content that is inside the box than just the generic box (has no meaning at all - not good for SEO) that is the div.
+So always use semantic HTML.
+
+CSS:
+We use CSS to style elements and to create a layout for the overall page.
+We can write CSS in the HTML file within the style element. Not for visible content on the page, but go into the head tag.
+Each CSS Declaration has a property name, then a value, i.e. we can style the background color.
+The: background-color: is the properties. The green is the specified value. The whole line is the including the braces is the declaration block.
+In CSS there are some predefined color's.
+Its best practice to create a external CSS file to separate the presentation from the content.
+
+
+-->
