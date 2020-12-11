@@ -1,8 +1,127 @@
 /* BASIC STYLING WITH CSS  */
 /* All elements within the  */
 
+/* Global Reset: to reset the default style as this can cause me problems when trying to customise my styles. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
 Body {
     background-color: rgb(196, 176, 123);
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    /* Add some space inside of this body element */
+    padding: 55px;
+
 }
+
+h1 {
+    font-size: 35px;
+    /* Add some space to the bottom of heading 1 by increasing the margin-bottom */
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* This is a Block Element */
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+
+.first {
+    color: red;
+}
+
+#your-name {
+    background-color: rgb(224, 221, 19);
+    border: 5px solid #444;
+    width: 400px;
+    /* Padding creates space inside the box */
+    padding: 25px;
+    margin-top: 30px;
+}
+
+/* To style the Form. The input and button are inline elements. They don't create a box that occupy a whole line. */
+input,
+button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/*  To style the link. The below will highlight the link on the page. */
+a {
+    background-color: yellowgreen;
+}
+
+/* Change the size of the image by setting either a heigh or width attribute using the id #  */
+#course-image {
+    /* This will scale the height proportinally so I don't need to worry about the height. */
+    width: 400px;
+
+}
+
+
+/* The child selector: I only wish to select the h2 element that is inside of the Form: */
+#your-name h2 {
+    color: rgb(59, 78, 20);
+}
+
+
+
+
+
+
+
+
+
+
+/* 
+I set the font family on the body so that all the child elements within the body element gets the Arial font as well as the font family property - the property that gets inherited. All child elements
+of the body element will auto get this font family assign to it. So just setting the font family on the body will then set it on all the child elements. Therefore, I don't need to separately set the font
+families separately on all these elements.
+
+Setting the Font Size:
+Heading elements have pre-defined font sizes that auto applied from the browser, if I don't specify them on my own. I can over ride the headings with my own selectors, i.e. h1 above.
+
+Using Classes and id's:
+Select all paragraphs with the 'first' class and style them. The class selector is using the period (dot) symbol at the beginning. Then test my work on the UI. I found two of the paragraphs changed colour
+which is what I was expecting and I'm happy with this result.
+
+Format My Form:
+I use the hash symbol that represents id attribute: border property: set the width, set the style, set the colour (i.e. dark grey #444). Test these changes. This property is NOT inherited.
+
+CSS Box Model:
+Fundamental part of CSS as it's how elements are displayed on a webpage and how they are sized:
+
+Each element on web page can be seen as a rectangular box, and each box can have a width, a height, padding, margins, and a border. We can specify these using CSS properties. They are all optional, i.e.
+can be boxes with no margins, or no paddings or no border at all.
+
+Padding:
+To create the transparent area around the content. We use padding to create white space inside of a box. We can define the padding by specifying the padding property in CSS.
+
+Border:
+I can specify the border for any box and that border then goes around the padding and the content.
+
+Margin:
+Similar to the padding, is the margin, but instead of being inside of the box, the margin is white space that's outside of the box itself. Margins are the space between boxes, i.e. to create some space
+between 2 elements, I use margins properties.
+
+Fill Area:
+The area of the box that gets filled with background color or background image.  Will apply to the content box, and the entire fill area, which includes the padding and the border but not the margin.
+
+Now going to my code to imp liement some of these properties.
+
+Global Reset:
+To reset the default styles. By default some elements get some margin automatically. This may cause problems when trying to style my page. I can do is that I reset all margins and padding on all elements
+before doing anything else: global reset using a special selector: *  { }  to select all the elements on the page.
+
+*/
 
