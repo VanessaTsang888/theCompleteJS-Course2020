@@ -26,7 +26,7 @@ alert function.
 Big advantage of using variables is that once declared, I can reuse values without passing any values. Just pass in the variable name.
 Without variables, I'll have to manually change the value everywhere.
 */
-
+/**
 // A value is the smallest unit of infomation that we have in JS.
 // The below value is: Amazing:
 let js = 'Amazing';
@@ -45,6 +45,7 @@ let firstName = "Vanessa";
 console.log(firstName);
 console.log(firstName);
 console.log(firstName);
+ */
 
 /* 
 CONVENTIONS & RULES FOR NAMING VARIABLES:
@@ -228,9 +229,58 @@ null is similar to Undefined as both the value and the type of the value are nul
 The typeo null is an Object. Should really return null but there is a bug. Make sure you don't create any accidentle bugs due to this
 strange behaviour.
 
-console.log(typeof null);
+console.log(typeof null); // will logout: object
+
+JS says the typeof null is an object which don't make sense and this is a bug in JS was never resolved for legacy reasons. It should
+return null. So keep this in minde when working with typeOf.
 
 *****************************************************************************************************************************************/
+
+/************** 
+ * let, const and var:
+ * 
+ * 3 different ways of declaring variables in JS.
+ * let and const was intro in ES6 - modern JS. The var keyword is the old way of declaring variables - ES5.
+ * 
+ * How they are different and which one to use in which situation?
+ * 
+ * **************************/
+
+ // 1. We use let keywords to declare variables that can change later - during the execusion of my program:
+ // use let to declare JavaScript is fun, then I changed that leter from true to Yes. Another example:
+
+ let age = 30;
+ // Re-assigning a value to an existing variable - mutate the age variable:
+ // now changing/assigning a new value to the variable 'age', which is perfectly fine since I'm using the 'let keyword' and its suitable since people's age do change.
+ age = 31;
+ // This is the perfect use-case for using the 'let' keyword. This is the case when I wish to declare an Empty Variable. Example, I had declared
+ // I had declared an empty year and then later reassigned that variable to 19191. Sometimes in real life, I have to declare all variables at the
+ // top of a files, but only assign actual values to them later in the program, based on some condition.
+
+ // On the other hand, I used the 'const' keyword to declare variables that are NOT supposed to change at any point in the future - the value in
+ // a const variable cannot be changed:
+
+ const birthYear = 1978;
+//  birthYear = 1990; // will logout error msg: Uncaught TypeError: Assignment to constant variable at script.js:264
+ // So the 'const' keyword creates a variable that I cannot reassign, in technical terms - an immutable variable. A variable that
+ // cannot be mutated. So the birth year of a person cannot be changed like the age can.
+ // The fact that variables created with 'const' are immutable, also means I cannot declare empty const variables:
+// This is NOT Legal:
+const job; // will logout error: Uncaught SyntaxError: Missing initializer in const declaration
+// That error msg means, when declaring a const variable I need to give it an initial value.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
