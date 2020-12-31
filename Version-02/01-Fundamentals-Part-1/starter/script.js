@@ -243,8 +243,10 @@ return null. So keep this in minde when working with typeOf.
  * let and const was intro in ES6 - modern JS. The var keyword is the old way of declaring variables - ES5.
  * 
  * How they are different and which one to use in which situation?
- * 
+
  * **************************/
+
+/* 
 
  // 1. We use let keywords to declare variables that can change later - during the execusion of my program:
  // use let to declare JavaScript is fun, then I changed that leter from true to Yes. Another example:
@@ -269,8 +271,27 @@ return null. So keep this in minde when working with typeOf.
 const job; // will logout error: Uncaught SyntaxError: Missing initializer in const declaration
 // That error msg means, when declaring a const variable I need to give it an initial value.
 
+// Should I use 'let' or const to declare a new variable?
+// To write clean code, use 'const' by default and let only when I'm sure my variable needs to change at some point in the future.
+// Example, when I have a variable that its not suposed to change like a 'birth year' then always use 'const' not let. If I'm sure the value
+// for the age variable will never change/mutate then use 'const'.
+// It is BEST PRACTICE to have as little variable mutations/changes as possible as changing variables introduces a potential to create bugs.
+// So always use 'const' and only use 'let' when I'm sure the value of the variable needs to change at some point in my code.
+*/
 
-
+// Declaring a variable using the 'var' keyword:
+// This should be avoided as its the old way (ES5) way of declaring a variable. However, need to know about it for legacy reasons as i may see this
+// in some older code bases or projects.
+// Works similar to 'let' :
+var job = 'UX Designer';
+job = 'Software Engineer'; // logsout without error meaning 'var' us allowed to mutate this job variable.
+// Although using 'var' looks same as using 'let' and 'const', beneath the surface its actually different.
+// 'let' is block scoped and 'var' is function scoped.
+// It is not mandatory to declaring a variable as I can just to this:
+lastName = 'Tsang';
+console.log(lastName);
+// and JS will be happy to execute this script, even without declaring the variable. However, its a bad idea as it don't create a variable in the
+// current scope. Instead JS will create a property on the global object. 
 
 
 
