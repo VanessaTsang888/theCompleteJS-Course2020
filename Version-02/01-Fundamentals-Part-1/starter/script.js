@@ -293,7 +293,28 @@ console.log(lastName);
 // and JS will be happy to execute this script, even without declaring the variable. However, its a bad idea as it don't create a variable in the
 // current scope. Instead JS will create a property on the global object. 
 
+/**************************************************************  
 
+BASIC OPERATORS:
+An operator allows us to transform values or combine multiple values, and do all kinds of work with values. There are many categories of operators:
+
+Mathematical / arithmetic operators;
+Comparison operators;
+Logical operators;
+Assignment operators;
+And more…
+ **************************************************************/
+
+/*********
+Mathematical / arithmetic operators:
+
+Can do all arithmetic operations. 
+
+
+
+
+
+**********/
 
 
 
