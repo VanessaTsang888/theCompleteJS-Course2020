@@ -279,19 +279,23 @@ const job; // will logout error: Uncaught SyntaxError: Missing initializer in co
 // So always use 'const' and only use 'let' when I'm sure the value of the variable needs to change at some point in my code.
 */
 
-// Declaring a variable using the 'var' keyword:
-// This should be avoided as its the old way (ES5) way of declaring a variable. However, need to know about it for legacy reasons as i may see this
-// in some older code bases or projects.
-// Works similar to 'let' :
+/*
+
+Declaring a variable using the 'var' keyword:
+This should be avoided as its the old way (ES5) way of declaring a variable. However, need to know about it for legacy reasons as i may see this
+in some older code bases or projects.
+Works similar to 'let' :
 var job = 'UX Designer';
 job = 'Software Engineer'; // logsout without error meaning 'var' us allowed to mutate this job variable.
-// Although using 'var' looks same as using 'let' and 'const', beneath the surface its actually different.
-// 'let' is block scoped and 'var' is function scoped.
-// It is not mandatory to declaring a variable as I can just to this:
+Although using 'var' looks same as using 'let' and 'const', beneath the surface its actually different.
+'let' is block scoped and 'var' is function scoped.
+It is not mandatory to declaring a variable as I can just to this:
 lastName = 'Tsang';
 console.log(lastName);
-// and JS will be happy to execute this script, even without declaring the variable. However, its a bad idea as it don't create a variable in the
-// current scope. Instead JS will create a property on the global object. 
+and JS will be happy to execute this script, even without declaring the variable. However, its a bad idea as it don't create a variable in the
+current scope. Instead JS will create a property on the global object. 
+
+*/
 
 /**************************************************************  
 
@@ -308,13 +312,93 @@ And more…
 /*********
 Mathematical / arithmetic operators:
 
-Can do all arithmetic operations. 
-
-
-
-
-
+Can do all arithmetic operations including multiplication, division, and more.
+Using the minus operator to calculate ages based on a person's birth year.
 **********/
+
+/*
+
+Using the minus operator to solve a simple problem - to calculate an age of a person:
+My age equals this year, minus my year of birth:
+const ageVanessa = 2021 - 1978;
+const ageChang = 2021 - 1985;
+logout my age to the console. I can also logout multiple values a the sametime - use commas to separate each value:
+console.log(ageVanessa, ageChang); // 43
+
+I can do better, lean, shorter code base - best practice as I have a repeated value - the current year 2021:
+const Now = 2021;
+but put this at the top with the other variables. Then I can replace the 2021 with the variable 'now'.
+
+*/
+
+// Math Operators:
+const now = 2021;
+const ageVanessa = now - 1978;
+const ageChang = now - 1985;
+console.log(ageVanessa, ageChang); // 43
+
+// Using the multiplication operator. Can do two different calculations or operations. Creating two values. Also, use the exponentiation operator, i.e.
+// 2 ** 3 menas 2 to the power of 3 = 2 * 2 * 2.
+// My age times (the asterisk) 2, my age divided by 10:
+console.log(ageVanessa * 2, ageVanessa / 10, 2 ** 3); // 86 4.3 8
+// I don't understand as: 43 * 2 = 86 / 10 = 8.6 then how do I do the: 2 ** 3 ?
+
+// I can use the addition or plus operator to join strings - to concatenate different strings:
+const firstName = 'Vanessa';
+const lastName = 'Tsang';
+// Now, I have both first name and last name concatenated together.
+console.log(firstName + lastName);
+// I need a space after the first name to make this one big string more readable. Create another string which is a space or an empty string, and
+// concatenated together.
+console.log(firstName + ' ' + lastName);
+// There is a better way of doing this kind of concatenation of strings called template strings, but for now I focus on operators.
+
+// The typeof operator - will give us the type of the value: done this in previous lecture above.
+
+// Assignment Operators: using the equal sign.
+let x = 10 + 5; // 15
+x += 10; // short hand for writing: x = x + 10
+x *= 4; // x = x * 4 = 100
+x++; // x = x + 1
+x-- // 100
+x-- // 99
+
+// 15 + 10 = 25. Therefore, x is now 25.
+// I am reasigning the x value. This is why I'm using the 'let' keyword.
+// The x will be assigned 15 as the plus operator will be executed before the equals operator due to the operator proceedence rules.
+console.log(x);
+ 
+// Comparison Operators: to produce Boolean Values:
+// To workout if Vanessa's age greater than Chang's age?
+console.log(ageVanessa > ageChang);
+// If Vanessa's age is greater than Chang's age then this will logout: true, but if not, then will logout: false.
+// Logs out: true as my age this year is 43 and Chang's age this year is 36.
+// This is asking the operator: is the age of Vanessa greater than the age of Chang? The operator will reply yes (true) or no (false).
+// Useful when taking decision with my code based on conditions like this.
+// The less than: < 
+// The greater than: >=
+// The less than: <=
+
+// Test if Vanessa is of full age? This means Vanessa must be at least 18 years old, and is greater than 18 or exactly 18.
+console.log(ageVanessa >= 18); // true
+console.log(ageChang >= 18); // true
+// In real life I would store the results of the above in variables rather logout the results to the console.
+// We can also do the above directly in the console but we would lose the record of what I'm learniong and not easy to scroll up and down.
+// Create new variable to hold the boolean value:
+const isFullAge = ageVanessa >= 18;
+// Do the comparison all in one go. I don't want to calculate the ages separately:
+console.log(now - 1978 > now - 1985);
+// How should JS know if it should do the Math first or do the comparision first?
+// JS will do the left calculation first, then the right calculation, then compare them using the greater than operator in the middle.
+
+
+
+
+
+
+
+
+
 
 
 
