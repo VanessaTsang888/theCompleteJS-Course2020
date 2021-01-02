@@ -331,7 +331,7 @@ but put this at the top with the other variables. Then I can replace the 2021 wi
 
 */
 
-// Math Operators:
+/* Math Operators:
 const now = 2021;
 const ageVanessa = now - 1978;
 const ageChang = now - 1985;
@@ -355,7 +355,10 @@ console.log(firstName + ' ' + lastName);
 
 // The typeof operator - will give us the type of the value: done this in previous lecture above.
 
-// Assignment Operators: using the equal sign.
+*/
+
+/* Assignment Operators: using the equal sign.
+
 let x = 10 + 5; // 15
 x += 10; // short hand for writing: x = x + 10
 x *= 4; // x = x * 4 = 100
@@ -363,37 +366,41 @@ x++; // x = x + 1
 x-- // 100
 x-- // 99
 
-// 15 + 10 = 25. Therefore, x is now 25.
-// I am reasigning the x value. This is why I'm using the 'let' keyword.
-// The x will be assigned 15 as the plus operator will be executed before the equals operator due to the operator proceedence rules.
+
+15 + 10 = 25. Therefore, x is now 25.
+I am reasigning the x value. This is why I'm using the 'let' keyword.
+The x will be assigned 15 as the plus operator will be executed before the equals operator due to the operator proceedence rules.
 console.log(x);
  
-// Comparison Operators: to produce Boolean Values:
-// To workout if Vanessa's age greater than Chang's age?
+Comparison Operators: to produce Boolean Values:
+To workout if Vanessa's age greater than Chang's age?
 console.log(ageVanessa > ageChang);
-// If Vanessa's age is greater than Chang's age then this will logout: true, but if not, then will logout: false.
-// Logs out: true as my age this year is 43 and Chang's age this year is 36.
-// This is asking the operator: is the age of Vanessa greater than the age of Chang? The operator will reply yes (true) or no (false).
-// Useful when taking decision with my code based on conditions like this.
-// The less than: < 
-// The greater than: >=
-// The less than: <=
+If Vanessa's age is greater than Chang's age then this will logout: true, but if not, then will logout: false.
+Logs out: true as my age this year is 43 and Chang's age this year is 36.
+This is asking the operator: is the age of Vanessa greater than the age of Chang? The operator will reply yes (true) or no (false).
+Useful when taking decision with my code based on conditions like this.
+The less than: < 
+The greater than: >=
+The less than: <=
 
-// Test if Vanessa is of full age? This means Vanessa must be at least 18 years old, and is greater than 18 or exactly 18.
+
+Test if Vanessa is of full age? This means Vanessa must be at least 18 years old, and is greater than 18 or exactly 18.
 console.log(ageVanessa >= 18); // true
 console.log(ageChang >= 18); // true
-// In real life I would store the results of the above in variables rather logout the results to the console.
-// We can also do the above directly in the console but we would lose the record of what I'm learniong and not easy to scroll up and down.
-// Create new variable to hold the boolean value:
+In real life I would store the results of the above in variables rather logout the results to the console.
+We can also do the above directly in the console but we would lose the record of what I'm learniong and not easy to scroll up and down.
+Create new variable to hold the boolean value:
 const isFullAge = ageVanessa >= 18;
-// Do the comparison all in one go. I don't want to calculate the ages separately:
+Do the comparison all in one go. I don't want to calculate the ages separately:
 console.log(now - 1978 > now - 1985);
-// How should JS know if it should do the Math first or do the comparision first?
-// JS will do the left calculation first, then the right calculation, then compare them using the greater than operator in the middle.
+How should JS know if it should do the Math first or do the comparision first?
+JS will do the left calculation first, then the right calculation, then compare them using the greater than operator in the middle.
+
+*/
 
 /*********************************************************************************************************************************** 
 
-Operator Precedednce:
+Operator Precedence: The precedence of different operators.
 
 In Google search for:
 mdn operator precedence
@@ -411,12 +418,21 @@ operators especially the Maths ones are left to right, example:
 
 ***********************************************************************************************************************************/
 
+const now = 2021;
+const ageVanessa = now - 1978;
+const ageChang = now - 1985;
+// Why these two subtractions are executed before the greater-than operator?
+// The below logs out true so it works, as JS has well-defined order of operator precedence - the order in which operators are executed.
+// Take a look at the precedence table online: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators
+console.log(now - 1978 > now - 1985); // true
+// Can see that Grouping has the highest Precedence of 21. So that is executed before the minus operators.
+
 // Can see which operators are executed from left-to-right, and which from right-to-left (i.e. the Exponentiation operators), where most other
 // operators especially the Maths ones are left-to-right, example of left-to-right operation, but assignment operation is good example of right-to-left
 // execution.
 // console.log(25-10-5); // 10
 
-// Declare to empty values, the value of undefined.
+// Declare to empty values at the sametime, the value of undefined.
 let x, y;
 // Wnen JS first finds this line of code to execute, will look at all the operators, it will start with the minus operators as they have a higher precedence.
 // Subtraction has 14 precedence whereas the assignment has only 3. So the subtraction will get executed first and from left-to-right.
@@ -425,7 +441,19 @@ let x, y;
 x = y = 25 - 10 - 5; //  x = y = 10, x = 10
 console.log(x, y);
 
-// Grouping - highest precedence:
+// Grouping - highest precedence: operations inside parenthesis are executed FIRST, just like in maths.
+// Calculate the average age of these two people:
+// const averageAge = ageVanessa + ageChang / 2;
+// Calculate the avage age: add the two values together, then divide by 2. The issue is that the Division operator has a higher precedence than the addidion
+// operator so I have to use the parenthesis around to make the addition operation a higher precedence and executed first.
+const averageAge = (ageVanessa + ageChang) / 2;
+console.log(ageVanessa, ageChang, averageAge);
+
+/* 
+
+
+
+*/
 
 
 
