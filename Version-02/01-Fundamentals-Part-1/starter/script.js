@@ -105,22 +105,6 @@ console.log(myFirstJob);
 
 /********************************************************* 
 
-PRACTICE ASSIGNMENT:
-
-1. Declare variables called 'country', 'continent', and 'population' and assign their values according to your own country (population in
-  millions).
-2. Log their values to the console.
-
-let country = 'England';
-let continent = 'Europe';
-let population = 67000;
-
-console.log(population);
-
-*********************************************************/
-
-
-
 /***************************************************************************************************************************************
 
 DATA TYPES:
@@ -235,6 +219,7 @@ JS says the typeof null is an object which don't make sense and this is a bug in
 return null. So keep this in minde when working with typeOf.
 
 *****************************************************************************************************************************************/
+
 
 /************** 
  * let, const and var:
@@ -450,6 +435,8 @@ const averageAge = (ageVanessa + ageChang) / 2;
 console.log(ageVanessa, ageChang, averageAge);
 
 /* 
+
+CODING CHALLENGE 01:
 
 
 
