@@ -391,6 +391,45 @@ console.log(now - 1978 > now - 1985);
 // How should JS know if it should do the Math first or do the comparision first?
 // JS will do the left calculation first, then the right calculation, then compare them using the greater than operator in the middle.
 
+/*********************************************************************************************************************************** 
+
+Operator Precedednce:
+
+In Google search for:
+mdn operator precedence
+Then choose:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators
+
+Can see all the operators in one handy table.
+Can see that Grouping has the highest Precedence of 21.
+++ and typeof have a precedence of 17.
+Exponentiation operator: ... ** ... is a precedence of 16.
+Comparison operators: ... < ... , ... <= ... , ... > ... , ... >= ... is a precedence of 12.
+
+Can see which operators are executed from left to right, and which from right to left (i.e. the Exponentiation operators), where most other
+operators especially the Maths ones are left to right, example:
+
+***********************************************************************************************************************************/
+
+// Can see which operators are executed from left-to-right, and which from right-to-left (i.e. the Exponentiation operators), where most other
+// operators especially the Maths ones are left-to-right, example of left-to-right operation, but assignment operation is good example of right-to-left
+// execution.
+// console.log(25-10-5); // 10
+
+// Declare to empty values, the value of undefined.
+let x, y;
+// Wnen JS first finds this line of code to execute, will look at all the operators, it will start with the minus operators as they have a higher precedence.
+// Subtraction has 14 precedence whereas the assignment has only 3. So the subtraction will get executed first and from left-to-right.
+// The assignment operators execute from right-to-left so: y = 10, and x = 10 as well as Evaluate from right-to-left. It has to be this away
+// so we get what we expect to get which works and is logical, makes sense.
+x = y = 25 - 10 - 5; //  x = y = 10, x = 10
+console.log(x, y);
+
+// Grouping - highest precedence:
+
+
+
+
 
 
 
