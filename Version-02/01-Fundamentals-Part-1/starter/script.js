@@ -452,18 +452,22 @@ STRINGS AND TEMPLATE LITERALS:
 
 // Creating some new variables about a person - me. Then concatinate them into one big string:
 // New variables:
-const firstName = 'Vanessa';
-const job = 'Junior Software Engineer';
-const birthYear = 1978;
-const year = 2021;
+
+// const firstName = 'Vanessa';
+// const job = 'Junior Software Engineer';
+// const birthYear = 1978;
+// const year = 2021;
+
 
 // ES5: a complex string written in ES5 can be a pain.
 // Use those variables to build a string, to print out: I'm Vanessa a 42 year old Junior Software Engineer.
 // Will use the birthYear to calculate the age.
 // Will do the calculation first, then the concatination due to Type Coercion. JS will convert the number into a string, then concatenate
 // them so it can join them with the rest of the strings.
+/*
 const Vanessa = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + job + '!';
 console.log(Vanessa);
+*/
 
 /*
 ES6: Template Literals allows me to write a string in a more normal way then insert the variables directly into the string, then they'll
@@ -476,35 +480,92 @@ console.log(VanessaNew); // I'm Vanessa
 
 // Continue with the same string:
 // NO need for the plus operator, or thinking where I should put the spaces like in ES5 string concatination:
+/*
 const VanessaNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
 console.log(VanessaNew); // I'm Vanessa, a 43 year old Junior Software Engineer!
+*/
 
 // Template Literals is the most used ES6 features, really useful in many situations.
 // Can use back ticks for any regular strings.
 // For strings, always use back-ticks so I don't need to think which quote marks to use.
+/*
 console.log(`Just a regular string using back ticks`);
+*/
 
 // Another great use case to use Template Literals is to create multi-line strings.
 // ES5: new line using a special character /n
-// 
+/*
 console.log('String with \n\
 muliple \n\
 lines');
+*/
 // one string on each line
 
 // ES6: Template Literals - using back ticks. Use back ticks and the return key to create new line for me:
+/*
 console.log(`String
 multiple
 lines`);
+*/
 // So when ever I need multiline string, always use Template Literal as it is a lot cleaner.
 
 /* 
 
-TAKING DECISIONS: if / else Statements
+TAKING DECISIONS: if / else Statements:
+Taking decisions with my code. 
 
+Develop a program which checks whether a person is is old enought to own a driver's license or not. If so, them it will print that to the
+console. If not, it will print how many years are left until the person can qualify for a driver's license.
 
 */
 
+const age = 19;
+
+// check if this age is at least 18, which is the legal required age to start a driving license in Europe.
+// create a variable. The >= operator includes 18.
+// Use a Boolean value to take decisions using a 'if statement'.
+const isOldEnough = age >= 18 // only if the age is below 18, it will be false.
+// If the condition (a boolean value) inside the parenthises becomes true, then the code inside the braces will be executed. If false,
+// it will NOT be executed. The else statement is optional.
+// The isOldEnough variable will always be a Boolean value: true or false.
+// If the age is 15 or less than 18, the 'if statement' code block would NOT execute, but the 'else' block will be executed.
+// This 'if-else statement' is called a Controlled Structure. 
+
+if (age >= 18) {
+  console.log('Sarah can qualify to apply for her driving license 🚗 ')
+}
+else {
+  const yearsLeft = 18 - age;
+  console.log(`Sarah is too young. Wait another ${yearsLeft} years.`); // 18 - what ever the age variable is assigned to.
+}
+
+/* Conrolled structure allows me to have more control over the way that my code is executed:
+
+if() {
+
+} else {
+
+}
+
+JS donot execute all the code in a kubear way. I can control blocks of code that should execute abd blocks that should not execute.
+This gives me more control of how my code works and that is why this is called a control structure.
+
+*/
+
+// Another example: this time actually create a variable conditionally, not just always use console.log
+const birthYear = 1978;
+
+// Define century outside of the code block, and leave it empty. Then conditionaly reassign it.
+let century;
+
+// Create a variable called century which will contain the century in which this person was born.
+if(birthYear <= 2000) {
+  century = 20; // the 20th century
+} else {
+  century = 21; // the 21st century
+}
+
+console.log(century);
 
 
 
