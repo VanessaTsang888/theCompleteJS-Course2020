@@ -444,9 +444,66 @@ Done on separate files.
 
 */
 
+/* 
+
+STRINGS AND TEMPLATE LITERALS:
+
+*/
+
+// Creating some new variables about a person - me. Then concatinate them into one big string:
+// New variables:
+const firstName = 'Vanessa';
+const job = 'Junior Software Engineer';
+const birthYear = 1978;
+const year = 2021;
+
+// ES5: a complex string written in ES5 can be a pain.
+// Use those variables to build a string, to print out: I'm Vanessa a 42 year old Junior Software Engineer.
+// Will use the birthYear to calculate the age.
+// Will do the calculation first, then the concatination due to Type Coercion. JS will convert the number into a string, then concatenate
+// them so it can join them with the rest of the strings.
+const Vanessa = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + job + '!';
+console.log(Vanessa);
+
+/*
+ES6: Template Literals allows me to write a string in a more normal way then insert the variables directly into the string, then they'll
+be replaced. Templae Literal can assemble multiple pieces into one final string.
+Using Back Ticks NOT quote marks.
+Just one string using Template Literal syntax:
+const VanessaNew = `I'm ${firstName}`;
+console.log(VanessaNew); // I'm Vanessa
+*/
+
+// Continue with the same string:
+// NO need for the plus operator, or thinking where I should put the spaces like in ES5 string concatination:
+const VanessaNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
+console.log(VanessaNew); // I'm Vanessa, a 43 year old Junior Software Engineer!
+
+// Template Literals is the most used ES6 features, really useful in many situations.
+// Can use back ticks for any regular strings.
+// For strings, always use back-ticks so I don't need to think which quote marks to use.
+console.log(`Just a regular string using back ticks`);
+
+// Another great use case to use Template Literals is to create multi-line strings.
+// ES5: new line using a special character /n
+// 
+console.log('String with \n\
+muliple \n\
+lines');
+// one string on each line
+
+// ES6: Template Literals - using back ticks. Use back ticks and the return key to create new line for me:
+console.log(`String
+multiple
+lines`);
+// So when ever I need multiline string, always use Template Literal as it is a lot cleaner.
+
+/* 
+
+TAKING DECISIONS: if / else Statements
 
 
-
+*/
 
 
 
