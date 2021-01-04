@@ -91,7 +91,7 @@ Europe, and it is 11 million people speak portuguese'.
 
 */
  // My Code:
-
+/*
 let population = 670000;
 
 console.log(population);
@@ -114,7 +114,7 @@ console.log(population < 330000);
 
 const description = country + ' is in  ' + continent + ' and it is ' + population + ' people speak ' + language;
 console.log(description);
-
+*/
 
 ///////
 

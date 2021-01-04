@@ -316,9 +316,8 @@ but put this at the top with the other variables. Then I can replace the 2021 wi
 
 */
 
-/* 
-
-Math Operators:
+/*
+// Math Operators:
 const now = 2021;
 const ageVanessa = now - 1978;
 const ageChang = now - 1985;
@@ -341,10 +340,7 @@ console.log(firstName + ' ' + lastName);
 // There is a better way of doing this kind of concatenation of strings called template strings, but for now I focus on operators.
 
 // The typeof operator - will give us the type of the value: done this in previous lecture above.
-
 */
-
-
 
 /* Assignment Operators: using the equal sign.
 
@@ -407,6 +403,7 @@ operators especially the Maths ones are left to right, example:
 
 ***********************************************************************************************************************************/
 
+/*
 const now = 2021;
 const ageVanessa = now - 1978;
 const ageChang = now - 1985;
@@ -437,13 +434,17 @@ console.log(x, y);
 // operator so I have to use the parenthesis around to make the addition operation a higher precedence and executed first.
 const averageAge = (ageVanessa + ageChang) / 2;
 console.log(ageVanessa, ageChang, averageAge);
+*/
 
 /* 
 
 CODING CHALLENGE 01:
 
+Done on separate files.
 
 */
+
+
 
 
 
