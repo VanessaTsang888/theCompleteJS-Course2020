@@ -316,17 +316,19 @@ but put this at the top with the other variables. Then I can replace the 2021 wi
 
 */
 
-/* Math Operators:
+/* 
+
+Math Operators:
 const now = 2021;
 const ageVanessa = now - 1978;
 const ageChang = now - 1985;
-console.log(ageVanessa, ageChang); // 43
+console.log(ageVanessa, ageChang); // 43, 36
 
 // Using the multiplication operator. Can do two different calculations or operations. Creating two values. Also, use the exponentiation operator, i.e.
 // 2 ** 3 menas 2 to the power of 3 = 2 * 2 * 2.
 // My age times (the asterisk) 2, my age divided by 10:
-console.log(ageVanessa * 2, ageVanessa / 10, 2 ** 3); // 86 4.3 8
-// I don't understand as: 43 * 2 = 86 / 10 = 8.6 then how do I do the: 2 ** 3 ?
+console.log(ageVanessa * 2, ageVanessa / 10, 2 ** 3); // 86, 4.3, 8
+// I don't understand as: 43 * 2 = 86, ageVanessa / 10 = 4.3, 2 ** 3 = 2 * 2 * 2 = 8
 
 // I can use the addition or plus operator to join strings - to concatenate different strings:
 const firstName = 'Vanessa';
@@ -341,6 +343,8 @@ console.log(firstName + ' ' + lastName);
 // The typeof operator - will give us the type of the value: done this in previous lecture above.
 
 */
+
+
 
 /* Assignment Operators: using the equal sign.
 
@@ -437,7 +441,6 @@ console.log(ageVanessa, ageChang, averageAge);
 /* 
 
 CODING CHALLENGE 01:
-
 
 
 */

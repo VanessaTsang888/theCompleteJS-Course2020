@@ -62,17 +62,17 @@ variables to const.
 */
 
 /*
-let language = 'English';
+// let language = 'English';
 const language = 'English';
-*/
 
-/*
-language = 'English';
+
+
+// language = 'English';
 const country = 'UK';
-const continent = Europe;
+const continent = 'Europe';
 const isIsland = true;
-isIsland = false;
-*/
+// isIsland = false; // error in console as per expected.
+
 
 // Error Msg: Uncaught ReferenceError: Europe is not defined
 // Europe is the value of a string for the variable called continent. Therefore, it is defined.
@@ -90,7 +90,7 @@ BASIC OPERATIORS ASSIGNMENT:
 Europe, and it is 11 million people speak portuguese'.
 
 */
-
+ // My Code:
 
 let population = 670000;
 
@@ -115,24 +115,8 @@ console.log(population < 330000);
 const description = country + ' is in  ' + continent + ' and it is ' + population + ' people speak ' + language;
 console.log(description);
 
-////////////////////////////////////
-// Coding Challenge #1
 
-/*
-Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula: BMI = mass / height ** 2 = mass / (height * height). (mass in kg and height in meter).
-
-1. Store Mark's and John's mass and height in variables
-2. Calculate both their BMIs using the formula (you can even implement both versions)
-3. Create a boolean variable 'markHigherBMI' containing information about whether Mark has a higher BMI than John.
-
-TEST DATA 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
-TEST DATA 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1.76 m tall.
-
-GOOD LUCK 😀
-*/
-
-////////////////////////////////////
-
+///////
 
 
 
