@@ -23,6 +23,7 @@ GOOD LUCK 😀
 */
 
 ////////////////////////////////////
+/*
 
 // 1. Store Mark's and John's mass and height in variables:
 
@@ -54,6 +55,7 @@ console.log(markHigherBMI > johnHigherBMI); // true
 
 console.log('Mark BMI is' + ' ' + markHigherBMI + 'kg' + ', ' + 'John BMI is' + ' ' + johnHigherBMI + ' m '); // 
 
+*/
 
 /* 
 
@@ -92,10 +94,57 @@ The rest is the same. That is the advantage of using variables.
 
 */
 
+/*****************************************************************************************************************************************
 
+CODING CHELLENGE 02:
 
+Use the BMI example from Challenge #1, and the code you already wrote, and improve it.
+Your tasks:
+1. Printaniceoutputtotheconsole,sayingwhohasthehigherBMI.Themessage is either "Mark's BMI is higher than John's!" or "John's BMI is higher than Mark's!"
+2. UseatemplateliteraltoincludetheBMIvaluesintheoutputs.Example:"Mark's BMI (28.3) is higher than John's (23.9)!"
+Hint: Use an if/else statement 
 
+My output (the figures) from my Coding Cheelenge is different to the solution. Therefore, for this Coding Chellenge 02, I am using the
+solution code as a starting point.
 
+*******************************************************************************************************************************/
 
+// Test Data 01:
+// Mark's and John's mass and heigh in variables:
+// Test Data 01:
+const massMark = 78;
+const heightMark = 1.69;
+const massJohn = 92;
+const heightJohn = 1.95;
 
+// Test Data 02:
+// Mark's and John's mass and heigh in variables:
+// const massMark = 95;
+// const heightMark = 1.88;
+// const massJohn = 85;
+// const heightJohn = 1.76;
+
+// Calulate both their BMIs using the formula:
+// BMI = mass / height ** 2 or height * height
+const BMIMark = massMark / heightMark ** 2;
+const BMIJohn = massJohn / (heightJohn * heightJohn);
+// Check these values that they make sense:
+// Logout to see if my if-else statement is working:
+console.log(BMIMark, BMIJohn); // 27.309968138370508  24.19460880993426
+
+// Part 01: Print a nice output to the console, saying who has the higher BMI. The message is either "Mark's BMI is higher than John's!" or
+// "John's BMI is higher" than Mark's!
+// Write the condition directly in the 'if-statement' block.
+if (BMIMark > BMIJohn) {
+    console.log("Mark's BMI is higher than John's." )
+} else {
+    console.log("John's BMI is higher than Mark's.");
+}
+
+// Part 02: Use a Template Literal rather than quotes to include the actual BMI values:
+if (BMIMark > BMIJohn) {
+    console.log(`Mark's BMI (${BMIMark}) is higher than John's (${BMIJohn}).`);
+} else {
+    console.log(`John's BMI (${BMIJohn}) is higher than Mark's (${BMIMark}).`);
+}
 

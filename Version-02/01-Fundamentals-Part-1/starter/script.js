@@ -519,7 +519,7 @@ console. If not, it will print how many years are left until the person can qual
 
 */
 
-/*
+
 const age = 19;
 
 // check if this age is at least 18, which is the legal required age to start a driving license in Europe.
@@ -540,7 +540,7 @@ else {
   // Will logout: Sarah can qualify to apply for her driving license and a car emoji:
   console.log(`Sarah is too young. Wait another ${yearsLeft} years.`); // 18 - what ever the age variable is assigned to.
 }
-*/
+
 
 /* Conrolled structure allows me to have more control over the way that my code is executed:
 
