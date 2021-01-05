@@ -91,7 +91,7 @@ Europe, and it is 11 million people speak portuguese'.
 
 */
  // My Code:
-/*
+
 let population = 670000;
 
 console.log(population);
@@ -112,11 +112,30 @@ console.log(population > 60000);
 
 console.log(population < 330000);
 
-const description = country + ' is in  ' + continent + ' and it is ' + population + ' people speak ' + language;
-console.log(description);
+// const description = country + ' is in  ' + continent + ' and it is ' + population + ' people speak ' + language;
+// console.log(description);
+
+
+/*
+
+STRINGS AND TEMPLATE LITERALS - ASSIGNMENT:
+Recreate the 'description' variable from the last assignment, this time using the template literal syntax.
+
 */
 
-///////
+const description = `${country} is in ${continent}, and it is of ${population} million people speak ${language}`;
+console.log(description);
+
+/*
+
+TAKING DECISIONS: if / else Statements:
+
+1. 
+
+*/
+
+
+
 
 
 

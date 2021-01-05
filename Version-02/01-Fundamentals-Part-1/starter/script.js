@@ -519,6 +519,7 @@ console. If not, it will print how many years are left until the person can qual
 
 */
 
+/*
 const age = 19;
 
 // check if this age is at least 18, which is the legal required age to start a driving license in Europe.
@@ -536,8 +537,10 @@ if (age >= 18) {
 }
 else {
   const yearsLeft = 18 - age;
+  // Will logout: Sarah can qualify to apply for her driving license and a car emoji:
   console.log(`Sarah is too young. Wait another ${yearsLeft} years.`); // 18 - what ever the age variable is assigned to.
 }
+*/
 
 /* Conrolled structure allows me to have more control over the way that my code is executed:
 
@@ -552,6 +555,7 @@ This gives me more control of how my code works and that is why this is called a
 
 */
 
+/*
 // Another example: this time actually create a variable conditionally, not just always use console.log
 const birthYear = 1978;
 
@@ -565,7 +569,9 @@ if(birthYear <= 2000) {
   century = 21; // the 21st century
 }
 
+// will logout 20 for 20th century:
 console.log(century);
+*/
 
 
 
