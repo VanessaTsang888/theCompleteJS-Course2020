@@ -92,7 +92,7 @@ Europe, and it is 11 million people speak portuguese'.
 */
  // My Code:
 
-let population = 670000;
+let population = 13; // 670000
 
 console.log(population);
 let firstHalfPopulation = (population) / 2;
@@ -123,16 +123,39 @@ Recreate the 'description' variable from the last assignment, this time using th
 
 */
 
+/*
 const description = `${country} is in ${continent}, and it is of ${population} million people speak ${language}`;
 console.log(description);
+*/
 
 /*
 
 TAKING DECISIONS: if / else Statements:
 
-1. 
+1. If your conuntry's population is greater than 33 million, log a string like this to the console: 'Portugal's population is above average'.
+Otherwise, log a string like 'Portugal's population is 22 million below average' (the 22 is the average of 33 minus the country's population).
+
+2. After checking the result, change the population temporily to 13 and then to 130. See the different results, and set the population back to original.
 
 */
+
+// Englands's population is above average.
+
+if (population > 33) {
+    console.log(`${country}'s population of ${population} million people is above average`);
+} else {
+    console.log(
+        `${country}'s population is ${33 - population} million people below average`,
+    );
+}
+
+// Population changed to 13 million which is below the average of 33 million:
+// This logs out as: England's population is 19 million below average. This means JS executes the 'else' block of the program.
+// Population changed to 130 million which is above the average of 33 million:
+// This logs out as: England's population is 131 million people above average.
+// Basically, I've made use of both the 'if' and the 'else' block by changing the population figure. 
+
+
 
 
 
