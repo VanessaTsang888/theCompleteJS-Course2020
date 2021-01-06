@@ -90,7 +90,7 @@ BASIC OPERATIORS ASSIGNMENT:
 Europe, and it is 11 million people speak portuguese'.
 
 */
- // My Code:
+ /* My Code:
 
 let population = 13; // 670000
 
@@ -114,6 +114,7 @@ console.log(population < 330000);
 
 // const description = country + ' is in  ' + continent + ' and it is ' + population + ' people speak ' + language;
 // console.log(description);
+*/
 
 
 /*
@@ -139,7 +140,7 @@ Otherwise, log a string like 'Portugal's population is 22 million below average'
 
 */
 
-// Englands's population is above average.
+/* Englands's population is above average.
 
 if (population > 33) {
     console.log(`${country}'s population of ${population} million people is above average`);
@@ -148,6 +149,7 @@ if (population > 33) {
         `${country}'s population is ${33 - population} million people below average`,
     );
 }
+*/
 
 // Population changed to 13 million which is below the average of 33 million:
 // This logs out as: England's population is 19 million below average. This means JS executes the 'else' block of the program.
@@ -155,12 +157,37 @@ if (population > 33) {
 // This logs out as: England's population is 131 million people above average.
 // Basically, I've made use of both the 'if' and the 'else' block by changing the population figure. 
 
+/* 
 
+Practice Assignment: Type Conversion and Coercion:
 
+1. Predict the result of these 5 operations without executing them:
 
+'9' - '5';
+'19' - '13' + '17';
+'19' - '13' + 17;
+'123' < 57;
+5 + 6 + '4' + 9 - 4 - 2;
 
+2. Execute the operations to check if you were correct.
 
+*/
 
+'9' - '5'; // 4
+'19' - '13' + '17'; // 6 > '6' + '17' = '617'
+'19' - '13' + 17; // 6 > 6 + 17 = 23
+'123' < 57; // false (123 will be converted into a Number, and this figure is NOT less than 57. Therefore, JS will output false)
+5 + 6 + '4' + 9 - 4 - 2; // 11 + 4 = 15 + 9 = 24 - 4 = 20 - 2 = 18
+
+// 2. Execute the operations to check if you were correct:
+
+console.log('9' - '5'); // 4
+console.log('19' - '13' + '17'); // '617'
+console.log('19' - '13' + 17) // 23
+console.log('123' < 57); // false
+// I think now understand why the output is 1143 and NOT 18?
+// 5 + 6 = 11, convert to String to plus the '4' = 114. 9 - 4 = 5. Then 5 - 2 = 3. So, 11 + 4 + 3 = 1143. 
+console.log(5 + 6 + '4' + 9 - 4 - 2); // 1143
 
 
 
