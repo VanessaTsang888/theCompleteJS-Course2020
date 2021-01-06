@@ -520,18 +520,19 @@ console. If not, it will print how many years are left until the person can qual
 */
 
 
-const age = 19;
+// const age = 19;
 
 // check if this age is at least 18, which is the legal required age to start a driving license in Europe.
 // create a variable. The >= operator includes 18.
 // Use a Boolean value to take decisions using a 'if statement'.
-const isOldEnough = age >= 18 // only if the age is below 18, it will be false.
+// const isOldEnough = age >= 18 // only if the age is below 18, it will be false.
 // If the condition (a boolean value) inside the parenthises becomes true, then the code inside the braces will be executed. If false,
 // it will NOT be executed. The else statement is optional.
 // The isOldEnough variable will always be a Boolean value: true or false.
 // If the age is 15 or less than 18, the 'if statement' code block would NOT execute, but the 'else' block will be executed.
 // This 'if-else statement' is called a Controlled Structure. 
 
+/*
 if (age >= 18) {
   console.log('Sarah can qualify to apply for her driving license 🚗 ')
 }
@@ -540,6 +541,7 @@ else {
   // Will logout: Sarah can qualify to apply for her driving license and a car emoji:
   console.log(`Sarah is too young. Wait another ${yearsLeft} years.`); // 18 - what ever the age variable is assigned to.
 }
+*/
 
 
 /* Conrolled structure allows me to have more control over the way that my code is executed:
@@ -578,22 +580,18 @@ console.log(century);
 TYPE CONVERSION AND COERCION:
 
 Need to go back to value types. Types is one of the fundamental aspects in programming and converting between types we do in every
-programming language. The below is case-sensitive, i.e. the functions MUST starts with a cap-letter.
+programming language, converting a Number into a Boolean. The below is case-sensitive, i.e. the functions MUST starts with a cap-letter.
 
 Type Conversion:
 When we manually convert from one type to another.
 
-Type Conversion:
-JS convert from one type to another automatically for us.
-Happens whenever an operator is dealing with two values that have different types .
-
-**************************************************************************************************************************************/
-
-/* 
+Type Coercion:
+JS convert from one type to another automatically for us. It happens implicitly, completely hidden from us. 
+Happens whenever an operator is dealing with two values that have different types.
 
 SUMMARY:
 1. Converting Strings to Number:
-Use the Number function.
+Use the Number function. This is when we explicitly want to convert from one type to another.
 
 2. Converting Number to String:
 Use the String function.
@@ -601,21 +599,67 @@ When logged out to console, the first one has the Number type, the second has th
 	
 3. Cannot convert String or Number into a Boolean, Undefined or to Null as to do that it wouldn't make much sense. 
 
-*/
+**************************************************************************************************************************************/
 
 /*
 Type Conversion:
 Converting Strings to Number, use the Number function.
+Example, I have an input field on a webpage for the user to input their birth year. These inputs fields usually come as strings. 
+
 */
 
+const inputYear = '1991';
+// Calculate in what year will the person will become of full age?
+// When I add something to a string, it will concatinate a String. I can't expect to add 18 to the 1991 as its a String.
+// will logout: 199118, which is wrong. 
+console.log(inputYear + 18); // 199118
+// I need to convert the String 1991 into a Number using the built-in Number function. This will return the String as a Number.
+// When logged out, Number types are in a blue colour, String types are in black colour - this may change in the future? The first
+// is a Number, the second is a String.
+console.log(Number(inputYear), inputYear); // 1991  "1991"
 
+// Note: The inputYear variable is still a String. Still hold the variable 1991 as a String and not as a Number. That is why the result
+// of the first console.log with the + operator is still a String as the original input year variable is still a String. Using the
+// Number function will simple give me a converted version. So to perform this calculation i need to use Number function.
+console.log(Number(inputYear) + 18); // 2009
 
+// What if I need to convert something into a number that is impossible to convert?
+// NaN: Not a Number value. An operation that involves numbers fails to produce a new number. NaN means invalid number. it's not
+// really NaN. 
+console.log(Number('Vanessa')); // NaN
+// I can check this by using the 'typeof':
+console.log(typeof NaN); // number
+// So I can see that NaN actually means an invalid Number.
 
+// 2. Converting Number to String using the String function - case sensitive.
+// The output value is black menaing its a String. The blue one has the Number type. The black one has the String type.
+console.log(String(23), 23); // 23
 
+// JS can only convert two, three types. Can convert to a Number, to a String or to a Boolean. Cannot convert something to Undefined
+// or to Null since that wouldn't make much sense. 
 
+// Type Coercion:
+// whenever an operator is dealing with two values that have different types. JS will convert one of the values to match the other value.
+// So the operation can be executed.
+// Examople, I have differnt types here. Why isn't the instructor not using back-ticks here?
+// The plus operator triggers the Coercion Strings. So whenever there is an operation between a String and the Number, the Number will be
+// converted to a String.
+console.log('I am ' + 23 + ' years old'); // I am 23 years old
 
+// Not all operators do type coercion to String.
+// JS will convert Strings to Numbers. The minus operator triggers the opposit to the plus operator, so from String to Number.
+console.log('23' - '10' - 3); // 10
+// These values will be converted to Numbers as that is the only way the multiple operator can work.
+console.log('23' * '2'); // 46
+// Example using a logical operator. JS will automatically convert Strings to Numbers.
+console.log('23' > '18'); // true
+// Now the distintions should be clear.
 
-
+// Play the game called Guess the Output:
+let n = '1' + 1; // '11'
+// The String 11 will be converted into a Number due to the minus operator, then 11 minus 1 is 10.
+n = n - 1; // 10
+console.log(n); // 10
 
 
 
