@@ -665,16 +665,61 @@ console.log(n); // 10
 
 Truthy and Falsely Values:
 
+Falsy values are not false but will become false when I try to convert them a Boolean. There is 5 falsy values:
+0, '', Undefined, Null, NaN
+False is already false, so don't need to include it in the list above.
 
-
-
+All above 5 values will be converted to false when we attempt to convert them to a boolean. Initially they not exactly false but will be
+once converted to a Boolean. Everything else are truthy values - vaule that will be converted to true. So any Number not zero or any String
+that is not an empty String will be converted to true when we attempt to convert them to a Boolean.
 
 /*************************************************************************************************************************************/
 
+// Just as we did with Strings and Numbers, we do the same with Booleans:
+// I know this is a falsy value:
+// Convert falsy values into Boolean's.
 
+console.log(Boolean(0)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean('Vanessa')); // true // as its not empty String
+console.log(Boolean({})); // true // an empty object.
+// Empty String
+console.log(Boolean('')); // false // empty String.
 
+// In practice I'm not likely to use these function. It's just to show me the concepts of truthy and falsy values.
+// Conversion to Boolean is always implicit, not explicit. Always type coercion that JS does auto behind the scenes. But when do JS do type
+// coercion to Booleans? First when using logical operators, second in a logical context, i.e. in the condition of 'if-else statement'.
+// How do type coercion works in the 'if-else condition':
 
+const money = 0;
+// test if the person has any money or not:
+// In this condition, here JS will try to coerce any value into a Boolean using the Truthy and Falsy rules above.
+// This condition, this will be converted into False, as the variable is equal to 0.
+// Therefore, the 'else' block is executed: You should get a job! is logged out.
+if (money) {
+  console.log("Don't spend it all !");
+} else {
+  console.log('You should get a job!');
+}
 
+// If I change the value from 0 to any other value like 100, then the condition will be true, and the 'if' block will be executed.
+
+// Another use case to check if a variable is actually defined or not (if something exists or not):
+// This will execute the 'else' block as the height is declared but NO value as been assigned to it so the variable is Undefined which is a
+// falsy value. Therefore, the condition will auto be converted to a Boolean, and since height is Undefined and undefined is a falsy value,
+// height becomes false. Therefore, the 'else' block will be executed.
+let height;
+if(height) {
+  console.log('Yay! height is defined');
+} else {
+  console.log('Height is Undefined');
+}
+
+// However, if I assign something to the height variable (i.e. a Number like 123), then I will get the other result - the 'if' block will
+// be executed as the condition becomes true.
+// But 0 is a Number but when I logout, the 'else' block gets executed. This is not what we want. This is a bug - error in my app.
+// As in my app I didn't account for this but only for the account for the scenario that the height is either defined or not, but I didn't
+// think the height being zero. I can fix this using logical operators. 
 
 
 
