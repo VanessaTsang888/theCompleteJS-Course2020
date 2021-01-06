@@ -573,6 +573,44 @@ if(birthYear <= 2000) {
 console.log(century);
 */
 
+/************************************************************************************************************************************ 
+
+TYPE CONVERSION AND COERCION:
+
+Need to go back to value types. Types is one of the fundamental aspects in programming and converting between types we do in every
+programming language. The below is case-sensitive, i.e. the functions MUST starts with a cap-letter.
+
+Type Conversion:
+When we manually convert from one type to another.
+
+Type Conversion:
+JS convert from one type to another automatically for us.
+Happens whenever an operator is dealing with two values that have different types .
+
+**************************************************************************************************************************************/
+
+/* 
+
+SUMMARY:
+1. Converting Strings to Number:
+Use the Number function.
+
+2. Converting Number to String:
+Use the String function.
+When logged out to console, the first one has the Number type, the second has the String type, indicated in different colours.
+	
+3. Cannot convert String or Number into a Boolean, Undefined or to Null as to do that it wouldn't make much sense. 
+
+*/
+
+/*
+Type Conversion:
+Converting Strings to Number, use the Number function.
+*/
+
+
+
+
 
 
 
