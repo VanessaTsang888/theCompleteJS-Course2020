@@ -607,6 +607,7 @@ Converting Strings to Number, use the Number function.
 Example, I have an input field on a webpage for the user to input their birth year. These inputs fields usually come as strings. 
 
 */
+/*
 
 const inputYear = '1991';
 // Calculate in what year will the person will become of full age?
@@ -636,7 +637,8 @@ console.log(typeof NaN); // number
 console.log(String(23), 23); // 23
 
 // JS can only convert two, three types. Can convert to a Number, to a String or to a Boolean. Cannot convert something to Undefined
-// or to Null since that wouldn't make much sense. 
+// or to Null since that wouldn't make much sense.
+*/
 
 // Type Coercion:
 // whenever an operator is dealing with two values that have different types. JS will convert one of the values to match the other value.
@@ -644,6 +646,7 @@ console.log(String(23), 23); // 23
 // Examople, I have differnt types here. Why isn't the instructor not using back-ticks here?
 // The plus operator triggers the Coercion Strings. So whenever there is an operation between a String and the Number, the Number will be
 // converted to a String.
+/*
 console.log('I am ' + 23 + ' years old'); // I am 23 years old
 
 // Not all operators do type coercion to String.
@@ -660,7 +663,7 @@ let n = '1' + 1; // '11'
 // The String 11 will be converted into a Number due to the minus operator, then 11 minus 1 is 10.
 n = n - 1; // 10
 console.log(n); // 10
-
+*/
 /*************************************************************************************************************************************  
 
 Truthy and Falsely Values:
@@ -678,42 +681,46 @@ that is not an empty String will be converted to true when we attempt to convert
 // Just as we did with Strings and Numbers, we do the same with Booleans:
 // I know this is a falsy value:
 // Convert falsy values into Boolean's.
-
+/*
 console.log(Boolean(0)); // false
 console.log(Boolean(undefined)); // false
 console.log(Boolean('Vanessa')); // true // as its not empty String
 console.log(Boolean({})); // true // an empty object.
 // Empty String
 console.log(Boolean('')); // false // empty String.
+*/
 
 // In practice I'm not likely to use these function. It's just to show me the concepts of truthy and falsy values.
 // Conversion to Boolean is always implicit, not explicit. Always type coercion that JS does auto behind the scenes. But when do JS do type
 // coercion to Booleans? First when using logical operators, second in a logical context, i.e. in the condition of 'if-else statement'.
 // How do type coercion works in the 'if-else condition':
 
-const money = 0;
+// const money = 0;
 // test if the person has any money or not:
 // In this condition, here JS will try to coerce any value into a Boolean using the Truthy and Falsy rules above.
 // This condition, this will be converted into False, as the variable is equal to 0.
 // Therefore, the 'else' block is executed: You should get a job! is logged out.
+/*
 if (money) {
   console.log("Don't spend it all !");
 } else {
   console.log('You should get a job!');
 }
-
+*/
 // If I change the value from 0 to any other value like 100, then the condition will be true, and the 'if' block will be executed.
 
 // Another use case to check if a variable is actually defined or not (if something exists or not):
 // This will execute the 'else' block as the height is declared but NO value as been assigned to it so the variable is Undefined which is a
 // falsy value. Therefore, the condition will auto be converted to a Boolean, and since height is Undefined and undefined is a falsy value,
 // height becomes false. Therefore, the 'else' block will be executed.
+/*
 let height;
 if(height) {
   console.log('Yay! height is defined');
 } else {
   console.log('Height is Undefined');
 }
+*/
 
 // However, if I assign something to the height variable (i.e. a Number like 123), then I will get the other result - the 'if' block will
 // be executed as the condition becomes true.
@@ -721,8 +728,23 @@ if(height) {
 // As in my app I didn't account for this but only for the account for the scenario that the height is either defined or not, but I didn't
 // think the height being zero. I can fix this using logical operators. 
 
+/*************************************************************************************************************************************   
 
+EQUALITY OPERATORS: == vs. ===
 
+So far we've only used comparison operators to take decisions with if-else statements. If we want to check if 2 values are equal, instead of one being greater
+or less than the other. For that we have different equality operators. Example, using the age variable:
+
+*************************************************************************************************************************************/
+
+// Set age variable to 19.
+// Use an if-statement to check if the age is exactally 18 using the tripple equal oporator.
+// I don't need the braces in my if-statement if I only have one line of code:
+
+const age = 18;
+if (age === 18) console.log('You just became an adult, congratulations!!!'); // You just became an adult, congratulations!!!
+
+// However, if the age is NOT 18, then nothing will get logged out. I tested this and it works.
 
 
 
