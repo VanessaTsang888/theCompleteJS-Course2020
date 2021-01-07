@@ -738,15 +738,89 @@ or less than the other. For that we have different equality operators. Example, 
 *************************************************************************************************************************************/
 
 // Set age variable to 19.
-// Use an if-statement to check if the age is exactally 18 using the tripple equal oporator.
+// Use an if-statement to check if the age is exactally 18 using the tripple equal oporator or the
+// Strict Equality Operator:
+// Its strict as it don't perform Type Coercion (JS don't convert the values for us), it only returns 'true' to when both values are exactly the same.
+// I can test this in the console and see the result.
 // I don't need the braces in my if-statement if I only have one line of code:
 
 const age = 18;
-if (age === 18) console.log('You just became an adult, congratulations!!!'); // You just became an adult, congratulations!!!
+// Will be 'true' so the String will get logged out:
+if (age === 18) console.log('You just became an adult - Strict');
 
 // However, if the age is NOT 18, then nothing will get logged out. I tested this and it works.
 
+// How do the the Strict Equality Operator work?
+// Just like the comparison operators, it will return a true or a false value, so a Boolean value. Only that in this case, true will only be the result of this
+// operator in case that both sides are exactly the same. Don't confuse the assignment operator with the comparison operator - the triple equal operator.
 
+// We also have the Loose Equal Operator which only uses two equal.
+// Lets say, I change the age from 18 to a String '18', the String '18' gets converted into a 'Number 18', which then 18 are actually a 'Number 18'.
+// Then JS will compare them to see if they are the same, which in my case, it is. 
+// I have tested this in the console: '18' == 18; // true
+// Will become 'true' as the String will logout as '18' a String will get converted to a 'Number 18' :
+if (age == 18) console.log('You just become an adult - loose');
+
+// Note: the Loose Equality Operator full of strange rules and behaviours. So if I use this, it can introduce many hard to find bugs in my code. For general rule
+// for clean code, avoid this Loose Equality Operator as much as I can. Always try to use the Strict Equality Operator instead. Its best practice even if I need
+// Type Coercion. It's better to convert the value manually before the comparison than relying on the double equal operator.
+// I will check this out with my Mentor during my next Catch-up meeting with him!
+
+// A way to get a value from a webpage, using the 'prompt' function with a String inside it.
+// Below code will create a value, the number the user inputs:
+// This outputs a prompt window in my browser for user to input something, and hit return.
+// prompt("What's your favourite number");
+// But need to store that value somewhere. So i need to create a variable called favorite:
+// const favourite = prompt("What's your favourite number");
+// Its in this variable where the value that user input into the form will be stored.
+// Logs the value of 23 which is in black meaning its a String.
+// console.log(favourite); // 23
+// Checking the type that it is really a String:
+// console.log(typeof favourite); // string
+
+// Writing some logic to check if this is a great number:
+// The user inputs 23 into the prompt box which is a String. This Loose Equality Operator (type coercion) converts that to a 'Number 23', compares
+// that with the already existing 'Number 23' that's on the right side of the Loose Equality Operator. It's the same or true and will logout the String
+// below.
+
+/*
+if (favourite === 23) { // '23' == 23
+  console.log('Cool! 23 is an amazing number!');
+}
+*/
+
+// However, if I use the Strict Equality Operator then the String will NOT get logout.
+// I should always use the Strict Equality Operator and convert manually using the Number function.
+// Now favourt will be a Number. Then this should be back to working.
+const favourite = Number(prompt("What's your favourite number"));
+console.log(favourite); // 23
+console.log(typeof favourite); // string
+// true, so this line of code will run:
+// if user input 7, then the 'else if' block will get executed.
+// If user input 9, then the second 'else if' block will get executed.
+// If user input a number is neither 23 or 7, then the 'else' block will get executed.
+if (favourite === 23) { // 23 == 23
+  console.log('Cool! 23 is an amazing number!');
+} else if (favourite === 7) {
+  console.log('7 is also a cool number')
+} else if (favourite === 9) {
+  console.log('9 is also a cool number')
+} else {
+  console.log('Nuber is not 23 or 7 or 9')
+}
+
+// Now I have a way of not going immediately jnto the 'else' block once the initial condition (if block) is false, as there are now other conditions that
+// can be checked one after the other. So first, it will check if the user input is 23, if not it will check if its 7, if not it will check if its 9,
+// if not then the String in the final 'else' block will be executed.
+
+// There is an Operator for Different. The opposite to the Equality Operators is: Not Equal operator:
+// Loose version: !=
+// Strict version: !==
+// Checking if the favourite variale is different or not the same as 23. As before, alwayis use the Strict version.
+// Always best to use the Strict Not Equals Operator (or Strict Different Operator).
+// Say the user inputs 9, the string below will be logout (9 is different to 23). 
+if (favourite !== 23)
+  console.log('Why not 23?');
 
 
 
