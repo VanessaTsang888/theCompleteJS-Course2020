@@ -192,7 +192,12 @@ console.log(5 + 6 + '4' + 9 - 4 - 2); // 1143
 
 /* 
 
+EQUALITY OPERATORS: == vs. ===
 
+1. Declare a variable 'numNeighbours' based on a prompt input like this:
+prompt('How many neighbour countreis does your country have?');
+
+2. 
 
 
 
