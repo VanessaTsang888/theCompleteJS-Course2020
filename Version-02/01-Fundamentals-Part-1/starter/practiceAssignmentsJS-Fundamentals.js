@@ -173,6 +173,8 @@ Practice Assignment: Type Conversion and Coercion:
 
 */
 
+/*
+
 '9' - '5'; // 4
 '19' - '13' + '17'; // 6 > '6' + '17' = '617'
 '19' - '13' + 17; // 6 > 6 + 17 = 23
@@ -189,17 +191,65 @@ console.log('123' < 57); // false
 // 5 + 6 = 11, convert to String to plus the '4' = 114. 9 - 4 = 5. Then 5 - 2 = 3. So, 11 + 4 + 3 = 1143. 
 console.log(5 + 6 + '4' + 9 - 4 - 2); // 1143
 
+*/
+
 
 /* 
 
-EQUALITY OPERATORS: == vs. ===
+PRACTICE ASSIGNMENT: EQUALITY OPERATORS: == vs. ===
 
 1. Declare a variable 'numNeighbours' based on a prompt input like this:
 prompt('How many neighbour countreis does your country have?');
 
-2. 
+2. If there is only 1 neighbour, log to console 'Only 1 border!' (use loose == for now).
 
+3. Use an else-if block to log 'More than 1 border' in case 'numNeighbours' is greater than 1.
 
+4. Use an else block to log 'No borders' (this block will be executed when 'numNeighbours' is 0 or any other value).
+
+5. Test the code with different values of 'numNeighbours', including 1 and 0.
+
+6. Change == to ===, and test the code again, with the same values of 'numNeighbours'. Notice what happends when there is exactly 1 border!
+Why is this happening?
+
+7. Finally, convert 'numNeighbours' to a number, and watch what happens now when you input 1.
+
+8. Reflect on why we should use the === operator and type conversion in this situation.
 
 */
 
+// 1 - 4:
+
+const numNeighbours = Number(prompt('How many neighbour countries does your country have?'));
+
+if (numNeighbours === 1) {
+    console.log('Only 1 border!');
+} else if (numNeighbours > 1) {
+    console.log('More than 1 border!');
+} else {
+    console.log('No borders');
+}
+ // 5: Test the code with different values of 'numNeighbours', including 1 and 0.
+ // Tested input of 1 and the console returned: only 1 border!
+ // This is correct as it had executed the 'if' block which is what I expected.
+ // Tested input of 0 and the console returned: No borders.
+ // This is correct as its executed the 'else' block.
+
+ // 6. Change == to ===, and test the code again, with the same values of 'numNeighbours'. Notice what happends when there is
+ // exactly 1 border! Why is this happening?
+ // Tested with input of 1 but the console has logout: No borders
+ // Unfortunately, I think this is because the Strict Equality Operator don't perform Type Coercion but just Conversion?
+ // This means I need to do the conversion manually to make my code work the way I expect it to?
+
+ // 7. Finally, convert 'numNeighbours' to a number, and watch what happens now when you input 1.
+ // I just type Number and open parenthises infront of the 'prompt' keyword within the first line of code, and saved.
+ // Tested with input of 1, and it works as now the console logout: Only 1 bord!
+ // This is correct as it is what I expected.
+ // Also tested with input 0, and it works as now the console logout: No borders
+ // This is correct as it is what I expected to happen.
+
+ // 8. Reflect on why we should use the === operator and type conversion in this situation.
+ // I think the reason why I should use the Strict Equality Operator is because the Loose Equality Operator
+ // the Loose Equality Operator full of strange rules and behaviours. So if I use this, it can introduce many hard to find bugs in my code.
+ // For general rule for clean code, avoid this Loose Equality Operator as much as I can. Always try to use the Strict Equality Operator instead.
+ // Its best practice even if I need Type Coercion. It's better to convert the value manually before the comparison than relying on the double equal operator.
