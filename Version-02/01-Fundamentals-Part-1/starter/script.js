@@ -842,10 +842,61 @@ Two Boolean Variables:
 A: Sarah has a driver's license.
 B: Sarah has good vision.
 Both are conditions that can be either true or false as Sarah could have no driver's license and she could have no good vision?
+On the other hand, she could have a driver's license AND she could have good vision.
 
+Using the AND operator, we can combine the two variables:
+A AND B:
+"Sarah has a driver's license AND good vision".
+The result of this operation: we use a Truth Table:
+It has two possible values for each of the variables, A and B, which gives me four possible combinations of results. So all I have to do is to
+plug in the values of my variables, and get a result of the AND operation from this table. According to Truth Table, only if A and B is true,
+the result of the operation will be true as well. This makes sense since it's called AND operator. So the AND operator returns true only if both
+A and B are true. in all other situations, if either A or B are false, then A and B will also be false. We can generalise this to more operands,
+to more than two values. I could do A and B and C, and result will be true only if all of them are true. If one of them is false, then the result
+is immediately false.
 
+The OR operator:
+Works in the opposite way to the AND operator.
+With my current example, I can deterime whether Sarah has a driver's license OR good vision.
+According to the Truth Table, the OR operator will be true if just one of the variables is true. So even if one of the variable is false,
+the result will still be true. So if either A or B is true, then the OR operation becomes true as well. Thats why its called the OR operator.
+Again, if I have multiple variables, its enough for one of them to be true, to make the whole operation become true as well.
 
-
-
+The NOT operator:
+This is a lot simplier as it doesn't combine multiple values. Instead, it acts on only ONE Boolean value and just INVERTS it.
+So if A is true, it will become false. If its false, then NOT A will become true.
 
  */
+
+ // A Practical Example:
+ // Using the age variable and assign it the value of Number 16:
+ age = 16;
+
+ // My Boolean Variables:
+ // A: Age is greater or equal 20
+ // B: Age is less than 30
+
+ // Determin the value of each of the variables:
+ // A must be false as age is not greater or equal to 20.
+ // B must be true as age is less than 30 since 16 is obviously less than 30.
+ // Conbine A and B using some logical operators. The first exercise is the NOT operator: !A
+ // I already know that A is false, so the result of !A is true as all the NOT operator do is to invert the logical value of the variable.
+
+ // Next is the AND operator:
+ // I already know that A is false and B is true.
+ // So, I have False and True. According to the Truth Table, I can determine that the result of this must be False.
+ // It's enough for one of the operand to be False, to make the result of the operation also False.
+
+ // Now, A OR B:
+ // According to the Truth Table, and its True as its enough for one variable to be true for the whole expression to be true as well.
+
+ // Now, check !A AND B:
+ // I already know that NOT A is true and B is true.
+ // This time I'm combining multiple operators. True and True will be True.
+ // I don't understand this one. Will check with my Mentor next Monday morning.
+
+ // A OR !B:
+ // The NOT operator has Proceedence over the OR and AND operators. So the values are inverted first, then they are combined using AND or OR.
+ // I already know that A is false and B is true. So NOT B must be false (inverted). Then False OR False is also False. This is the only way
+ // that the OR operator can be false, if all of them are false.
+ // In the next lecture I will use these Boolean operators.
