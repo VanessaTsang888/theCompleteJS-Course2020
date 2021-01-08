@@ -823,5 +823,29 @@ if (favourite !== 23)
   console.log('Why not 23?');
 
 
+/************************************************************************************************************************************************** 
+
+L23. BOOLEAN LOGIC:
+
+A branch of computer science, which uses true and false values to solve complex logical problems. To do that, it uses several logical
+operators to combine true and false values. Much like we use arithmetic operators, to combine numeric values. Here I'll learn the most basic
+logical operators: AND, OR, and NOT operators.
+
+Note: Boolean logic is actually not specific to JavaScript but true for all programming.
+How do these operators work, used and with an example:
+
+***************************************************************************************************************************************************/
+
+/*
+
+Two Boolean Variables:
+A: Sarah has a driver's license.
+B: Sarah has good vision.
+Both are conditions that can be either true or false as Sarah could have no driver's license and she could have no good vision?
 
 
+
+
+
+
+ */
