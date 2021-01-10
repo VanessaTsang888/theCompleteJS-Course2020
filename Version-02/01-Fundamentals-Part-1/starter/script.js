@@ -900,3 +900,15 @@ So if A is true, it will become false. If its false, then NOT A will become true
  // I already know that A is false and B is true. So NOT B must be false (inverted). Then False OR False is also False. This is the only way
  // that the OR operator can be false, if all of them are false.
  // In the next lecture I will use these Boolean operators.
+
+ /************************************************************************************************************************************    
+ 
+ LOGICAL OPERATORS:
+ Now going to use Boolean variable from the last lecture 'Boolean Operators', about having a driver's license and having good vision.
+
+ ************************************************************************************************************************************/
+
+ // creating a variable and setting it to true
+ const hasDriversLicense = true; // variable A
+ const hasGoodVision = true; // variable B
+ 
