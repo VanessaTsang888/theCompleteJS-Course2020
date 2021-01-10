@@ -744,6 +744,7 @@ or less than the other. For that we have different equality operators. Example, 
 // I can test this in the console and see the result.
 // I don't need the braces in my if-statement if I only have one line of code:
 
+/*
 const age = 18;
 // Will be 'true' so the String will get logged out:
 if (age === 18) console.log('You just became an adult - Strict');
@@ -760,6 +761,7 @@ if (age === 18) console.log('You just became an adult - Strict');
 // I have tested this in the console: '18' == 18; // true
 // Will become 'true' as the String will logout as '18' a String will get converted to a 'Number 18' :
 if (age == 18) console.log('You just become an adult - loose');
+*/
 
 // Note: the Loose Equality Operator full of strange rules and behaviours. So if I use this, it can introduce many hard to find bugs in my code. For general rule
 // for clean code, avoid this Loose Equality Operator as much as I can. Always try to use the Strict Equality Operator instead. Its best practice even if I need
@@ -788,7 +790,7 @@ if (favourite === 23) { // '23' == 23
   console.log('Cool! 23 is an amazing number!');
 }
 */
-
+/*
 // However, if I use the Strict Equality Operator then the String will NOT get logout.
 // I should always use the Strict Equality Operator and convert manually using the Number function.
 // Now favourt will be a Number. Then this should be back to working.
@@ -821,7 +823,7 @@ if (favourite === 23) { // 23 == 23
 // Say the user inputs 9, the string below will be logout (9 is different to 23). 
 if (favourite !== 23)
   console.log('Why not 23?');
-
+*/
 
 /************************************************************************************************************************************************** 
 
@@ -870,7 +872,7 @@ So if A is true, it will become false. If its false, then NOT A will become true
 
  // A Practical Example:
  // Using the age variable and assign it the value of Number 16:
- age = 16;
+//  age = 16;
 
  // My Boolean Variables:
  // A: Age is greater or equal 20
@@ -905,10 +907,63 @@ So if A is true, it will become false. If its false, then NOT A will become true
  
  LOGICAL OPERATORS:
  Now going to use Boolean variable from the last lecture 'Boolean Operators', about having a driver's license and having good vision.
+ Using Boolean variable and Boolean logic to model complex situations.
 
  ************************************************************************************************************************************/
 
- // creating a variable and setting it to true
+ // creating the variables and setting it to true initailly to test:
  const hasDriversLicense = true; // variable A
  const hasGoodVision = true; // variable B
- 
+
+// Using the AND and OR operators. Using && to combine 2 logical values:
+// The result of true AND true should be true:
+// Now change of the locial values to false and see what happens - the: hasGoodVision change to false.
+// This time the result will be fasle as that is enough for the operation to be false, and it is.
+
+console.log(hasDriversLicense && hasGoodVision); // false
+// Enough for one of the variables to be true for the whole operation to become true Tested, and yes it works
+console.log(hasDriversLicense || hasGoodVision); // true
+// Using the NOT operator to invert one of the values: !
+// This should logout: false as I've already set this variable to: true when I created it at the top:
+console.log(!hasDriversLicense);
+
+// Now I know how the Boolean Operators works, I can use these variables to take a decision.
+// I wish to determin whether Sarah should drive or not? I need to create a new Boolean variable and use the others to determin that.
+// My model is that Sarah should drive if she has a driver's license and at the same time has good vision 
+
+// const shouldDrive = hasDriversLicense && hasGoodVision;
+// Now use this variable to finally take the decision.
+// If she should drive, then log to the console that Sarah is able to drive! If not, logout: Someone else should drive.
+// create the condition in the 'if' statement.
+
+// if (hasDriversLicense && hasGoodVision) {
+//   console.log('Sarah is able to drive!')
+// } else {
+//   console.log('Someone else should drive...');
+// }
+
+// When the variable: hasGoodVision is set to false, then the message in the 'else' block will logout, meaning the condition in the if-statement is NOT
+// true. I can change that variable B to: true so the are both true, so the message in the 'if' block will get logout. Tested, and it works.
+
+// Adding another Boolean variable.
+// to use more than 2 variables with the OR operator: || 
+// Will logout: true as at the moment all variables are set to: true.
+const isTired = true; // variable C
+console.log(hasDriversLicense || hasGoodVision || isTired); // true
+// However, If I change the operator to AND, and one variable to false then the result will be false as it's enough for one of the operands to be false
+// to make the whole operation false as well.
+
+// Improve my decision making whether Sarah should drive or not. With this third variable now, I want Sarah to be able to drive if she has a driver's
+// license, if she has good vision, and if she is not tired. Translate this into a decision.
+// Use the NOT operator within the condition. I want the opposite of being tired, so need to invert the third variable using the NOT operator: !
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log('Sarah is able to drive!')
+} else {
+  console.log('Someone else should drive...');
+}
+
+// Only if variables A and B are set to true and variable C is set to false, then Sarah is able to drive. This is because only then all variable will
+// result to: true.
+// When !isTired is true, when the isTired variable is set to false. Otherwise, the 'else' block will get executed.
+
