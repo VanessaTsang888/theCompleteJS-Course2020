@@ -273,18 +273,24 @@ criteria. Take your time with this, and check part of the solution if necessary.
 
 **********************************************************************************************************************************************************/
  
-// creating the variables and setting it to true initailly to test:
- const hasDriversLicense = true; // variable A
- const hasGoodVision = true; // variable B
-
 // Creating variable and assigning them a value:
-
-const country = England;
+// const country = England;
 const population = 67;
-const speaksEnglish = true; 
-const LessThan50millionPeople = false;
-const isNotAnIsland = false;
+
+const speaksEnglish = true; // variable A
+const lessThan50millionPeople = false; // variable B
+const isNotAnIsland = false; // variable C
 
 // Write an if statement to help Sarah figure out if your country is right for her. You will need to write a condition that accounts for all of Sarah's
-// criteria.
+// criteria: a country that speaks English, has less than 50 million people and is not an island.
+
+if (speaksEnglish && !lessThan50millionPeople && !isNotAnIsland) {
+    console.log(`You should live in England`);
+} else {
+    console.log(`England does not meet your criteria`);
+}
+
+// My country don't meet all the criteria. I'm temporarily changing some variables in order to make the condition true so that the message in the 'if' block
+// get executed.
+// All I did was changed the varable names of variable B and C so that it uses the NOT operator: !
 
