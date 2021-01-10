@@ -218,6 +218,8 @@ Why is this happening?
 
 */
 
+/*
+
 // 1 - 4:
 
 const numNeighbours = Number(prompt('How many neighbour countries does your country have?'));
@@ -253,3 +255,36 @@ if (numNeighbours === 1) {
  // the Loose Equality Operator full of strange rules and behaviours. So if I use this, it can introduce many hard to find bugs in my code.
  // For general rule for clean code, avoid this Loose Equality Operator as much as I can. Always try to use the Strict Equality Operator instead.
  // Its best practice even if I need Type Coercion. It's better to convert the value manually before the comparison than relying on the double equal operator.
+
+*/
+
+/**********************************************************************************************************************************************************   
+
+ASSIGNMENT: LOGICAL OPERATORS:
+
+1. Comment out the previous code.
+2. Let's say Sarah is looking for a new country to live in. She wants to live in a country that speaks English, has less than 50 million people and is not
+an island.
+3. Write an if statement to help Sarah figure out if your country is right for her. You will need to write a condition that accounts for all of Sarah's
+criteria. Take your time with this, and check part of the solution if necessary.
+4. If yours is the right country, log a string like this: 'You should live in Portugal'. If not, log 'Porrugal does not meet your criteria'.
+5. Prbably your country does not meet all the criteria. So go back and temporarily change some variables in order to make the condition true
+(unless you live in Canada).
+
+**********************************************************************************************************************************************************/
+ 
+// creating the variables and setting it to true initailly to test:
+ const hasDriversLicense = true; // variable A
+ const hasGoodVision = true; // variable B
+
+// Creating variable and assigning them a value:
+
+const country = England;
+const population = 67;
+const speaksEnglish = true; 
+const LessThan50millionPeople = false;
+const isNotAnIsland = false;
+
+// Write an if statement to help Sarah figure out if your country is right for her. You will need to write a condition that accounts for all of Sarah's
+// criteria.
+
