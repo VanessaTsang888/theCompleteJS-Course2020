@@ -980,8 +980,9 @@ A weekday variable and for each day there is a different activity.
 Note: I am hardcoing the values as I'm learning to code at the moment but in real life this wouldn't happen my program would take in user inputs.
 The syntax of Switch statement is a little different to anything else in JS.
 
-************************************************************************************************************************************    */
+*************************************************************************************************************************************/
 
+/*
 // This is how a Switch statement works:
 // I am specify another case right after the one before: wednesday and thursday.
 // The defult is used when all the other has faild - use for a invalid day. Its like the else block within an if-else statement.
@@ -1037,3 +1038,35 @@ if (day === 'monday') {
 
 // The result from the if statement is the same as from the swich statement, so it works. Just used a different syntax. However, the if statement uses a lot
 // more repeated code. Best to use the switch statement in stead.
+*/
+
+/************************************************************************************************************************************** 
+
+STAATEMENTS AND EXPRESSIONS:
+What is the difference between Statements and Expressions? A high level overview.
+
+Statement: a piece of code that produces a value.
+
+**************************************************************************************************************************************/
+
+// Expressions: a piece of code that produces a value, i.e.
+3 + 4
+// This will produce a value in JS:
+1991
+// This expression will produce some Boolean value:
+true && false && !false
+
+// Statement is a bigger piece of code that is executed and which does not produce a value on itself.
+// Declaration is a sentence, and expressions are like the words that make up the sentences.
+// we write our whole apps as a squence of actions. These actions are statements.
+// The String is an Expression, the whole line of code is a statement, as this whole line donot produce a value.
+// Whenever something ends with a semicolon, then its a statement. Its like a complete sentence.
+if (23 > 10) {
+  const str = '23 is bigger';
+}
+
+// The differences between statments and expressions is important to know as JS expects statements and expressions in different places, i.e.
+// in Template Literal, we can only insert expressions, but not statements:
+
+const me = 'Jonas';
+console.log(`I'm ${2037 - 1991} years old ${me}`)
