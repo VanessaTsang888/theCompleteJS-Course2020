@@ -911,6 +911,7 @@ So if A is true, it will become false. If its false, then NOT A will become true
 
  ************************************************************************************************************************************/
 
+ /*
  // creating the variables and setting it to true initailly to test:
  const hasDriversLicense = true; // variable A
  const hasGoodVision = true; // variable B
@@ -966,6 +967,7 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 // Only if variables A and B are set to true and variable C is set to false, then Sarah is able to drive. This is because only then all variable will
 // result to: true.
 // When !isTired is true, when the isTired variable is set to false. Otherwise, the 'else' block will get executed.
+*/
 
 /*************************************************************************************************************************************     
 
@@ -990,8 +992,9 @@ const day = 'monday';
 
 switch (day) {
   case 'monday': // day === 'monday'
+  // if the day === to monday, then execute this:
     console.log('Plan course structure');
-    console.log('Go to cding meetup');
+    console.log('Go to coding meetup');
     break;
   case 'tuesday':
     console.log('Prepare theory videos');
@@ -1010,3 +1013,27 @@ switch (day) {
   default:
     console.log('Not a valid day. Please try again.');      
 }
+
+// Really Design for Equality not for comparing stuff. Although possible to do that with some work-arounds but not the goal of the switch statement.
+
+// Write same logic but as if-else statement: code should be executed if its either a wednesday or thursday, i.e. can't be wednesday && thursday as two days
+// can't occur at sametime.
+// Test this by changing the condition from monday to one of the other days. See the result in the console.
+
+if (day === 'monday') {
+  console.log('Plan course structure');
+  console.log('Go to coding meetup');
+} else if (day === 'tuesday') {
+  console.log('Prepare theory videos');
+} else if (day === 'wednesday' || day === 'thursday') {
+  console.log('Write code examples');
+} else if (day === 'friday') {
+  console.log('Record videos');
+} else if (day === 'saturday' || day === 'sunday') {
+  console.log('Enjoy the weekend.');
+} else {
+  console.log('Sorry, not a valid day, try again');
+}
+
+// The result from the if statement is the same as from the swich statement, so it works. Just used a different syntax. However, the if statement uses a lot
+// more repeated code. Best to use the switch statement in stead.
