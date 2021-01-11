@@ -108,7 +108,7 @@ My output (the figures) from my Coding Cheelenge is different to the solution. T
 solution code as a starting point.
 
 *******************************************************************************************************************************/
-
+/*
 // Test Data 01:
 // Mark's and John's mass and heigh in variables:
 // Test Data 01:
@@ -147,4 +147,41 @@ if (BMIMark > BMIJohn) {
 } else {
     console.log(`John's BMI (${BMIJohn}) is higher than Mark's (${BMIMark}).`);
 }
+*/
 
+/******************************************************************************************************************************** 
+
+CODING CHALLENGE 03:
+
+There are two gymnastics teams, Dolphins and Koalas. They compete against each other 3 times. The winner with the highest average score wins a trophy!
+Your tasks:
+1. Calculatetheaveragescoreforeachteam,usingthetestdatabelow
+2. Comparetheteam'saveragescorestodeterminethewinnerofthecompetition, and print it to the console. Don't forget that there can be a draw, so test for that
+as well (draw means they have the same average score)
+3. Bonus1:Includearequirementforaminimumscoreof100.Withthisrule,a
+team only wins if it has a higher score than the other team, and the same time a score of at least 100 points. Hint: Use a logical operator to test for minimum score, as well as multiple else-if blocks 😉
+4. Bonus2:Minimumscorealsoappliestoadraw!Soadrawonlyhappenswhen both teams have the same score and both have a score greater or equal 100 points. Otherwise, no team wins the trophy
+Test data:
+§ Data 1: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110
+§ Data Bonus 1: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 123 § Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
+
+********************************************************************************************************************************/
+
+// 1. Calculate the average of both teams:
+// create one variable for each team. To calculate the average, I add up all the three scores then divide it by 3.
+// I need the parenthises so that the plus operations calculation is executed first so that the grouping has a higher precedence. 
+// Dolphins have higher average.
+const scoreDolphins = (96 + 108 + 89) / 3;
+const scoreKoalas = (88 + 91 + 110) / 3;
+console.log(scoreDolphins, scoreKoalas); // 97.66666666666667 96.33333333333333
+
+// 2. Compare the average of both teams:
+// Use if-else statement
+// If Dolphins average score is higher than Koalas average score, then logout to console: Dolphins wins the trophy.
+if (scoreDolphins > scoreKoalas) {
+    console.log('Dolphins win the trophy');
+} else if (scoreKoalas > scoreDolphins) {
+    console.log('Koalas win the trophy');
+} else if(scoreDolphins === scoreKoalas) {
+    console.log('Both wind the trophy');
+}
