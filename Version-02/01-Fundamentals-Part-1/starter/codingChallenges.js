@@ -149,28 +149,33 @@ if (BMIMark > BMIJohn) {
 }
 */
 
-/******************************************************************************************************************************** 
+/****************************************************************************************************************************************************  
 
 CODING CHALLENGE 03:
 
-There are two gymnastics teams, Dolphins and Koalas. They compete against each other 3 times. The winner with the highest average score wins a trophy!
-Your tasks:
+There are two gymnastics teams, Dolphins and Koalas. They compete against each other 3 times. The winner with the highest average score wins a
+trophy! Your tasks:
 1. Calculatetheaveragescoreforeachteam,usingthetestdatabelow
-2. Comparetheteam'saveragescorestodeterminethewinnerofthecompetition, and print it to the console. Don't forget that there can be a draw, so test for that
-as well (draw means they have the same average score)
-3. Bonus1:Includearequirementforaminimumscoreof100.Withthisrule,a
-team only wins if it has a higher score than the other team, and the same time a score of at least 100 points. Hint: Use a logical operator to test for minimum score, as well as multiple else-if blocks 😉
-4. Bonus2:Minimumscorealsoappliestoadraw!Soadrawonlyhappenswhen both teams have the same score and both have a score greater or equal 100 points. Otherwise, no team wins the trophy
-Test data:
-§ Data 1: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110
-§ Data Bonus 1: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 123 § Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
+2. Comparetheteam'saveragescorestodeterminethewinnerofthecompetition, and print it to the console. Don't forget that there can be a draw, so test
+for that as well (draw means they have the same average score)
 
-********************************************************************************************************************************/
+3. Bonus 1: Include a requirement for a minimum coreof 100. Withthisrule, a team only wins if it has a higher score than the other team, and the same time
+a score of at least 100 points. Hint: Use a logical operator to test for minimum score, as well as multiple else-if blocks 😉
+
+4. Bonus 2: Minimum score alsoa pplies to a draw! So a draw only happens when both teams have the same score and both have a score greater or equal 100 points.
+Otherwise, no team wins the trophy.
+
+Test data:
+Data 1: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110
+Data Bonus 1: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 123 § Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
+
+************************************************************************************** **************************************************************/
 
 // 1. Calculate the average of both teams:
 // create one variable for each team. To calculate the average, I add up all the three scores then divide it by 3.
 // I need the parenthises so that the plus operations calculation is executed first so that the grouping has a higher precedence. 
 // Dolphins have higher average.
+/*
 const scoreDolphins = (96 + 108 + 89) / 3;
 const scoreKoalas = (88 + 91 + 110) / 3;
 console.log(scoreDolphins, scoreKoalas); // 97.66666666666667 96.33333333333333
@@ -178,10 +183,34 @@ console.log(scoreDolphins, scoreKoalas); // 97.66666666666667 96.33333333333333
 // 2. Compare the average of both teams:
 // Use if-else statement
 // If Dolphins average score is higher than Koalas average score, then logout to console: Dolphins wins the trophy.
+// The if-else statement will logout: Dolphins win the trophy
 if (scoreDolphins > scoreKoalas) {
-    console.log('Dolphins win the trophy');
+    console.log('Dolphins win the trophy!!!'); // 
 } else if (scoreKoalas > scoreDolphins) {
-    console.log('Koalas win the trophy');
-} else if(scoreDolphins === scoreKoalas) {
-    console.log('Both wind the trophy');
+    console.log('Koalas win the trophy!');
+} else if (scoreDolphins === scoreKoalas) {
+    console.log('Both wins the trophy - strange but true - they have to share the trophy!');
 }
+*/
+
+// Bonus 1. Calculate the average:
+// Dolphins need to have a higher score than Koalas, AND needs to be greater or equal to 100.
+// I changed one of the scores for Koalas to force my if-else statement to execute the message in the last else if block.
+// To be a draw the score need to be the same within the last block, AND the score of Dolphins needs to be greater and equals to 100 AND the score of
+// Koalas needs to be greater and equal to 100. Else, no one wins the trophy.
+const scoreDolphins = (97 + 112 + 80) / 3;
+const scoreKoalas = (109 + 95 + 50) / 3;
+console.log(scoreDolphins, scoreKoalas); // 97.66666666666667 96.33333333333333
+
+// else block: both teams have at least or greater than 100 points. Otherwise, its a draw and no one wins the trophy. Therefore, the if block is false
+// (the first part is true and the second part is false which results in whole operation to become false) and its message will not logout.
+if (scoreDolphins > scoreKoalas && scoreDolphins >= 100) {
+    console.log('Dolphins win the trophy!!!'); // 
+} else if (scoreDolphins > scoreKoalas && scoreKoalas >= 100) {
+    console.log('Koalas win the trophy!');
+} else if (scoreDolphins === scoreKoalas && scoreDolphins >= 100 && scoreKoalas >= 100) {
+    console.log('Both wins the trophy - strange but true - they have to share the trophy!');
+} else {
+    console.log('Sorry, but NO one wins this trophy, better luck next year!');
+}
+
