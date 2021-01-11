@@ -314,8 +314,9 @@ for all other simply log 'Great language too :D'
 const givenLanguage = 'chinese';
 
 switch (givenLanguage) {
+    // if the given language is chinese or mandarin the this message will execute:
     case 'chinese': // language === 'chinese'
-        // if the given language is chinese the this message will execute:
+    case 'mandarin': // language === 'mandarin'
         console.log('Most number of native speakers');
         break;
     case 'spanish':
@@ -325,5 +326,13 @@ switch (givenLanguage) {
         console.log('3rd place in number of native speakers'); 
         break;
     case 'hindi':
-        console.log('4th place in number of native speakers');       
+        console.log('4th place in number of native speakers');
+        break;
+    case 'arabic':
+        console.log('5th most spoken language');
+        break;
+    default:
+        console.log('Great language too, but not on our list. Please try again.');               
 }
+
+// I've tested all the cases and if switch case works.
