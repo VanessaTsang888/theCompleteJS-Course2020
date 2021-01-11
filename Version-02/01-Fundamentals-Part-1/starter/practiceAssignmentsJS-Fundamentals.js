@@ -273,6 +273,8 @@ criteria. Take your time with this, and check part of the solution if necessary.
 
 **********************************************************************************************************************************************************/
  
+/*
+
 // Creating variable and assigning them a value:
 // const country = England;
 const population = 67;
@@ -294,3 +296,34 @@ if (speaksEnglish && !lessThan50millionPeople && !isNotAnIsland) {
 // get executed.
 // All I did was changed the varable names of variable B and C so that it uses the NOT operator: !
 
+*/
+
+/************************************************************************************************************************************************ 
+
+THE SWITCH STATEMENT:
+
+1. Useaswitchstatementtologthefollowingstringforthegiven'language': chinese or mandarin: 'MOST number of native speakers!'
+spanish: '2nd place in number of native speakers'
+english: '3rd place'
+hindi: 'Number 4'
+arabic: '5th most spoken language'
+for all other simply log 'Great language too :D'
+
+************************************************************************************************************************************************/
+
+const givenLanguage = 'chinese';
+
+switch (givenLanguage) {
+    case 'chinese': // language === 'chinese'
+        // if the given language is chinese the this message will execute:
+        console.log('Most number of native speakers');
+        break;
+    case 'spanish':
+        console.log('2nd place in number of native speakers');
+        break;
+    case 'english':
+        console.log('3rd place in number of native speakers'); 
+        break;
+    case 'hindi':
+        console.log('4th place in number of native speakers');       
+}
