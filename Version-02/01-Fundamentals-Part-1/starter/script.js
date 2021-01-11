@@ -967,3 +967,46 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 // result to: true.
 // When !isTired is true, when the isTired variable is set to false. Otherwise, the 'else' block will get executed.
 
+/*************************************************************************************************************************************     
+
+26. SWITCH STATEMENT:
+An alternative way of writing a complicated if-else statment, when all I want to do is to compare one value to multiple different options.
+
+Example:
+A weekday variable and for each day there is a different activity.
+
+Note: I am hardcoing the values as I'm learning to code at the moment but in real life this wouldn't happen my program would take in user inputs.
+The syntax of Switch statement is a little different to anything else in JS.
+
+************************************************************************************************************************************    */
+
+// This is how a Switch statement works:
+// I am specify another case right after the one before: wednesday and thursday.
+// The defult is used when all the other has faild - use for a invalid day. Its like the else block within an if-else statement.
+// Without the break clause, it will continue to execute the next case. So after each case I need the break clause to break out of that case.
+// Dose a Strict comparison on monday using: ===
+
+const day = 'monday';
+
+switch (day) {
+  case 'monday': // day === 'monday'
+    console.log('Plan course structure');
+    console.log('Go to cding meetup');
+    break;
+  case 'tuesday':
+    console.log('Prepare theory videos');
+    break;
+  case 'wednesday':
+  case 'thursday':
+    console.log('Write code examples');
+    break;
+  case 'friday':
+    console.log('Record videos');
+    break;
+  case 'saturday':
+  case 'sunday':
+    console.log('Enjoy the day off work!');
+    break;
+  default:
+    console.log('Not a valid day. Please try again.');      
+}
