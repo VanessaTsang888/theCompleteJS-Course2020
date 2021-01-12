@@ -310,6 +310,7 @@ arabic: '5th most spoken language'
 for all other simply log 'Great language too :D'
 
 ************************************************************************************************************************************************/
+/*
 
 const givenLanguage = 'chinese';
 
@@ -336,3 +337,30 @@ switch (givenLanguage) {
 }
 
 // I've tested all the cases and if switch case works.
+
+*/
+
+/**********************************************************************************************************************************************************   
+
+L28. THE CONDITIONAL (TERNARY) OPERATOR:
+
+1. If your country's population is greater than 33million, use the ternary operator to log a string like this to the console: 'Portugal's population is
+above average'. Otherwise, simply log 'Portugal's population is below average'. Notice how only one word changes between these two sentences!
+
+2. After checking the result, change the population temporarily to 13 and then to 130. See the different results, and set the population back to original
+
+**********************************************************************************************************************************************************/
+
+// Declaring variable population and set it to value of 67 million:
+const population = 130;
+
+const England = population >= 33 ? 'England population is above average' : 'England population is below average';
+// will logout: England population is above average
+console.log(England); 
+
+// Writing the conditional inside of a template literal:
+// will logout: England population is above average. Is this Best Practice?
+console.log(`England population is ${population >= 33 ? 'above average' : 'below average'}`);
+
+// Changed the population to 13 and the result when logout is: England population is below average
+// Changed the population to 130 and the result when logout is: England population is above average
