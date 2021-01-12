@@ -1049,6 +1049,8 @@ Statement: a piece of code that produces a value.
 
 **************************************************************************************************************************************/
 
+/*
+
 // Expressions: a piece of code that produces a value, i.e.
 3 + 4
 // This will produce a value in JS:
@@ -1070,3 +1072,25 @@ if (23 > 10) {
 
 const me = 'Jonas';
 console.log(`I'm ${2037 - 1991} years old ${me}`)
+
+*/
+
+/*************************************************************************************************************************************** 
+
+THE CONDITIONAL (TERNARY) OPERATOR:
+Another way of writing conditionals. Allows us to write something similar to an if-else statement but all in one line.
+
+
+***************************************************************************************************************************************/
+
+// Define an age variable and set it to value of 3.
+// A test to ask a question to find out if the age is at least 18 - if a person is of full age. Then i use a question mark.
+// Then I write something similar to an 'if' block as that is the code I want to be executed in case that this condition here is true.
+// In this if block we can only have one line of code as only one thing can be done if this condition is true.
+// Then I need a mandatory else block which goes after the colon.
+// The age is 23. This results in the condition to be true.
+
+const age = 23;
+age >= 18 ? console.log('I like to drink red wine 🍷') : console.log('I like to drink fruit juice 🧃'); // I like to drink red wine
+
+// 2:15
