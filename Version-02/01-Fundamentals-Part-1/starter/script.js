@@ -1078,7 +1078,13 @@ console.log(`I'm ${2037 - 1991} years old ${me}`)
 /*************************************************************************************************************************************** 
 
 THE CONDITIONAL (TERNARY) OPERATOR:
-Another way of writing conditionals. Allows us to write something similar to an if-else statement but all in one line.
+Another way of writing conditionals. Allows us to write something similar to an if-else statement but all in one line - more
+efficent. This Ternary operator is not a replcement of 'if/else' statements.
+Ternary operator is needed to take a quick decision, and can write on one sigle line of code. Where as the 'if/else' statement
+is needed to write large blocks of code.
+This Ternary operator is really an Expression as it producess a value. This is why I can actually have conditionals inside of
+a Template Literal.
+
 
 
 ***************************************************************************************************************************************/
@@ -1091,6 +1097,45 @@ Another way of writing conditionals. Allows us to write something similar to an 
 // The age is 23. This results in the condition to be true.
 
 const age = 23;
-age >= 18 ? console.log('I like to drink red wine 🍷') : console.log('I like to drink fruit juice 🧃'); // I like to drink red wine
+// age >= 18 ? console.log('I like to drink red wine 🍷') : console.log('I like to drink fruit juice 🧃'); // I like to drink red wine
 
-// 2:15
+
+// If I change the value of the age to 15, then the second part of the conditional will get logout.
+// This is essentially writing an if/else statement all in one line, but instead of using a statement, I use this conditional operator which is
+// also called the Ternary operator as it has 3 parts unlike other operators:
+// 1. The condition, 2. The if part, 3. The else part.
+// The Ternary operator is an operator which always produces a value. So its an Expression.
+
+// I can make a Ternary operator really useful to basically conditionally declare variables.
+// I still have to test the condition, 3:45
+// This whole opertor is an Express which produces an value. Now store that value into a variable named drink.
+// Then log the String to the console to test: wine as declared above.
+const drink = age >= 18 ? 'wine 🍷' : 'juice 🧃'; // wine
+console.log(drink);
+
+// Comparing the Ternary operator with if/else statment:
+// So without the Ternary operator, I would of needed to use the 'if/else' statement which takes longer to write as would need to declare the variable
+// drink2 outside of the if/else blocks then reassign it inside, to use it.
+let drink2;
+if (age >= 18) {
+  drink2 = 'wine 🍷';
+ } else {
+   drink2 = 'juice 🧃';
+ }
+
+ // Test it works.
+ console.log(drink2);
+
+ // The Ternary operator is a lot easier to understand and easier to write as we can transform a large block of code all into one small operation. 
+ // When I change the value of age to 15, and console logout, I get: juice as age is no longer at least 18.
+
+ // I can take this Ternary operator even further as it is an Expression that produces a value, I can actually have conditionals inside of a
+ // Template Literal. 
+ console.log(`I like to drink ${age >= 18 ? 'wine 🍷' : 'juice 🧃'}`); // I like to drink juice
+ 
+  // The template literal will use whatever result i get this operator. So that will either be wine or juice? Then it will assembles result into the
+  // final String. I tested by changing the value of the variable age, and found that the conditional operator works fine.
+
+  // This Ternary operator is not a replcement of 'if/else' statements. I still need 'if/else' statement for when I need to write bigger blocks of code
+  // that need to execute based on a condition. In this case the ternary operator will not work as that will only work when I need to take a quick decision.
+  // example, above or when JS expects an Expression like the above in the template literal.
