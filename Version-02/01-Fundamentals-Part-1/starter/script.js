@@ -1165,10 +1165,48 @@ same standard JavaScripts.
 community. Although the official name is ES2015, most people call it ES6. In 2015 ECMASript changed to an annual release cycle. So will be new
 release every year as easier for everyone to keep up-to-date.
 
-JavaScript Releases:
-One particularity about JavaScript releases is backwards compatibility all the way to ES1.
+JavaScript Releases - Don't Break The Web Principle:
+One particularity about JavaScript releases is backwards compatibility all the way to ES1. For example, if I take on App developed in 1997
+and put it in a modern browser with a modern JavaScript engine today, it will still work just the same. So the JavaScript engine in our
+browsers today is able to understand old code written 25 years ago, without having to rely on version numbers etc as it just works due to
+the fundamental principle that is baked into the JavaScript language and its deveopment, which is to NOT break thw web - almost never anything
+removed but added in new incremental updates that adds new stuff. ECMAScript Committee dose all this so that old websites basically keep working
+forever. However, this comes with lots of problmes as this comes with old bugs in the language. The initial goal of JavaScript was just to add
+some simple dynamics to web pages, rather than write whole web apps in the browser like we do today. These bugs have been giving the language a
+bad reputation and some people can't take JavaScript serious due to this. I can't get around this by learning the ES6 and just ignor the old
+bugs. This is what I'll do this course.
 
+Forwards Compatibility: transpiling and polyfilling:
+JavaScript is NOT forward compatible as current browsers do NOT understand code from the future. So how can I use modern JavaScript today
+when browsers that users are using might be old and there isn't forwars compatibility? Consider two distinct scenarios - development and
+production. Development - when I'm building my app on my computer. This is when I use the most up-to-date of Chrome browser. Production -
+when I've completed my app and I deploy it on the internet and it's then running in your users browsers. This is where problems may appear as
+this is the part that I actually can't control. Can't control which browser the user uses and I can't assume all my users always use the latest
+browsers. The solution is to convert these modern JavaScript versions back to ES5 using a prcoess called transpiling and polyfilling. Babel is
+a tool that transpile my code. Now looking at How can different transpiling and polyfilling releases be used today? ES5 is fully support in all
+browsers today, all the way down to IE 9 from 2011. So ES5 is safe to use at this point and we use for a target for transpiling.
 
+For the newer releases ES6, ES7 and all the way to ES2020 (ES6+):
+well support in modern browsers;
+No support in older browsers;
+can use most features in production with transpiling and polyfilling.
 
+To stay up-to-date with that features are currently supported in which browser, check the ES6 compatibility table on Jonas resource page:
+http://kangax.gitub.io/compat-table
+
+Future Releases: ESNext:
+Example, 2021 and so on...
+This is relevant as most browsers start implementing new features even before they enter the official ECMAScript specification. Find out more
+on the same ES6 compatibility table. 
+
+How is releases are taught in this course:
+Learn moden JavaScript from the begining;
+But, also learn how some things used to be done before modern JavaScript, e.g. const and let vs. var and function constructors vs. ES6 class.
+
+3 Reasons Why We Should Not Forget The Good OI' JavaScript:
+
+1. You will better understand how JavaScript actually works;
+2. Many tutorials and code you fibd online today are still in ES5;
+3. When working on old codebase, these will be written in ES5.
 
 ****************************************************************************************************************************************/
