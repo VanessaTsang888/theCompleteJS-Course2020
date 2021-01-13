@@ -1088,7 +1088,7 @@ a Template Literal.
 
 
 ***************************************************************************************************************************************/
-
+/*
 // Define an age variable and set it to value of 3.
 // A test to ask a question to find out if the age is at least 18 - if a person is of full age. Then i use a question mark.
 // Then I write something similar to an 'if' block as that is the code I want to be executed in case that this condition here is true.
@@ -1139,3 +1139,36 @@ if (age >= 18) {
   // This Ternary operator is not a replcement of 'if/else' statements. I still need 'if/else' statement for when I need to write bigger blocks of code
   // that need to execute based on a condition. In this case the ternary operator will not work as that will only work when I need to take a quick decision.
   // example, above or when JS expects an Expression like the above in the template literal.
+*/
+
+/**************************************************************************************************************************************** 
+
+30. JavaScript Releases: ES5, ES6+ and ESNext.
+
+JavaScripts Releases or versions in more depth, how they work and how we can use them - understand what is doing on.
+
+The History of JavaScripts:
+JavaScripts created to make websites more interactive.
+
+1995: netscape browser - first version of JavaScripts called Mocha, already had many fundamental features of modern JavaScripts.
+
+1996: Mocha changed to LiveScript and then to JavaScripts in order to attract Java developers. However JavaScripts almost nothing
+to do with Java, just for marketing reasons. Microsoft launces IE, copying JavaScript from Netscape and calling it JScript - two
+simolar and competing languages. To standarise the JavaScripts it was submitted to an independent standard organisation ECMA, which in
+
+1997: released ECMAScript one or ES1. This was the first official standard for JavaScripts language that every browser could now implement the
+same standard JavaScripts.
+
+2009: ES5 (ECMASript 5) released with lots of great features.
+
+2015: ES6/ES2015 (ECMASript 2015) was released: the biggest update to the language ever! A big deal for JavaScript and the whole web developer
+community. Although the official name is ES2015, most people call it ES6. In 2015 ECMASript changed to an annual release cycle. So will be new
+release every year as easier for everyone to keep up-to-date.
+
+JavaScript Releases:
+One particularity about JavaScript releases is backwards compatibility all the way to ES1.
+
+
+
+
+****************************************************************************************************************************************/
