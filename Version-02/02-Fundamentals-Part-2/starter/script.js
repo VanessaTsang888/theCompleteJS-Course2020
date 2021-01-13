@@ -47,6 +47,37 @@ const if = 23; // Uncaught SyntaxError: Unexpected token 'if'
 
 *******************************************************************************************************************************************************************/
 
+/*************************************************************************************************************************************************************** 
+
+33. FUNCTIONS - The fundamentals:
+
+A function is a piece of code that we can reuse over and over again in our app. Its similar to a variable but for whole chunks of code. A variable hold a value.
+A function hold one or more complete lines of code.
+When using functions, I am using the Principle 'Don't Repeat Yourself' or DRY. We say that we should keep our code DRY.
+
+Example, fruitProcessor function to produce apple fruit or apple and orange juice.
+
+***************************************************************************************************************************************************************/
+
+
+// This function is created by using the 'function' keyword. This function is called: logger, which is a function that will log something to the console.
+// We need a set of empty parenthises and a pair of braces to create the function body which will get executed when I run this function later. 
+// Lets say I need to execute the log many times in the app. 
+function logger() {
+    console.log('My name is Vanessa'); // somewhere in my app, I need to reuse this line of code multiple times. That's why I put it in a function.
+} 
+
+// Now that i've created the function, I can use it as many times as I wish:
+// To use the function, I just write the function name and a set of empty parenthises.
+// Using the function is known as calling / running / invoking a funtion that I predefined previously:
+
+logger(); // My name is Vanessa
+logger(); // My name is Vanessa
+logger(); // My name is Vanessa
+
+
+
+
 
 
 
