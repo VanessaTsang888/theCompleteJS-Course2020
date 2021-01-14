@@ -61,6 +61,7 @@ Example, fruitProcessor function to produce apple fruit or apple and orange juic
 
 ***************************************************************************************************************************************************************/
 
+/*
 // Logic of reusing code:
 // This function is created by using the 'function' keyword. This function is called: logger, which is a function that will log something to the console.
 // We need a set of empty parenthises and a pair of braces to create the function body which will get executed when I run this function later. 
@@ -129,9 +130,39 @@ console.log(appleOrangeJuice);
 // Same for the Number function that converts a string into a number.
 const num = Number('23');
 console.log(num); // 23
+*/
+
+/****************************************************************************************************************************************************************** 
+
+34. FUNCTION DECLARATIONS vs. EXPRESSIONS:
+
+There are different types of Functions and each type works in slightly different way.
+The Functions from last lecture are Function Declarations as we use the Function keyword to declare a Function a bit like we declare a variable. 0:36
 
 
+******************************************************************************************************************************************************************/
+ 
+// Function Declaration:
+// Example: calculate the age of a person using their birth year:
+// Get the data to return using the calculation: today's year minus the birthYear;
+// So we going to we taking the birthYear that we going to receive, then use that to calculate the age.
+// This is a generic Function which will work for any birth year that we give it.
 
+function calcAge1(birthYear) {
+    return 2037 - birthYear;
+}
+
+// Now call, execute, run or invoke that generic Function. This will create a value, and the value that this will create is the value that's returned from the
+// calcAge Function - line 149.
+// The argument is then the actual value that we use to fill in that placeholder that is the parameter.
+
+// calcAge1(1991);
+// Now save that value into a variable:
+const age1 = calcAge1(1991);
+// Let's quickly check that it works:
+console.log(age1);
+
+// Function Expression:
 
 
 
