@@ -137,7 +137,8 @@ console.log(num); // 23
 34. FUNCTION DECLARATIONS vs. EXPRESSIONS:
 
 There are different types of Functions and each type works in slightly different way.
-The Functions from last lecture are Function Declarations as we use the Function keyword to declare a Function a bit like we declare a variable. 0:36
+The Functions from last lecture are Function Declarations as we use the Function keyword to declare a Function a bit like we declare a variable.
+Functions are just values, just as a Number or a String or a Boolean value.
 
 
 ******************************************************************************************************************************************************************/
@@ -160,9 +161,36 @@ function calcAge1(birthYear) {
 // Now save that value into a variable:
 const age1 = calcAge1(1991);
 // Let's quickly check that it works:
-console.log(age1);
+// console.log(age1);
 
 // Function Expression:
+// a Function without a name called an Anonymous Function:
+// We write the Function without the Function name, i.e. calcAge1:
+// Then we store all of that into a variabe, and that variable will be the Function. We can call that 'calcAge2'
+// From the keyword: function to the closing braces is an Expression and Expressions produces a value. So we use that value and store it inside calcAge3.
+// This will then be the Function.
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+// To call this Function, we do it the same way.
+
+const age2 = calcAge2(1991);
+console.log(age1, age2);
+
+// So the calcAge2 variable (also the Function name) will hold the Function value (the Expression). A Function is basically a value so we can store it in
+// a variable.
+
+// What is the difference between Function Declarations and Function Expressions? It may not be a good idea but The main difference is we can actually call a
+// Function declarations before they are defined in the code. This don't work for an Anonymous Function as will get error msg in the console. This happens due to a
+// process called Hoisting.
+ 
+// Which of the two types of Functions should I use when I write my own functions? Most of time, its matter of personal preference. The instructor prefer to use
+// Function Expressions or an Anonymous Function as this then forces me into a nice structure where I have to define all the Functions first at the top of the code
+// and only then I can call them. He also like to have everything stored in variables (also the name of the Function), so both values and Functions.
+// I think I prefer the Function Declaration as it's easier to understand.
+
+
 
 
 
