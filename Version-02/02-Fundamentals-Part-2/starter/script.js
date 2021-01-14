@@ -142,7 +142,8 @@ Functions are just values, just as a Number or a String or a Boolean value.
 
 
 ******************************************************************************************************************************************************************/
- 
+/* 
+
 // Function Declaration:
 // Example: calculate the age of a person using their birth year:
 // Get the data to return using the calculation: today's year minus the birthYear;
@@ -190,6 +191,13 @@ console.log(age1, age2);
 // and only then I can call them. He also like to have everything stored in variables (also the name of the Function), so both values and Functions.
 // I think I prefer the Function Declaration as it's easier to understand.
 
+*/
+
+/****************************************************************************************************************************************************************** 
+ * 
+ * 
+ * 
+ ******************************************************************************************************************************************************************* /
 
 
 
