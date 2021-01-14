@@ -124,6 +124,11 @@ const appleOrangeJuice = fruitProcessor(2, 4);
 console.log(appleOrangeJuice);
 
 // Not all functions need to return something or acept parameters but unusal.
+// console.log()
+// is a built-in function that we don't need to write ourselves as we just call it like our own function., then  we pass-in a value.
+// Same for the Number function that converts a string into a number.
+const num = Number('23');
+console.log(num); // 23
 
 
 
