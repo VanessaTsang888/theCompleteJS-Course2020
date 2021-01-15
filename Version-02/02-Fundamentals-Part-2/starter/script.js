@@ -216,7 +216,7 @@ console.log(age1, age2);
 // We assign the value which is on the right handside of the asignment opporator to the variable that's on the left handside.
 // The returned value will be stored in the variable: age3.
 // Just the code on the right handside of the assignment opportor is the Function.
-
+/*
 const calcAge3 = birthYear => 2037 - birthYear;
 const age3 = calcAge3(1991);
 console.log(age3);
@@ -237,14 +237,14 @@ console.log(age3);
 const yearsUntilRetirement = (birthYear, firstName) => {
     const age = 2037 - birthYear;
     const retirement = 65 - age;
-    return `${firstName} retires in ${retirement}`;
+    return `${firstName} retires in ${retirement} years`;
 }
 
 // Run the Function. We can capture the returned value into a variable.
 console.log(yearsUntilRetirement(1991, 'Jonas')); // 19
 // Has logout: 19 which is correct as: 65 - 46 = 19.
 console.log(yearsUntilRetirement(1980, 'Bob')); // 
-
+*/
 // The conclusion is as you add more code, more parameters, it gets more complex and we lose the advantage of using an Arrow Function.
 // What type of Function should I use? The other fundamental difference between the Arrow Function and the Function Declaration and Function Expression it's
 // the fact that Arrow Function do NOT get a: This keyword, which is a topic for later.
@@ -257,7 +257,7 @@ Calling one function from inside another function. We do this all the time in JS
 Using the fruitProcessor as an example:
 This fruit processor needs another machine to cut up the fruit into smaller pieces.
  ************************************************************************************************************************************************************* */
-
+/*
 
 // Logic: Calling one function from inside another function. We do this all the time in JS.
 // Know when you write multiple functions, 1 calling another.
@@ -293,6 +293,42 @@ console.log(fruitProcessor(2,3));
 // So if we need to 10 fruits (rather than just 2) into pieces, then this covers the DRY (Dont' Repeat Yourslef) Principle which reduces
 // the amount of code and bugs. So if the Fruit Cutting Machine can only cut into 3 pieces (rather than 4), then we only need to change the figure in the
 // cutFruitPieces function once.
+
+*/
+
+/*****************************************************************************************************************************************************************  
+
+37 REVIEWING FUNCTIONS:
+
+Everything that's important so far to make sure you understand Functions before moving on to other topics.
+
+**************************************************************************************************************************************************************** */
+
+// Convert is Arrow Function into a regualar Function Expression. 
+// Delete the Arrow, write the function keyword after the first assignment operator.
+// Now, we can export the age functionality into another function expression, i.e. calcAge function, so we can call one Function inside of another Function.
+// Within that, return 2037 - birthYear;
+// Its not a problem having two functions with same parameters as they not related as they are two different parameters or variables - they are local variables to
+// each function.
+
+const calcAge = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+const yearsUntilRetirement = function (birthYear, firstName) {
+    const age = calcAge(birthYear);
+    const retirement = 65 - age;
+    return retirement;
+    // return `${firstName} retires in ${retirement} years`;
+}
+
+console.log(yearsUntilRetirement(1991, 'Jonas')); // 19
+console.log(yearsUntilRetirement(1970, 'Mike')); // -2
+// Mike has already retired. We need to account for that:
+
+
+
+
 
 
 
