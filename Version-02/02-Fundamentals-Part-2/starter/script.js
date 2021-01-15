@@ -310,6 +310,8 @@ Everything that's important so far to make sure you understand Functions before 
 // Within that, return 2037 - birthYear;
 // Its not a problem having two functions with same parameters as they not related as they are two different parameters or variables - they are local variables to
 // each function.
+// To logout something, the console.log line of code must be before the return statement - short cut: option + up arrow. Now the console.log is executed
+// before the value is returned.
 
 const calcAge = function (birthYear) {
     return 2037 - birthYear;
@@ -318,14 +320,46 @@ const calcAge = function (birthYear) {
 const yearsUntilRetirement = function (birthYear, firstName) {
     const age = calcAge(birthYear);
     const retirement = 65 - age;
-    return retirement;
-    // return `${firstName} retires in ${retirement} years`;
+    // Take a decision based on the retirment value. If greater than 0, then return the retirement value.
+    if (retirement > 0) {
+        console.log(`${firstName} retires in ${retirement} years`); // Jonas retires in 19 years
+        return retirement; // 19
+        } else {
+            console.log(`${firstName} has already retired 🎉`); // Mike has already retired
+            return -1; // -1 // this number has no meaning.
+        }
+
 }
 
 console.log(yearsUntilRetirement(1991, 'Jonas')); // 19
-console.log(yearsUntilRetirement(1970, 'Mike')); // -2
+console.log(yearsUntilRetirement(1950, 'Mike')); // -2 // -1
 // Mike has already retired. We need to account for that:
+// Return the result if above 0, else, below 0, we will return something else. Take a decision based on the retirment value.
+// The return keyword will first return the value we tell it to return, i.e. the retirement value. Then exit the function, exit immediately. The function has returned.
 
+/*********************************************************************************************************************************************** 
+
+SUMMARY: 3 different types of Functions that work in a similar way.
+They all can receive input data, they transform data, then they can output data. They are optional but this is what Functions normally do.
+
+Function Declaration:
+Function that can be used before it's declared.
+
+Function Expression:
+Essentially a Function value stored in a variable.
+
+Arrow Function:
+Great for a quick one-liner functions (without the return keyword, braces). Has no 'this' keyword.
+
+Calling a function: we do that using parentheses. We write the name of the function, then with the parenthesis we call the function.
+as Without that the function is just a value, i.e.
+const age = calcAge(1991, 'Jonas');
+We call the function with arguments. They are the actual values of the function parameters. We use these to actually input the data into
+the function - replacing the placeholders that are the parameters. Then all this expression will be replaced witht the returned value, i.e.
+the age that was replaced here, which we then stores in the age variable.
+We use console.log to see the result of our experiment in the console.
+
+*************************************************************************************************************************************************/ 
 
 
 
