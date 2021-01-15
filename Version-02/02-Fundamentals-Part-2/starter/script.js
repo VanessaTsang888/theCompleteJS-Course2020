@@ -195,9 +195,61 @@ console.log(age1, age2);
 
 /****************************************************************************************************************************************************************** 
  * 
+ *  35 . ARROW FUNCTIONS:
+ *  This is third type of Function added in ES6. 
+ * A special form of the Function Expression (anonymous function) that is shorter and faster to write. 
  * 
- * 
- ******************************************************************************************************************************************************************* /
+ ******************************************************************************************************************************************************************/
+
+
+// Code taken from Function Expression above for a reference point
+
+// const calcAge2 = function (birthYear) {
+//     return 2037 - birthYear;
+// }
+
+// Arrow Function: one-liner Functions:
+// Arrow Function in its simplist form:
+// We want the birth year as we want to calculate the age again. Then the Arrow, this is the reason why this is called Arrow Function. Then we write what we want it
+// to return. In this case, 2037 - birthYear.
+// To finsh we want to be able to use this Function, store it in a variable, i.e. calcAge3
+// We assign the value which is on the right handside of the asignment opporator to the variable that's on the left handside.
+// The returned value will be stored in the variable: age3.
+// Just the code on the right handside of the assignment opportor is the Function.
+
+const calcAge3 = birthYear => 2037 - birthYear;
+const age3 = calcAge3(1991);
+console.log(age3);
+
+// The Arrow Function is a lot easier and faster to write compare to the Function Expression as we don't need the braces to define the code block, the return happens
+// implicitly (happens in the background). So the value (2037 - birthYear) will auto be returned without us writing the return keyword. Also, we don't need any
+// parenthises.
+
+// Gets more complex when we add more parameters or more code: one parameter and multiple lines of code within the body:
+// Calculate how many years a person has left before retirement:
+// Set the variable to a Function. Pass in the birth year. Then the arrow.
+// First we need to calculate the age, then the retirement age minus the current age. This is why we do need the braces for this example to define a code block.
+// To calculate the years before retirement: the variable called: retirement = 'the retirement age' - 'the current age':
+// We do need to write the return keyword Explicitly as this is NOT a one liner Function.
+
+// If we have multiple parameters then we need to wrap the parameters i.e. the birthYear into parenthises: highlight the word(s), shift + the open parentheses.
+// Use a template string to build the String. 
+const yearsUntilRetirement = (birthYear, firstName) => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    return `${firstName} retires in ${retirement}`;
+}
+
+// Run the Function. We can capture the returned value into a variable.
+console.log(yearsUntilRetirement(1991, 'Jonas')); // 19
+// Has logout: 19 which is correct as: 65 - 46 = 19.
+console.log(yearsUntilRetirement(1980, 'Bob')); // 
+
+// The conclusion is as you add more code, more parameters, it gets more complex and we lose the advantage of using an Arrow Function.
+// What type of Function should I use? The other fundamental difference between the Arrow Function and the Function Declaration and Function Expression it's
+// the fact that Arrow Function do NOT get a: This keyword, which is a topic for later.
+
+
 
 
 

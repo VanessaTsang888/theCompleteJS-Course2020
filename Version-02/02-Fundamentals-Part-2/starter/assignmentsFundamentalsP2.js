@@ -119,6 +119,7 @@ console.log(worldPopulation0, worldPopulation1, worldPopulation2); // 5518 6459 
 */
 
 /*
+
 // THE SOLUTION
 
 // 1. The world population is 7900 million people. Create a function declaration called 'percentageOfWorld1' which receives a 'population' value, and returns the
@@ -143,6 +144,7 @@ const percentageOfWorld2 = function(population) {
 }
 
 console.log(percPortugal1, percChina1, percUSA1); // 0.12658227848101267 18.240506329113924 4.2025316455696204
+
 */
 
 
