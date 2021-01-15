@@ -78,7 +78,7 @@ logger(); // My name is Vanessa
 logger(); // My name is Vanessa
 logger(); // My name is Vanessa
 
-// lione 67 was executed three times.
+// line 67 was executed three times.
 
 // When we write function we pass data into a function, and a function can also return data as well for me to use for something else in the app. so,
 // not only can a function reuse a piect of code but can also receive data and return data back. Functions are like machines.
@@ -248,6 +248,25 @@ console.log(yearsUntilRetirement(1980, 'Bob')); //
 // The conclusion is as you add more code, more parameters, it gets more complex and we lose the advantage of using an Arrow Function.
 // What type of Function should I use? The other fundamental difference between the Arrow Function and the Function Declaration and Function Expression it's
 // the fact that Arrow Function do NOT get a: This keyword, which is a topic for later.
+
+/* 
+
+36. FUNCTIONS CALLING OTHER FUNCTIONS:
+Using the fruitProcessor as an example:
+This fruit processor needs another machine to cut up the fruit into smaller pieces.
+
+*/
+
+function fruitProcessor(apples, oranges) {
+    // using the parameters just as they are normal variables
+    // console.log(apples, oranges); // 5 0
+    // do something with these parameters and produce some juice by creating a String. We build a string using the input data that we get in the function 
+    const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
+    // we can use the return keyword and can return any value from the function. Lets return the juice that we just produced
+    return juice; // this juice will become the result of executing this function.
+
+}
+
 
 
 
