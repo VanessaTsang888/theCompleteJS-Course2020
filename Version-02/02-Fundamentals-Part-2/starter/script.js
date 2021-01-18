@@ -361,6 +361,40 @@ We use console.log to see the result of our experiment in the console.
 
 *************************************************************************************************************************************************/ 
 
+/* 
+
+39. INTRO TO ARRAYS:
+Arrays is one type of Data Structure.
+An arrays is like a large container into which we can throw variables, and later reference them. Very important as programming, most of the time
+is all about Data.
+We get data from somewhere, store it, process it. Then we give some data back, which has to be stored somewhere/some place. For that we use Data Structures
+like an Array. The two most important data structures is Arrays and Objects. 
+
+*/
+// To Get Data Into An Array:
+// Instead of this:
+const friend1 = 'Michawl';
+const friend2 = 'Steven';
+const friend3 = 'Peter';
+
+// Do this: The Literal Syntax:
+// 3 Strings in an Array. There is a value inside a String.
+const friends = ['Michael', 'Steven', 'Peter'];
+// See what this Array looks like in the console:
+console.log(friends); // (3) ["Michael", "Steven", "Peter"]
+
+// Another way to write an Array: instead of using the square bracket, we use the Array Function which we call it using parenthesis. Also, to work, need to
+// use the 'new' keyword. It's more common to use the literal syntax.
+const years = new Array(1991, 1984, 2008, 2020);
+
+// To Get Data Out Of An Array.
+// Arrays are Zero Based. Therefore, the location of the first element is 0.
+// To logout Michael and Peter:
+console.log(friends[0]);
+console.log(friends[2]);
+// Can also get the number of elements thatis in the Array using the property method (not zero based):
+console.log(friends.length) // 3
+
 
 
 
