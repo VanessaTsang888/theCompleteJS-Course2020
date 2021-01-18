@@ -1,10 +1,14 @@
 // Strict mode activated:
 'use strict'
 
-/****************************************************************************************************************************************************
- JavaScript Fundamentals Part 2 - Coding Challenges
+/*********************************************************************************************************************************************
 
- All about Functions.
+JavaScript Fundamentals Part 2 - Coding Challenges:
+
+***************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************
+Coding Challenges 1: All about Functions.
 
 Back to the two gymnastics teams, the Dolphins and the Koalas! There is a new gymnastics discipline, which works differently.
 Each team competes 3 times, and then the average of the 3 scores is calculated (so one average score per team).
@@ -27,20 +31,9 @@ To calculate average of 3 values, add them all together and divide by 3
 To check if number A is at least double number B, check for A >= 2 * B.
 Apply this to the team's average scores
 
- ***************************************************************************************************************************************************/
+***************************************************************************************************************************************************/
 
- /* 1. 
-
- const totalScoreDolhins = 44 + 23 + 71
-
- const calcAverage = avgScore => totalScoreDolhins / 3;
- const avgScore = calcAverage();
- console.log(avgScore);
-
- */
-
-
- // 1. Create an arrow function 'calcAverage' to calculate the average of 3 scores
+ // 1. Create an Arrow Function 'calcAverage' to calculate the average of 3 scores
  // A generic function that calculates averages of any 3 numbers: a, b, c
  // adding 3 numbers together, then divide by 3 within syntax of the arrow function.
  // This is resuable funtion that can be maintained effiently.
