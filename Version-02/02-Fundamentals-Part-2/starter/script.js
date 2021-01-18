@@ -312,7 +312,7 @@ Everything that's important so far to make sure you understand Functions before 
 // each function.
 // To logout something, the console.log line of code must be before the return statement - short cut: option + up arrow. Now the console.log is executed
 // before the value is returned.
-
+/*
 const calcAge = function (birthYear) {
     return 2037 - birthYear;
 }
@@ -336,6 +336,7 @@ console.log(yearsUntilRetirement(1950, 'Mike')); // -2 // -1
 // Mike has already retired. We need to account for that:
 // Return the result if above 0, else, below 0, we will return something else. Take a decision based on the retirment value.
 // The return keyword will first return the value we tell it to return, i.e. the retirement value. Then exit the function, exit immediately. The function has returned.
+*/
 
 /*********************************************************************************************************************************************** 
 
@@ -385,7 +386,7 @@ console.log(friends); // (3) ["Michael", "Steven", "Peter"]
 
 // Another way to write an Array: instead of using the square bracket, we use the Array Function which we call it using parenthesis. Also, to work, need to
 // use the 'new' keyword. It's more common to use the literal syntax.
-const years = new Array(1991, 1984, 2008, 2020);
+// const years = new Array(1991, 1984, 2008, 2020);
 
 // To Get Data Out Of An Array.
 // Arrays are Zero Based. Therefore, the location of the first element is 0.
@@ -394,6 +395,59 @@ console.log(friends[0]);
 console.log(friends[2]);
 // Can also get the number of elements thatis in the Array using the property method (not zero based):
 console.log(friends.length) // 3
+// Can use the .length method to automatically get the index of the last element of the Array. This method is NOT zero based, so use the -1 at the end.
+// The length is 3 but the location of the last element is 2. So we have to subtract 1 at the end.
+// Inside the square brackets, We can put an Expression which is something that produces a value.
+// First it will calculate: friends.lenght is 3, Then it will compute: 3 - 1 is 2, then it will get friends at position 2.
+// Inside the square brackets JS expects an Express not a statement.
+console.log(friends[friends.length -1]); // Peter
+
+// Can use the square brackets to add elements to Array, i.e. replace Peter with Jay:
+friends[2] = 'Jay';
+console.log(friends); // (3) ["Michael", "Steven", "Jay"]
+// Peter replaced by Jay.
+
+// I declared the friends varible with const, but I was still able to change the second element to a different String
+// Only primitive values are immuteable, but an Array is not a primative value so we can change it or mutate it. But we cannot replace the entire array:
+// This is illegal:
+// friends = ['Bob', 'Alice']; // Uncaught TypeError: Assignment to constant variable. at script.js:412
+
+// Aarray's can hold different types at sametime, i.e. values about a person:
+// The calculation will produce a value and be stored in position 2 of the new Array.
+// We can replace a String with a variable:
+// We can put an Array inside another Array, i.e. put friends Array inside the Jonas Array:
+const firstName = 'Jonas';
+const Jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends];
+// Check it out:
+console.log(Jonas); // (5) ["Jonas", "Schmedtmann", 46, "teacher", Array(3)]
+console.log(Jonas.length); // 5
+
+// A small Array exercise:
+const calcAge = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+const years = [1990, 1967, 2002, 2010, 2018];
+
+// Array of Birth Years and we want to calculate some of them:
+// We cannot do opporations with Arrays, but can still use the calcAge function on individual elements of the Array.
+// I want to calculate the ages for the first, the second and the last element of the 'years' Array.
+// Calculate this, then store in a variable called age1. Calculate the age for the first element.
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+// Instead of counting the elements to find out the location of the last element, just use the .length method: 
+const age3 = calcAge(years[years.length -1]);
+// 3 values which are the 3 ages:
+console.log(age1, age2, age3); // 47 70 19
+
+// Since we started with an Array, its normally good idea to end up with new Array:
+// We can put function calls in Array as they will produce an value.
+// JS will calculate the 3 functions calls, then put them in an Array and store there.
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
+console.log(ages); // (3) [47, 70, 19]
+
+
+
 
 
 
