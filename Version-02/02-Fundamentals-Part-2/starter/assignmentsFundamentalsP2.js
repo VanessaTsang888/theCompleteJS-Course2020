@@ -147,14 +147,41 @@ console.log(percPortugal1, percChina1, percUSA1); // 0.12658227848101267 18.2405
 
 */
 
+/**************************************************************************************************************  
 
+INTRO TO ARRAYS:
 
+1. Create an array containing 4 population values of 4 countries of your choice. You may use the values you have been using previously.
+Store this array into a variable called 'populations'
 
+2. Log to the console whether the array has 4 elements or not (true or false)
 
+3. Create an array called 'percentages' containing the percentages of the world population for these 4 population values.
+Use the function 'percentageOfWorld1' that you created earlier to compute the 4 percentage values
 
+*************************************************************************************************************************************/
 
+// My Answers:
+// 1. Array containing 4 population values of 4 countries. Store this array into a variable called 'populations'.
+const populations = [10, 83, 5, 1441];
 
+// 2. Log to the console whether the array has 4 elements or not (true or false).
+console.log(populations); // (4) [10, 83, 5, 1441]
 
+// 3. Create an array called 'percentages' containing the percentages of the world population for these 4 population values.
+// Use the function 'percentageOfWorld1' that you created earlier to compute the 4 percentage values
 
+const percentages = ['Portugal', 'Germany', 'Finland', 'China'];
 
+function percentageOfWorld1(population) {
+    return (population / 7900) * 100;
+}
+
+// Call 'percentageOfWorld1' for 3 populations of countries of your choice, store the results into variables, and log them to the console.
+const percPortugal = percentageOfWorld1(10);
+const percGermany = percentageOfWorld1(83);
+const percFinland = percentageOfWorld1(5);
+const percChina = percentageOfWorld1(1441);
+
+console.log(percPortugal, percGermany, percFinland, percChina); // 0.12658227848101267 1.0506329113924051 0.06329113924050633 18.240506329113924
 
