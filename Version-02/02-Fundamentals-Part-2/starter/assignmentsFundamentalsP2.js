@@ -161,6 +161,7 @@ Use the function 'percentageOfWorld1' that you created earlier to compute the 4 
 
 *************************************************************************************************************************************/
 
+/*
 // My Answers:
 // 1. Array containing 4 population values of 4 countries. Store this array into a variable called 'populations'.
 const populations = [10, 83, 5, 1441];
@@ -184,4 +185,20 @@ const percFinland = percentageOfWorld1(5);
 const percChina = percentageOfWorld1(1441);
 
 console.log(percPortugal, percGermany, percFinland, percChina); // 0.12658227848101267 1.0506329113924051 0.06329113924050633 18.240506329113924
+*/
+
+// The Solution:
+
+const populations = [10, 1441, 332, 83];
+
+console.log(populations.length === 4);
+const percentages = [
+    percentageOfWorld1(populations[0]),
+    percentageOfWorld1(populations[1]),
+    percentageOfWorld1(populations[2]),
+    percentageOfWorld1(populations[3]),
+];
+console.log(percentages); // Uncaught ReferenceError: percentageOfWorld1 is not defined at assignmentsFundamentalsP2.js:195
+
+// This solution dont work due to the above error.
 
