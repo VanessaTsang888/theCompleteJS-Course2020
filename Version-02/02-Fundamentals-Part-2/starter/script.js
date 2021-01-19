@@ -462,22 +462,60 @@ A method is
 
 
 *******************************************************************************************************************************************************************/
-
+// Add Elements:
 const friends = ['Michael', 'Steven', 'Peter'];
 // the .push method adds an element at the end of the array:
 // A function that we call that is attahed to the friends array.
 // .push is a method which technically is a function and we call that function directly on the friends array.
 // So the push function is attached to the friends array  
-friends.push('Jay');
-// test the friends array in the console:
-console.log(friends);
+const newLength = friends.push('Jay');
+// test the friends array in the console. 
+console.log(friends); // (4) ["Michael", "Steven", "Peter", "Jay"]
+console.log(newLength); // 4
 
+// The new element is added and now 4 elements in total. This has mutated the original array.
+// So we passed an argument in to the friends function which is Jay, then it can do some work which is to add this element to the end of the array.
+// The value it returns is the length of the new array. Create a new variable to capture that new array, i.e. newLength
 
+// Method that add element at the begining of Array: .unshift method
+friends.unshift('John');
+console.log(friends); // (5) ["John", "Michael", "Steven", "Peter", "Jay"]
 
+// Remove Elements: removes the last element of the array:
+// Don't need to pass-in any arguments as no info needed to just take out the last element.
+// Jay has been removed.
+// Peter has been removed.
+friends.pop(); 
+// pop method doesn't return the length of the new array, instead it returns the removed element and we can store that in a variable.
+const popped = friends.pop();
+console.log(popped); // Peter
+console.log(friends); // // (3) ["John", "Michael", "Steven"]
 
+// Remove first element from array: .shift
+// No arguments needed as we are removing not adding an element.
+friends.shift(); // First element
+console.log(friends); // (2) ["Michael", "Steven"]
 
+// Method that tells us in which location is a certain element is in the array. 
+// pass-in the element we want to reference, i.e. Steven is in location 1. So the .indexOf function call should return the value 1.
+// If we try for an element that is not there, i.e. Bob. We'll get -1.
+console.log(friends.indexOf('Steven')); // 1
+console.log(friends.indexOf('Bob')); // -1
 
+// ES6 method called includes, similar to .indexOf but more useful
+// So includes instead of returning the index of the element will simply return true if the element is in the array and false if it's not.
+// This method uses strict equality for this check.
+friends.push(23);
+console.log(friends.includes('Steven')); // true
+console.log(friends.includes('Bob')); // false
+// logout false as its strict meaning it does not do type coercion. But if I change the '23' string to 23 the Number then it will be true.
+console.log(friends.includes('23')); // false
 
+// We can use the .includes method to write conditionals
+
+if (friends.includes('Steven')) {
+    console.log('You have a friend called Peter');
+}
 
 
 
