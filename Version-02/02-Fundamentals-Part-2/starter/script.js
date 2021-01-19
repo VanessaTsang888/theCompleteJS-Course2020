@@ -372,6 +372,8 @@ We get data from somewhere, store it, process it. Then we give some data back, w
 like an Array. The two most important data structures is Arrays and Objects. 
 
 */
+
+/*
 // To Get Data Into An Array:
 // Instead of this:
 const friend1 = 'Michawl';
@@ -446,6 +448,29 @@ console.log(age1, age2, age3); // 47 70 19
 const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
 console.log(ages); // (3) [47, 70, 19]
 
+*/
+
+/*******************************************************************************************************************************************************************
+ 
+40. BASIC ARRAY OPERATIONS (METHODS):
+
+Built-in Functions (uses parenthesis) that can be directly applied on Arrays called Methods to do Array operations.
+Some of many useful Array methods include .push
+A method is 
+
+
+
+
+*******************************************************************************************************************************************************************/
+
+const friends = ['Michael', 'Steven', 'Peter'];
+// the .push method adds an element at the end of the array:
+// A function that we call that is attahed to the friends array.
+// .push is a method which technically is a function and we call that function directly on the friends array.
+// So the push function is attached to the friends array  
+friends.push('Jay');
+// test the friends array in the console:
+console.log(friends);
 
 
 
