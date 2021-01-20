@@ -101,20 +101,38 @@ as array values (so don't store the tip values in separate variables first, but 
 
 // 1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out
 // the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
+/*
 const bill = 100;
+// Ternary Operator: if the value is between 50 and 300, less or equal than 300 then return the bill value * 15% otherwise : should be 20% 
 const tip = bill <= 300 && bill >= 50 ? bill * .15 : bill * 0.2;
 
 const calcTip = function (bill) {
     return tip;
 }
+*/
+
+
+// These is the best solution:
+const calcTip = function (bill) {
+    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+
+// or Arrow Function:
+// const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+
 // logout this String
-console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
+// console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`); // The bill was 100, the tip was 15, and the total value 115
 
 // 2. And now let's use arrays! So create an array 'bills' containing the test data below:
 // Test data: 125, 555 and 44.
 const bills = [125, 555, 44];
 
+
 // 3. Create an array 'tips' containing the tip value for each bill, calculated from the function you created before.
+
+/* I tried but not getting the results that I expected:
+
 const tips1 = calcTip(bills[0]);
 const tips2 = calcTip(bills[1]);
 const tips3 = calcTip(bills.length -1);
@@ -123,15 +141,45 @@ console.log(tips1, tips2, tips1); // 15 15 15
 // This was not the result I was expecting.
 
 // I can put function calls in an Array as they will produce a value as JS will calculate the 3 function calls, then put them in an Array and store them.
-const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length -1])]; // not logout anything.
+*/
 
-// 4. Bonus: Create an array 'total' containing the total values, so the bill + tip.
-// const total = [`The total, the bill + the tip is ${bill + tip} .`];
-// const total = [`${bill + tip}, ${bill + tip}, ${bill + tip}`];
-// console.log(total); // ["The total, the bill + the tip is 115 ."]
+// My answer is the same to the solution exept that I used the .length method to get the last element.
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length -1])];
+
+
+/* 
+
+I forgot to logout my 'tips array' and that is why I couldn't see it in the console and thought that my tips array not working as I expected.
+Therefore, I actually did better than I thought as I just forgot to logout the tips array.
+
+*/
+
+console.log(bills, tips); // (3) [125, 555, 444] > (3) [18.75, 111, 8.8]
+// These are the three tips that were calculated.
+
+
+/* Not working:
+
+// 4. Bonus: Create an array 'total' containing the total values, so the bill + tip:
+
+const total = [`The total, the bill + the tip is ${bill + tip} .`];
+const total = [`${bill + tip}, ${bill + tip}, ${bill + tip}`];
+console.log(total); // ["The total, the bill + the tip is 115 ."]
 const calcTotal = bill + tip;
 const total = [calcTotal(bill + tip[0]), calcTotal(bill + tip[1]), calcTotal(bill + tip[bills.length -1])];
-console.log(total);
+console.log(total); // calcTotal is not a function - line 133.
+
+*/
+
+// This is the best solution: bills plus tips for position 0 to 2:
+
+const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2],];
+
+console.log(bills, tips, totals); // (3) [125, 555, 44] > (3) [18.75, 111, 8.8] (3) [143.75, 666, 52.8]
+// So for results are for these bills: 125, 555, 44.
+
+
+
 
 
 
