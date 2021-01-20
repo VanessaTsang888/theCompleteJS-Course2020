@@ -459,8 +459,6 @@ Some of many useful Array methods include .push
 A method is 
 
 
-
-
 *******************************************************************************************************************************************************************/
 // Add Elements:
 const friends = ['Michael', 'Steven', 'Peter'];
