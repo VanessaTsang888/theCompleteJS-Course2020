@@ -126,9 +126,12 @@ console.log(tips1, tips2, tips1); // 15 15 15
 const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length -1])]; // not logout anything.
 
 // 4. Bonus: Create an array 'total' containing the total values, so the bill + tip.
-const total = [`The total, the bill + the tip is ${bill + tip} .`];
-console.log(total); // ["The total, the bill + the tip is 115 ."]
-
+// const total = [`The total, the bill + the tip is ${bill + tip} .`];
+// const total = [`${bill + tip}, ${bill + tip}, ${bill + tip}`];
+// console.log(total); // ["The total, the bill + the tip is 115 ."]
+const calcTotal = bill + tip;
+const total = [calcTotal(bill + tip[0]), calcTotal(bill + tip[1]), calcTotal(bill + tip[bills.length -1])];
+console.log(total);
 
 
 
