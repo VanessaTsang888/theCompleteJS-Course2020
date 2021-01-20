@@ -515,6 +515,45 @@ if (friends.includes('Steven')) {
     console.log('You have a friend called Peter');
 }
 
+/******************************************************************************************************************************************************************* 
+
+42. INTRO TO OBJECTS:
+
+Another Data Structure in JS - Objects.
+
+*******************************************************************************************************************************************************************/
+
+// We can have an array called jonasArray, that contains his firstName, lastName, age calculation, job, an array of his friends:
+const jonasArray = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1991,
+    'teacher',
+    ['Michael', 'Peter', 'Steven']
+];
+
+// We can't reference them by name but only by their order number in which they appear in the array.
+
+// We have another data structure in JS which is objects. We define key value pairs. So we can give each values a name.
+// The object is inside the braces. To Define a new object. fill-up this objet with key value pairs.
+// The key is the variable name, then colon and the value which can be of any type. Separate each key value pair with a comma.
+// An object which contains 5 key value pairs:
+
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+// There is 5 keys, and each of them as a value. So we were able to assign a name to each of the values. This is something inpossible in
+// arrays.
+
+
+
+
+
 
 
 

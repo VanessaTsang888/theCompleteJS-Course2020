@@ -111,6 +111,7 @@ const calcTip = function (bill) {
 }
 */
 
+const bill = 100;
 
 // These is the best solution:
 const calcTip = function (bill) {
@@ -143,8 +144,11 @@ console.log(tips1, tips2, tips1); // 15 15 15
 // I can put function calls in an Array as they will produce a value as JS will calculate the 3 function calls, then put them in an Array and store them.
 */
 
+
 // My answer is the same to the solution exept that I used the .length method to get the last element.
-const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length -1])];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+
+console.log(tips);
 
 
 /* 
@@ -154,7 +158,7 @@ Therefore, I actually did better than I thought as I just forgot to logout the t
 
 */
 
-console.log(bills, tips); // (3) [125, 555, 444] > (3) [18.75, 111, 8.8]
+// console.log(bills, tips); // (3) [125, 555, 444] > (3) [18.75, 111, 8.8]
 // These are the three tips that were calculated.
 
 
@@ -173,11 +177,10 @@ console.log(total); // calcTotal is not a function - line 133.
 
 // This is the best solution: bills plus tips for position 0 to 2:
 
-const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2],];
+const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 
-console.log(bills, tips, totals); // (3) [125, 555, 44] > (3) [18.75, 111, 8.8] (3) [143.75, 666, 52.8]
+console.log(bills, tips, totals); // (3) [125, 555, 44] > (3) [18.75, 111, 8.8] > (3) [143.75, 666, 52.8]
 // So for results are for these bills: 125, 555, 44.
-
 
 
 
