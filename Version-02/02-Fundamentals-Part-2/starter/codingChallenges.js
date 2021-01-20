@@ -88,7 +88,7 @@ different, the tip is 20%.
 Your tasks:
 1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out
     the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
-2. And now let's use arrays! So create an array 'bills' containing the test data below
+2. And now let's use arrays! So create an array 'bills' containing the test data below.
 3. Create an array 'tips' containing the tip value for each bill, calculated from the function you created before
 4. Bonus: Create an array 'total' containing the total values, so the bill + tip.
 
@@ -101,7 +101,6 @@ as array values (so don't store the tip values in separate variables first, but 
 
 // 1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out
 // the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
-
 const bill = 100;
 const tip = bill <= 300 && bill >= 50 ? bill * .15 : bill * 0.2;
 
@@ -110,3 +109,29 @@ const calcTip = function (bill) {
 }
 // logout this String
 console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
+
+// 2. And now let's use arrays! So create an array 'bills' containing the test data below:
+// Test data: 125, 555 and 44.
+const bills = [125, 555, 44];
+
+// 3. Create an array 'tips' containing the tip value for each bill, calculated from the function you created before.
+const tips1 = calcTip(bills[0]);
+const tips2 = calcTip(bills[1]);
+const tips3 = calcTip(bills.length -1);
+// three values which are the 3 tips:
+console.log(tips1, tips2, tips1); // 15 15 15
+// This was not the result I was expecting.
+
+// I can put function calls in an Array as they will produce a value as JS will calculate the 3 function calls, then put them in an Array and store them.
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length -1])]; // not logout anything.
+
+// 4. Bonus: Create an array 'total' containing the total values, so the bill + tip.
+const total = [`The total, the bill + the tip is ${bill + tip} .`];
+console.log(total); // ["The total, the bill + the tip is 115 ."]
+
+
+
+
+
+
+

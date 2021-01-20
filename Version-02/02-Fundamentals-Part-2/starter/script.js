@@ -373,7 +373,7 @@ like an Array. The two most important data structures is Arrays and Objects.
 
 */
 
-/*
+
 // To Get Data Into An Array:
 // Instead of this:
 const friend1 = 'Michawl';
@@ -448,7 +448,7 @@ console.log(age1, age2, age3); // 47 70 19
 const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
 console.log(ages); // (3) [47, 70, 19]
 
-*/
+
 
 /*******************************************************************************************************************************************************************
  
