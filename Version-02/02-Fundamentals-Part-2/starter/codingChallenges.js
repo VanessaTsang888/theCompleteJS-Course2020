@@ -32,7 +32,7 @@ To check if number A is at least double number B, check for A >= 2 * B.
 Apply this to the team's average scores
 
 ***************************************************************************************************************************************************/
-
+/*
  // 1. Create an Arrow Function 'calcAverage' to calculate the average of 3 scores
  // A generic function that calculates averages of any 3 numbers: a, b, c
  // adding 3 numbers together, then divide by 3 within syntax of the arrow function.
@@ -77,6 +77,7 @@ scoreKoalas = calcAverage(23, 34, 27);
 console.log(scoreDolphins, scoreKoalas); // 60 28
 // check the results with new values:
 checkWinner(scoreDolphins, scoreKoalas); // Dolphins win (60 vs. 28)
+*/
 
 /************************************************************************************************************************************************* 
 41. CODING CHALLENGE 2: ARRAYS:
@@ -101,4 +102,11 @@ as array values (so don't store the tip values in separate variables first, but 
 // 1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out
 // the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
 
+const bill = 100;
+const tip = bill <= 300 && bill >= 50 ? bill * .15 : bill * 0.2;
 
+const calcTip = function (bill) {
+    return tip;
+}
+// logout this String
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
