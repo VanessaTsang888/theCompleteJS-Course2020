@@ -202,3 +202,20 @@ console.log(percentages); // Uncaught ReferenceError: percentageOfWorld1 is not 
 
 // This solution dont work due to the above error.
 
+/************************************************************************************************************************************* 
+
+42. Intro to Objects:
+
+1. Create an object called 'myCountry' for a country of your choice, containing prooperties 'country', 'capital', 'language', 'population', and
+'neigbours' (an array like we used in previous assignments).
+
+*************************************************************************************************************************************/
+
+const myCountry = {
+    country: 'England',
+    capital: 'London',
+    language: 'English',
+    population: 67,
+    neighbours: ['Sally', 'Garry', 'Rachel', 'Jole', 'David', 'Martin', 'Ruth']
+};
+

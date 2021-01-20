@@ -373,6 +373,7 @@ like an Array. The two most important data structures is Arrays and Objects.
 
 */
 
+/*
 
 // To Get Data Into An Array:
 // Instead of this:
@@ -448,7 +449,7 @@ console.log(age1, age2, age3); // 47 70 19
 const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
 console.log(ages); // (3) [47, 70, 19]
 
-
+*/
 
 /*******************************************************************************************************************************************************************
  
@@ -460,6 +461,8 @@ A method is
 
 
 *******************************************************************************************************************************************************************/
+/*
+
 // Add Elements:
 const friends = ['Michael', 'Steven', 'Peter'];
 // the .push method adds an element at the end of the array:
@@ -515,6 +518,8 @@ if (friends.includes('Steven')) {
     console.log('You have a friend called Peter');
 }
 
+*/
+
 /******************************************************************************************************************************************************************* 
 
 42. INTRO TO OBJECTS:
@@ -547,10 +552,21 @@ const jonas = {
     friends: ['Michael', 'Peter', 'Steven']
 };
 
+// console.log(jonas);
+
 // There is 5 keys, and each of them as a value. So we were able to assign a name to each of the values. This is something inpossible in
 // arrays.
 
+/******************************************************************************************************************************************************************* 
 
+43. Dot vs. Bracket Notaion:
+
+
+
+
+
+
+*******************************************************************************************************************************************************************/
 
 
 
