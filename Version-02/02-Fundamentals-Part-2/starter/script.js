@@ -597,11 +597,46 @@ console.log(jonas['last' + nameKey]); // Schmedtmann
 // console.log(jonas.'last' + nameKey); // Unexpected string
 // With Dot Notation, we have to use the Real Final Property Name (the key) and NOT a computed property name.
 
+// An Experiment: how to retrive elements from an Object:
 // In which situation do we use the Dot Notation? When do we have to use the brackets Notation?
 // When we need to Compute the property name, like we did with the 'first' and 'last' name, then we have to use the Bracket Notation. In any other case,.
 // use the Dot Notation which looks cleaner and easier to use.
-// Another example of using the Brackets Notation:
+// Example, we don't know which property or key we want to show as we'll get this info from the UI, so we can use the built-in prompt Function.
+// A pop-up with an input field, store in a variable:
+const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job, and firends');
+// console.log(interestedIn); // prompt window with msg for user to input one of the options, i.e. job
+// That will appear in the console.
+// Now we want to display the user's input into the window so we need to write some code using the Bracket Notation as then we can put any expression
+// in our code, which in our case is: interestedIn
+// JS will replace interestedIn with the actual value of the variable and then that's the one that will be looked up on the jonas Object.
+// console.log(jonas[interestedIn]); // job
+// So the: interestedIn variable will store 'job' value. So the Bracket Notation gave us the correct result.
+// If user input's something that is NOT in the jonas object like location, then it will result 'undefined' in the console as this property don't exist.
+// We can write some code to catch that: undefined is a fauly value. If the value/input exists then its a Truthy value. Any String that is not empty or any
+// Number that is not zero, then the if block will get executed.  
 
+if (jonas[interestedIn]) {
+    console.log(jonas[interestedIn]);
+} else {
+    console.log('Wrong request! Choose between firstName, lastName, age, job, and firends');
+}
+
+// How to use both the Dot and Bracket Notation (can put any expression here) to add new properties to the object:
+// Add a location and Twitter handle to the jonas object:
+jonas.location = 'Portugal';
+jonas['twitter'] = '@jonasschmedtman';
+console.log(jonas); // input: job // output: the object with the location and twitter.
+
+// Small Challenge:
+// Write a sentence in a dynamic way or without hard-coding any of the values: "Jonas has 3 frineds, and his best friend is called Michael".
+// Get: Jonas, 3, Michael as values from the object.
+// Hint: Need to use multiple dots to get the number of friends.
+// lenght is also a property that's available on all arrays that's auto available. So we have an array, then we request the .lenghth.
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`); 
+
+// mdn operator precedence:
+// Dot notation is called: Member Access on this website - 21.
+// Brackets notation - 20. Both have high priority and both executed from left-to-right 
 
 
 
