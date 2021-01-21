@@ -187,7 +187,7 @@ const percChina = percentageOfWorld1(1441);
 console.log(percPortugal, percGermany, percFinland, percChina); // 0.12658227848101267 1.0506329113924051 0.06329113924050633 18.240506329113924
 */
 
-// The Solution:
+/* The Solution:
 
 const populations = [10, 1441, 332, 83];
 
@@ -201,6 +201,7 @@ const percentages = [
 console.log(percentages); // Uncaught ReferenceError: percentageOfWorld1 is not defined at assignmentsFundamentalsP2.js:195
 
 // This solution dont work due to the above error.
+*/
 
 /************************************************************************************************************************************* 
 
@@ -210,7 +211,7 @@ console.log(percentages); // Uncaught ReferenceError: percentageOfWorld1 is not 
 'neigbours' (an array like we used in previous assignments).
 
 *************************************************************************************************************************************/
-
+/*
 const myCountry = {
     country: 'England',
     capital: 'London',
@@ -218,4 +219,35 @@ const myCountry = {
     population: 67,
     neighbours: ['Sally', 'Garry', 'Rachel', 'Jole', 'David', 'Martin', 'Ruth']
 };
+*/
 
+/************************************************************************************************************************************* 
+ 43. Dot vs. Bracket Notation:
+ 
+ 
+1. Using the object from the previous assignment, log a string like this to the console:
+'Finland has 6 million finnish-speaking people, 3 neighbouring countries and a capital called Helsinki.'
+
+2. Increase the country's population by two million using dot notation, and then decrease it by two million using brackets notation.
+
+**************************************************************************************************************************************/
+
+// 1. Answer:
+const jonasCountry = {
+    country: 'Finland',
+    capital: 'Helsinki',
+    language: 'finnish',
+    population: 6,
+    neighbouringCountries: ['Norway', 'Russia', 'Norway']
+};
+
+console.log(`${jonasCountry.country} has ${jonasCountry.population} million ${jonasCountry.language} speaking people,
+ ${jonasCountry.neighbouringCountries.length} neighbouring countries and a capital called ${jonasCountry.capital}`); 
+
+ // 2.
+ // Using Dot Notation:
+ jonasCountry.population += 2;
+ console.log(jonasCountry.population);
+// Using Bracket Notation:
+ jonasCountry['population'] -= 2;
+ console.log(jonasCountry.population);

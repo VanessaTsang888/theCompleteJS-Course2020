@@ -628,7 +628,8 @@ jonas['twitter'] = '@jonasschmedtman';
 console.log(jonas); // input: job // output: the object with the location and twitter.
 
 // Small Challenge:
-// Write a sentence in a dynamic way or without hard-coding any of the values: "Jonas has 3 frineds, and his best friend is called Michael".
+// Write a sentence in a dynamic way or without hard-coding any of the values: 
+// "Jonas has 3 frineds, and his best friend is called Michael".
 // Get: Jonas, 3, Michael as values from the object.
 // Hint: Need to use multiple dots to get the number of friends.
 // lenght is also a property that's available on all arrays that's auto available. So we have an array, then we request the .lenghth.
