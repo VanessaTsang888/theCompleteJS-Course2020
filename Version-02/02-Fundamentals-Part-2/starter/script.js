@@ -527,7 +527,7 @@ if (friends.includes('Steven')) {
 Another Data Structure in JS - Objects.
 
 *******************************************************************************************************************************************************************/
-
+/*
 // We can have an array called jonasArray, that contains his firstName, lastName, age calculation, job, an array of his friends:
 const jonasArray = [
     'Jonas',
@@ -556,17 +556,55 @@ const jonas = {
 
 // There is 5 keys, and each of them as a value. So we were able to assign a name to each of the values. This is something inpossible in
 // arrays.
+*/
 
 /******************************************************************************************************************************************************************* 
 
 43. Dot vs. Bracket Notaion:
 
 
-
-
-
-
 *******************************************************************************************************************************************************************/
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven']
+};
+console.log(jonas); // same object as the code I wrote.
+
+// The difference is that the properties are ordered alphabetically. The order of properties does not matter as we simply get the properties
+// from the object using the property name itself. There is 2 ways to do that:
+// 1. Using the Dot Notation:
+// to get the lastName from the Object above:
+console.log(jonas.lastName); // Schmedtmann
+// So using the Object name: jonas, then the Dot Nation operator which will retrive the property ('Schmedtmann') using the key/name we specified: lastName. 
+// We can do the same thing but using the Bracket Notation:
+// The result is the same as using the Dot Notation.
+console.log(jonas['lastName']); // Schmedtmann
+// The difference is that with Bracket Notation, we can write any expression we like. So don't have to explicitly write the String inside the bracket but we
+// can compute it from some operation which is basically an expression (something that produces a value). Example, we have a variable in which we store the
+// repeating part in firstName and lastName (key/property names) - store in variable:
+const nameKey = 'Name';
+// Now can use this variable to get both the first and last Name.
+// We could build below String concationation with Template Literal but in this case its not necessary.
+// JS will execute the Plus operator to create the String firstName. Then go to jonas Object and retrive that property ('Jonas').
+console.log(jonas['first' + nameKey]); // Jonas
+// JS will do the same for the lastName / the second line of code below:
+console.log(jonas['last' + nameKey]); // Schmedtmann
+// So in the brackets, we can put any expression here as it will return a value.
+// The same thing will NOT work using the Dot Notation operator. This will NOT work and this is why we need the Brackets Notation.
+// console.log(jonas.'last' + nameKey); // Unexpected string
+// With Dot Notation, we have to use the Real Final Property Name (the key) and NOT a computed property name.
+
+// In which situation do we use the Dot Notation? When do we have to use the brackets Notation?
+// When we need to Compute the property name, like we did with the 'first' and 'last' name, then we have to use the Bracket Notation. In any other case,.
+// use the Dot Notation which looks cleaner and easier to use.
+// Another example of using the Brackets Notation:
+
+
+
+
 
 
 
