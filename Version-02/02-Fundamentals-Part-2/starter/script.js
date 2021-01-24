@@ -564,6 +564,8 @@ const jonas = {
 
 
 *******************************************************************************************************************************************************************/
+
+/*
 const jonas = {
     firstName: 'Jonas',
     lastName: 'Schmedtmann',
@@ -639,6 +641,51 @@ console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his bes
 // Dot notation is called: Member Access on this website - 21.
 // Brackets notation - 20. Both have high priority and both executed from left-to-right 
 
+*/
+
+/**************************************************************************************************************************************************************
+
+44. OBJECT METHODS:
+We can create our own methods on our own objects.
+An array is actually an Object. That's why we can use methods on them: .push
+
+Objects, just like arrays can hold different types of data. They can hold arrays and objects. We can take this even further. Functions are just another type
+of value, and we can create a key value pair in which the value is a function. So we can add functions to objects.
+
+Objects can have various types of values and can use the: .this keyword on them.
+
+
+*******************************************************************************************************************************************************************/
+
+// An Object can hold all kinds of data types. Can add functions to objects.
+// Add a function as a 'key value pair':
+// The calcAge function. The key is the property. Specify the function as an expression as the expression produces the value. A function
+// declaration would NOT work as it don't produce a value.
+// calcAge is a key or property rather than the function name.
+// ANY FUNCTION THAT IS ATTACHED TO AN OBJECT IS A METHOD.
+
+
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    birthYear: 2037 - 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: true,
+// This is a method with a function value.
+    calcAge: function(birthYear) {
+        return 2037 - birthYear;
+    }
+
+};
+
+// This is a normal function expression that is not inside an Object which looks similar to the method inside the jonas object.
+// const calcAge = function(birthYear) {
+//     return 2037 - birthYear;
+// }
+
+// I think of functions as values, then you can see methods is actually a property.
+// We can access the calcAge property or method:
 
 
 
