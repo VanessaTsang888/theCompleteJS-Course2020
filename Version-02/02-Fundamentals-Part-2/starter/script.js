@@ -646,14 +646,13 @@ console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his bes
 /**************************************************************************************************************************************************************
 
 44. OBJECT METHODS:
-We can create our own methods on our own objects.
+In this lecture We will create our own methods on our own objects.
 An array is actually an Object. That's why we can use methods on them: .push
 
-Objects, just like arrays can hold different types of data. They can hold arrays and objects. We can take this even further. Functions are just another type
+Objects, (just like arrays) can hold different types of data. They can hold arrays and objects. We can take this even further. Functions are just another type
 of value, and we can create a key value pair in which the value is a function. So we can add functions to objects.
 
 Objects can have various types of values and can use the: .this keyword on them.
-
 
 *******************************************************************************************************************************************************************/
 
@@ -668,15 +667,37 @@ Objects can have various types of values and can use the: .this keyword on them.
 const jonas = {
     firstName: 'Jonas',
     lastName: 'Schmedtmann',
-    birthYear: 2037 - 1991,
+    birthYear: 1991,
     job: 'teacher',
     friends: ['Michael', 'Peter', 'Steven'],
     hasDriversLicense: true,
-// This is a method with a function value.
-    calcAge: function(birthYear) {
-        return 2037 - birthYear;
-    }
+// This is a method with a function value. The calcAge is the property or key:
+    // calcAge: function(birthYear) {
+    //     return 2037 - birthYear;
+    // }
 
+// We already have the 1991 defined inside the jonas object, so keep our code base DRY, and to prevent accidents we should only write the birthYear in one place.
+// so we need to access the birthYear directly from the jonas object rather than passing it in when we call the method. In very method we have access to a
+// special variable called: .this
+// So in the calcAge method we read the birthYear directly from the jonas object without having to pass it in as parameter
+    
+
+// calcAge: function() {
+//     console.log(this); // the object
+//     return 2037 - this.birthYear;
+// }
+
+calcAge: function() {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+},
+
+// Write a method called: getSummary which should return a String which summarise the data about jonas:
+// Example: "Jonas is a 46 year old teacher, and he has a driver's license.". The .this keyword is refering to the jonas object above.
+// a or no? Use the Ternary Operator to find out.
+getSummary: function() {
+    return `${this.firstName} is a ${this.calcAge()} year old ${jonas.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`
+}
 };
 
 // This is a normal function expression that is not inside an Object which looks similar to the method inside the jonas object.
@@ -685,12 +706,34 @@ const jonas = {
 // }
 
 // I think of functions as values, then you can see methods is actually a property.
-// We can access the calcAge property or method:
+// We can access the calcAge property or method. CalcAge is the function value and to call it we use the parenthesis. Then pass-in the birth year,
+// which should calculate our age.
+// The jonas object is calling the method calcAge:
+// console.log(jonas.calcAge()); // 46
+// Can also get access to this method using the Brackets Notation as its just like a normal property. The function is this part: jonas['calcAge']
+// The function part will the executed first and that will become the value. Then with parenthesis we call the function value and pass-in 1991.
+// console.log(jonas['calcAge'](1991)); // 46
+// We already have the 1991 defined inside the jonas object, so keep our code base DRY, and to prevent accidents we should only write the birthYear in one place.
+// so we need to access the birthYear directly from the jonas object rather than passing it in when we call the method. In very method we have access to a
+// special variable called: .this
+// So in the calcAge method we read the birthYear directly from the jonas object without having to pass it in as parameter.
 
+// We use the .this keyword instead of using the name of the object jonas as if in the future we need to change the object name then we don't need to change
+// it in all the other places where we have written jonas: keep to the DRY principle. So best to reference the object rather than hardcode the name of the object
 
+// Let's say we need to access the age multiple times throughout our program. We calculate the age once, then store it in the object and then when we need it
+// we retrieve the age as a property from the object. 
+console.log(jonas.calcAge());
+console.log(jonas.age);
+console.log(jonas.age);
+console.log(jonas.age);
 
+// Write a method called: getSummary which should return a String which summarise the data about jonas:
+// Example: "Jonas is a 46 year old teacher, and he has a driver's license."
+// Call this method:
+console.log(jonas.getSummary())
 
-
+// Previously we used methods on arrays. This is because Arrays are special kind of objects, as they can have methods as well to manipulate them like .push etc
 
 
 
