@@ -251,3 +251,36 @@ console.log(`${jonasCountry.country} has ${jonasCountry.population} million ${jo
 // Using Bracket Notation:
  jonasCountry['population'] -= 2;
  console.log(jonasCountry.population);
+
+ /************************************************************************************************************************************* 
+  
+44. OBJECT METHODS:
+
+*************************************************************************************************************************************/
+
+// 1. Add a method called 'describe' to the 'myCountry' object. This method will log a string to the console, similar to the string logged in
+// the previous assignment, but this time using the 'this' keyword.
+
+const myCountry = {
+    country: 'England',
+    capital: 'London',
+    language: 'English',
+    population: 67,
+    neighbouringCountries: ['Walse', 'Scottland', 'Irland'],
+    isIsland: false,
+    describe: function() {
+        console.log(`${this.country} has ${this.population} million ${this.language} speaking people,
+        ${this.neighbouringCountries.length} neighbouring countries and a capital called ${this.capital}`); 
+    },
+    checkIsland: function() {
+
+    }
+};
+
+// 2. Call the 'describe' method. Using the Dot Notation:
+ console.log(this.describe);
+
+ // 3. Add a method called 'checkIsland' to the 'myCountry' object. This method will set a new property on the object, called 'isIsland'. 
+// 'isIsland' will be true if there are no neighbouring countries, and false if there are. Use the ternary operator to set the property.
+
+
