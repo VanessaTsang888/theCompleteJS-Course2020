@@ -99,6 +99,7 @@ as array values (so don't store the tip values in separate variables first, but 
 
 *************************************************************************************************************************************************/
 
+
 // 1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out
 // the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
 /*
@@ -111,12 +112,14 @@ const calcTip = function (bill) {
 }
 */
 
+/* 
 const bill = 100;
 
 // These is the best solution:
 const calcTip = function (bill) {
     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 }
+*/
 
 // or Arrow Function:
 // const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
@@ -127,7 +130,9 @@ const calcTip = function (bill) {
 
 // 2. And now let's use arrays! So create an array 'bills' containing the test data below:
 // Test data: 125, 555 and 44.
-const bills = [125, 555, 44];
+
+// const bills = [125, 555, 44];
+
 
 
 // 3. Create an array 'tips' containing the tip value for each bill, calculated from the function you created before.
@@ -146,9 +151,11 @@ console.log(tips1, tips2, tips1); // 15 15 15
 
 
 // My answer is the same to the solution exept that I used the .length method to get the last element.
+/*
 const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 
 console.log(tips);
+*/
 
 
 /* 
@@ -176,13 +183,17 @@ console.log(total); // calcTotal is not a function - line 133.
 */
 
 // This is the best solution: bills plus tips for position 0 to 2:
-
+/*
 const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 
 console.log(bills, tips, totals); // (3) [125, 555, 44] > (3) [18.75, 111, 8.8] > (3) [143.75, 666, 52.8]
 // So for results are for these bills: 125, 555, 44.
+*/
 
-/* 
+
+
+
+/**************************************************************************************************************************************** 
 
 45. Coding Challenge 3: 
 
@@ -195,46 +206,57 @@ Your tasks:
 2. Create a 'calcBMI'method on each object to calculate the BMI (the same method on both objects). Store the BMI value to a property, and also return it from
 the method.
 
-3. Log to the console who has the higherBMI, together with the full name and the respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
+3. Log to the console who has the higherBMI, together with the full name and the respective BMI.
+
+Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
 Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
 
-*/
+****************************************************************************************************************************************/
 
+// 1. Create an object with properties for their fullname, mass, and height (Mark Miller and John Smith):
 // mark object with properties:
+// 2. Create a 'calcBMI'method on each object to calculate the BMI (the same method on both objects). Store the BMI value to a property, and also return it from
+// the method.
+// The function don't need any parameters as its taking the values directly fromt he object.
 const mark = {
-    firstName: 'Mark',
-    lastName: 'Miller',
+    fullName: 'Mark Miller',
     mass: 78,
     height: 1.69,
-
-    BMIMark: function() {
-        BMI = massMark / heightMark ** 2;
-    return this.BMI;
-},
-
-// 3. who has higherBMI ?
-if (BMIMark > BMIJohn) {
-    // console.log("Mark's BMI is higher than John's." )
-    console.log(`${this.firstName}'s ${BMIMark} is higher than ${this.firstName}'s ${BMIJohn}.`)
-
-} else {
-    // console.log("John's BMI is higher than Mark's.");
-    console.log(`${this.firstName}'s ${BMIJohn} is higher than ${this.firstName}'s. ${BMIMark}`)
+    calcBMI: function() {
+     this.bmi = this.mass / this.height ** 2;
+     return this.bmi;   
+    }
 };
 
 // john object with properties:
-// const john = {
-//     firstName: 'John',
-//     lastName: 'Smith',
-//     mass: 92,
-//     height: 1.95,
+const john = {
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function() {
+        this.bmi = this.mass / this.height ** 2;
+        return this.bmi;   
+       }
+   
+};
+// Calculating the value by calling the method for the object mark:
+mark.calcBMI();
+john.calcBMI();
 
-//     calcBMI: function() {
-//         BMI = massMark / heightMark ** 2;
-//     return this.BMI;
-// },
+// Log both mark's and john's BMI to console to testing my results:
+console.log(mark.bmi, john.bmi) // 27.30  24.19
 
-// };
+// 3. Log to the console who has the higherBMI, together with the full name and the respective BMI.
+// Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
+// Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
+// conditional logic:
+// logout: Mark Miller's BMI (27.309968138370508) is higher than John Smith's BMI (24.194608809993426)
+
+if (mark.bmi > john.bmi) {
+    console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})`)
+} else if (john.bmi > mark.bmi) {
+    console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`)
+}
 
 
 
