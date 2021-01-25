@@ -267,13 +267,14 @@ const myCountry = {
     language: 'English',
     population: 67,
     neighbouringCountries: ['Walse', 'Scottland', 'Irland'],
-    isIsland: false,
+    
     describe: function() {
         console.log(`${this.country} has ${this.population} million ${this.language} speaking people,
         ${this.neighbouringCountries.length} neighbouring countries and a capital called ${this.capital}`); 
     },
+    
     checkIsland: function() {
-
+        this.isIsland = this.neighbouringCountries.length === 0 ? true : false;
     }
 };
 
