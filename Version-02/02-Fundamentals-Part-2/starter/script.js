@@ -744,6 +744,8 @@ I do 10 repretition of a certain weight lifting exercise.
 
 ****************************************************************************************************************************************************************/
 
+/*
+
 // Violates the DRY principle: this is not best practice:
 console.log('Lifting weights repetition 1');
 console.log('Lifting weights repetition 2');
@@ -756,14 +758,17 @@ console.log('Lifting weights repetition 8');
 console.log('Lifting weights repetition 9');
 console.log('Lifting weights repetition 10');
 
+*/
+
 // Using a for-loop statement is best practice and keeping with the DRY principle:
 // for-loop has 3 parts: first the initial value of a counter, the counter is the value that will start here at number 1 and go all the way to number 10. 
 // Create a variable called rep and that's our first repretition. Second part: logical condition that is evaluated before each iteration of the loop.
 // for-loop keeps running while condition is TRUE. Then loop will stop. By then 10 strings would of been printed.
-// Increasing the counter: update counter after each iteration. 
+// Increasing the counter: update counter after each iteration.
+// Make the String dynamic rather than hard coded by using template literal and the rep variable.
+// Use the rep variable to increase the number in the String that we're printing out.
 for (let rep = 1; rep <=10; rep++) {
-    console.log('Lifting weights repetition 1');
-
+    console.log(`Lifting weights repetition ${rep}`); // (10) Lifting weights repetition 1
 }
 
 
