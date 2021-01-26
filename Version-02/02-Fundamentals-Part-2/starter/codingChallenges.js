@@ -289,9 +289,9 @@ const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 const tips = [];
 const totals = [];
 
-// 3. 
-// Calculate both tips and the total values for every single bill value that's in the bills array in Q1.
-const calcTip = function (bills) {
+// 3. Calculate both tips and the total values for every single bill value that's in the bills array in Q1.
+// Loop over the bills array and fill-up the two empty arrays.
+const calcTip = function (bill) {
     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 }
 
@@ -303,14 +303,20 @@ const calcTip = function (bills) {
 //     totals.push(calcTip - bills[i] + tips[i]);
 // }
 
-for (let calcTip = 0; calcTip < bills.length; calcTip++) {
+// Within each iteration, a new tip variable will be created. That is why I can use const again.
 
-    tips.push(bills[calcTip]);
-    totals.push(bills[calcTip] + tips[calcTip]);
+for (let i = 0; i < bills.length; i++) {
+    const tip = calcTip(bills[i]);
+    tips.push(tip);
+    totals.push(tip + bills[i]);
 }
 
-// logout both the tips and the totals 
-console.log(tips, totals); // 
+// logout both the tips and the totals:
+
+console.log(bills, tips, totals); //  see below:
+// (10) [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52]
+// (10) [4.4, 44.25, 26.4, 88, 7.4, 15.75, 2, 220, 12.9, 7.8]
+// (10) [26.4, 339.25, 202.4, 528, 44.4, 120.75, 12, 1320, 98.9, 59.8]
 
 
 
