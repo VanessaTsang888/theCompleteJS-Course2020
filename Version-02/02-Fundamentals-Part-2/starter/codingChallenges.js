@@ -267,7 +267,6 @@ Coding Challenge 4: loops:
 
 Let's improve Steven's tip calculator even more, this time using loops!
 
-
 Your tasks:
 1. Create an array 'bills' containing all 10 test bill values
 
@@ -280,7 +279,6 @@ Test data: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
 
 Hints: Call ‘calcTip ‘in the loop and use the push method to add values to the
 tips and totals arrays
-
 
 **********************************************************************************************************************************************/
 
@@ -299,10 +297,18 @@ const calcTip = function (bills) {
 
 // Write a for loop to perform the 10 caculations:
 
-for (let i = 0; i < bills.length; i++) {
-    tips.push(bills[i]);
-    totals.push(bills[i] + tips[i]);
+// for (let i = 0; i < bills.length; i++) {
+
+//     tips.push(calcTip - bills[i]);
+//     totals.push(calcTip - bills[i] + tips[i]);
+// }
+
+for (let calcTip = 0; calcTip < bills.length; calcTip++) {
+
+    tips.push(bills[calcTip]);
+    totals.push(bills[calcTip] + tips[calcTip]);
 }
+
 // logout both the tips and the totals 
 console.log(tips, totals); // 
 
