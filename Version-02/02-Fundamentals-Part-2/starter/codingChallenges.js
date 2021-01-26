@@ -297,21 +297,13 @@ const calcTip = function (bills) {
     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 }
 
-// for loop to perform the 10 caculations:
-
-// Another example: an array of birthYears. Calculate the ages for each birthYear and store them in a new array:
-// Create empty array which will then hold the ages. Loop through the birthYears then fill-up this ages array.
-// Then calculate the age of the current year. The year we are currently in is 2037, then minus the birth year.
-// Then we want to push it to that empty array.
-
-// const years = [1991, 2007, 1969, 2020];
-// const ages = [];
+// Write a for loop to perform the 10 caculations:
 
 for (let i = 0; i < bills.length; i++) {
     tips.push(bills[i]);
     totals.push(bills[i] + tips[i]);
 }
-
+// logout both the tips and the totals 
 console.log(tips, totals); // 
 
 
