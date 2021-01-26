@@ -933,6 +933,68 @@ for(let exercise = 1; exercise < 4; exercise++) {
     }
 }
 
+/***************************************************************************************************************************************************
+
+49. The while Loop:
+
+What is thew difference between a for Loop and a while Loop?
+
+
+****************************************************************************************************************************************************************/
+
+// This is a for Loop. Use this to create a while Loop:
+
+// for (let rep = 1; rep <=10; rep++) {
+//     console.log(`Lifting weights repetition ${rep}`); // (10) Lifting weights repetition 1
+// }
+
+// Print the current value to the console. We still need a condition so we know when to stop.
+// But for a while Loop we can only specify a condition.
+// for (let rep = 1; rep <=10; rep++) {
+//     console.log(`Lifting weights repetition ${rep}`); // (10) Lifting weights repetition 1
+// }
+
+// We want to keep the loop running while the condition is less than or equal to 10. It's called while loop as it will run while
+// this condition is true.
+// We need to manually define the other 2 components: the repetitions and the increasing of the counter. We do this outside of the while loop.
+// At the end of each iteration, the counter will increase.
+// We should get the same result twice. Once from the for loop and one from the while loop.
+let rep =1; 
+while (rep <= 10) {
+    // console.log(`WHILE: Lifting weights repetition ${rep}`); // (10) Lifting weights repetition 1
+    rep++;
+}
+
+// The while loop is more versatile than the for loop, which means it can be used in a larger variety of situations as it does not really need
+// a counter. All the while loop needs is the condition, which needs to stay true for it to keep running. The condition can be any condition.
+
+// Roll a dice and keep rolling the dice until we get a 6.
+// Keep running the loop while the dice is different than a 6. We don't know how many times the loop should run, so we don't need a counter
+// variable. This is a use case of a while loop.
+// First create a random number, so the roll of a dice is a number between 1 - 6. 
+// Use the Mathl.randon as this will create a number between 0 and 1. Multiple by 6, this will be a decimal number. Then delete the decimal part,
+// using the Math.trunc which will give us a number between 0 and 5. Then add 1, to get a number 1 - 6.
+// As we load the web page we get a random number every time.
+// create one random number and if that's different than 6, this loop here will run.
+let dice = Math.trunc(Math.random() * 6) + 1;
+// console.log(dice);
+
+// Keep runing the loop until we roll a 6. The dice variable here hold the value of 6.
+// the codition of the loop will now to be: dice different from six. As soon as the value is 6, the loop will stop.
+// Log the value to the console.
+// We want to keep creating new dice values. So we need to reassign the above value at the end of each iteration. 
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`); // You rolled a 5
+    // loop will run again:
+    dice = Math.trunc(Math.random() * 6) +1;
+    if (dice === 6) console.log('Loop is about to end...'); // Loop is about to end...
+}
+
+// A situation, when first dice rolled a 6 so the loop never started: 0 iteration.
+// The conclusion: the while loop does NOT have to depend on any counter variable. Whenever, you need a loop without a counter, use the while loop.
+// i.e. when you don't know beforehand how many iterations the loop will have.
+
 
 
 
