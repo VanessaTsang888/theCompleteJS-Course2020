@@ -785,7 +785,7 @@ The for-loop: to loop through Arrays.
 
 ***************************************************************************************************************************************************/
 
-
+/*
 // Read values from an Array: We want to use a for-loop to loop through this an Array.
 // We want to log every element of the array to the console. So write a for-loop, starting with the counter: (let i = 0; ; i++)
 // An array is zero based when reading elements out of the array. Update the counter variable by 1. So we use the ++ operator.
@@ -876,13 +876,62 @@ for(let i = 0; i < jonas.length; i++) {
     if (typeof jonas[i] == 'number') break;
         console.log(jonas[i], typeof jonas[i]);
     }
+*/
 
-    
+ /************************************************************************************************************************************************   
+
+48. Looping Backwards and Loops in Loops: 12 min
 
 
+*******************************************************************************************************************************************************************/
+
+// looping backwards:
+// Define the counter, the condition, the counter update
+
+const jonas = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1991,
+    'teacher',
+    ['Michael', 'Peter', 'Steven'],
+    true
+];
+
+// 0, 1, ..., 4
+// Staring from element 4 up to element 0:
+// 4, 3, ..., 0
+
+for (let i = jonas.length -1; i >= 0; i--) {
+    console.log(i, jonas[i]);
+}
+
+// The above Will logout:
+// 5 true
+// 4 > (3) ["Michael", "Peter", "Steven"]
+// 3 "teacher"
+// 2 46
+// 1 "Schmedtmann"
+// 0 "Jonas"
 
 
+// How to create a loop inside of a loop:
+// The gym example from the first loop lecture: 10 repetitions for a certain weightlifting exercise. Now, we have 3 different exercises and we
+// want to repeat each of them 5 times. That's a total of 15 repetitions 5 for each of the 3 exercises. To log all these exercises, we'll need
+// a loop inside a loop. 
 
+// Start with the 3 exercises. Start at 1 this time: 1 - 3.
+// Write exercise below 4. Increase the exercise after each iteration as always.
+// log to the console: template literal, Starting exercise...
+// For the repetitions we need a loop inside a loop, so that in each exercise we can have the 5 repetitions that we want and the repetitions
+// themselves are a loop.
+
+for(let exercise = 1; exercise < 4; exercise++) {
+    console.log(`---- Starting exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
+    }
+}
 
 
 
