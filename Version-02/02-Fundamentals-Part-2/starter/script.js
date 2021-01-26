@@ -663,7 +663,7 @@ Objects can have various types of values and can use the: .this keyword on them.
 // calcAge is a key or property rather than the function name.
 // ANY FUNCTION THAT IS ATTACHED TO AN OBJECT IS A METHOD.
 
-
+/*
 const jonas = {
     firstName: 'Jonas',
     lastName: 'Schmedtmann',
@@ -671,6 +671,8 @@ const jonas = {
     job: 'teacher',
     friends: ['Michael', 'Peter', 'Steven'],
     hasDriversLicense: true,
+   
+
 // This is a method with a function value. The calcAge is the property or key:
     // calcAge: function(birthYear) {
     //     return 2037 - birthYear;
@@ -691,6 +693,7 @@ calcAge: function() {
     this.age = 2037 - this.birthYear;
     return this.age;
 },
+
 
 // Write a method called: getSummary which should return a String which summarise the data about jonas:
 // Example: "Jonas is a 46 year old teacher, and he has a driver's license.". The .this keyword is refering to the jonas object above.
@@ -734,6 +737,7 @@ console.log(jonas.age);
 console.log(jonas.getSummary())
 
 // Previously we used methods on arrays. This is because Arrays are special kind of objects, as they can have methods as well to manipulate them like .push etc
+*/
 
 /****************************************************************************************************************************************************************
 
@@ -758,7 +762,7 @@ console.log('Lifting weights repetition 8');
 console.log('Lifting weights repetition 9');
 console.log('Lifting weights repetition 10');
 
-*/
+
 
 // Using a for-loop statement is best practice and keeping with the DRY principle:
 // for-loop has 3 parts: first the initial value of a counter, the counter is the value that will start here at number 1 and go all the way to number 10. 
@@ -770,12 +774,110 @@ console.log('Lifting weights repetition 10');
 for (let rep = 1; rep <=10; rep++) {
     console.log(`Lifting weights repetition ${rep}`); // (10) Lifting weights repetition 1
 }
+*/
+
+/*************************************************************************************************************************************************** 
+
+47. LOOPING ARRAYS, BREAKING AND CONTINUING:
+
+The for-loop: to loop through Arrays.
 
 
+***************************************************************************************************************************************************/
 
 
+// Read values from an Array: We want to use a for-loop to loop through this an Array.
+// We want to log every element of the array to the console. So write a for-loop, starting with the counter: (let i = 0; ; i++)
+// An array is zero based when reading elements out of the array. Update the counter variable by 1. So we use the ++ operator.
+const jonas = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1991,
+    'teacher',
+    ['Michael', 'Peter', 'Steven'],
+    true
+];
+// A new empty array outside of the loop
+const types = [];
+
+// log every element of the array to the console. Start with jonas element 0 until element 4. This is why we start the counter at 0, that is the
+// first element we want to get. 
+// console.log(jonas[0])
+// console.log(jonas[1])
+// ...
+// console.log(jonas[4])
+// jonas[5] does NOT exist
+
+// Instead of hardcoding the 0, we use our counter variable: i
+// Write the condition: the loop should run when 'i' is 0, until the last element 4. When it hits 5, then no longer run. The 'i' counter
+// variable should always stay below 5. The current counter: jonas[i]
+// part 1: the index starts at 0. part 2: the current index should allways stay below the length of the array that we're looping through.
+
+for(let i = 0; i < jonas.length; i++) {
+// Reading from joinas array
+    console.log(jonas[i], typeof jonas[i]); // (3) ["Michael", "Peter", "Steven"]
+// Filling types array
+    // types[i] = typeof jonas[i];
+// Another way to fill types array is using the push method which adds anther element to the end of an array. This way its a little cleaner.
+types.push(typeof jonas[i]);
+}
+
+// The problem is that we've hard coded the number 5, so in the future if we add another element at the end of the array, it will not print
+// as we are still telling JS that i should stay below 5, so will not print element at position number 5. The solution is to NOT hardcode
+// the value but to compute this value/ to get it from JS itself: the 5 is the lenght of the array, and we replace it with a dynamically calculated
+// one: jonas.length
+// Add an element of 'true' to the end of the array and logout: true
+// Logout the type of the jonas variable: typeof jonas[1]
 
 
+// Create a new Array which contains all the types for all these elements. This will show me how to create a new Array based on the values of one
+// original array.
+// First create a new empty array outside of the loop. 
+
+// Newly filled array:
+console.log(types); // (6) ["string", "string", "number", "string", "object", "boolean"]
+
+// Another example: an array of birthYears. Calculate the ages for each birthYear and store them in a new array:
+// Create empty array which will then hold the ages. Loop through the birthYears then fill-up this ages array.
+// Then calculate the age of the current year. The year we are currently in is 2037, then minus the birth year.
+// Then we want to push it to that empty array.
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+    ages.push(2037 - years[i]);
+}
+
+console.log(ages); // (4) [30, 30, 30, 30]
+
+// We cannot do an oporations between simple values and an array. Cannot do 2037 - the years array as that will give us NaN.
+// So in the loop: ages.push(2037 - years[i]);
+// we did it individually. So we did calculation one by one in each iteration of the loop we calculated 2037 minus the year in the years loop,
+// then added it to the first position in the ages array. Then we do the same to the second year within the years array. Then same for the other
+// years in the same years array.
+
+// 2 important statements for loops: continue and break statements:
+// continue: to exit the current iteration of the loop, and continue to the next one.
+// break: used to completely terminate the whole loop.
+// We only want to logout Strings to the console, and the continue statement is perfect for this.
+
+console.log('--- ONLY STRINGS ---')
+for(let i = 0; i < jonas.length; i++) {
+    if (typeof jonas[i] !== 'string') continue;
+        console.log(jonas[i], typeof jonas[i]);
+    }
+
+// break statement: will terminate the whole loop:
+// After a number has been found, nothing else should be printed.
+
+console.log('--- BREAK WITH NUMBER ---')
+for(let i = 0; i < jonas.length; i++) {
+    if (typeof jonas[i] == 'number') break;
+        console.log(jonas[i], typeof jonas[i]);
+    }
+
+    
 
 
 
