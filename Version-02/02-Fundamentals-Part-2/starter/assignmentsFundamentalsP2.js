@@ -238,7 +238,7 @@ const jonasCountry = {
     capital: 'Helsinki',
     language: 'finnish',
     population: 6,
-    neighbouringCountries: ['Norway', 'Russia', 'Norway']
+    neighbouringCountries: ['Norway', 'Russia', 'Sweden']
 };
 
 console.log(`${jonasCountry.country} has ${jonasCountry.population} million ${jonasCountry.language} speaking people,
