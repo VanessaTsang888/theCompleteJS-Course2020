@@ -19,6 +19,6 @@ console.log(document.querySelector('.message').textContent);
 // Open the Terminal tab her, use this command: live-server
 // Then hit Enter key.
 
-/
+//
 
 
