@@ -206,7 +206,7 @@ console.log(scoreDolphins, scoreKoalas); // 97.66666666666667 96.33333333333333
 // (the first part is true and the second part is false which results in whole operation to become false) and its message will not logout.
 if (scoreDolphins > scoreKoalas && scoreDolphins >= 100) {
     console.log('Dolphins win the trophy!!!'); // 
-} else if (scoreDolphins > scoreKoalas && scoreKoalas >= 100) {
+} else if (scoreKoalas > scoreDolphins && scoreKoalas >= 100) {
     console.log('Koalas win the trophy!');
 } else if (scoreDolphins === scoreKoalas && scoreDolphins >= 100 && scoreKoalas >= 100) {
     console.log('Both wins the trophy - strange but true - they have to share the trophy!');
