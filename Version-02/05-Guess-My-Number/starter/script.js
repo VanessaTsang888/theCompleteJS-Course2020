@@ -24,7 +24,7 @@ console.log(document.querySelector('.message').textContent);
 /**************************************************************************************************************************************** 
 
 71. What's the DOM and DOM Manipulation:
-What and how it works.
+What and how it works and what it looks like:
 
 Make JS interact with a webpage: doing DOM Manipulation.
 In the last lecture I already selected an element from a page, which means I've interacted with the DOM. Now, I'll learn what the DOM
@@ -55,9 +55,16 @@ A DOM tree has more than just element nodes. It also has nodes for all the text 
 the HTML document also has to be in the DOM. So the DOM is really the complete representation of the HTML document, so that we can manipulate it in
 complex ways. 
 
+DOM !== JavaScript:
 
+The DOM Method and Properties for DOM Manipulation is NOT part of JavaScript as JS is just a dialect of the ECMAScript specification,
+and all this DOM related stuff is simply not in there. Starting form this section, we'll use JS in a browser - to manipulate web pages
+that are acutally displayed and rendared in the browsers. How it works is that the DOM and DOM methods are actually part of something
+called the web API's, which are like libraries that browsers implement and that we can access from our JS code.
+API: Application Programming Interface.
 
-
+Web API: libraries written in JS, auto available behind the scense. DOM manipulation works the same in all browsers. Apart from the DOM,
+there are lots more API's such as timers, the fetch API, etc.
 
 ***************************************************************************************************************************************/
 
