@@ -77,6 +77,8 @@ there are lots more API's such as timers, the fetch API, etc.
  * 
 ***************************************************************************************************************************************/
 
+/*
+
 // Do more DOM manipulation:
 
 // textContent: Start guessing...
@@ -102,3 +104,31 @@ console.log(document.querySelector('.guess').value); // 23
 
 // If we want a number to appear when we click the Check! button, handlng a click of a button is in next video.
 
+*/
+
+/******************************************************************************************************************************************************
+ * 
+ * 73. Handling Click Events:
+ * 
+ * Make our app do something when we click on the 'Check!' button.
+ * This will be the first time our code will reacts to something that happends in the DOM. That we need to use a Event Listener.
+ * An event is something that happens on the page, i.e. a mouse click, a keyPress etc. Then with an Event Listener we can wait for a certain event
+ * to happen and then react to it. 
+ * 
+ * Now we start building the app.
+ * In order to listen for events, first select the element where the event should happen. In this case we want to listen to the event on this the button
+ * element: the 'Check!' as this where it will happen. When we click on this button, something should happen. 
+******************************************************************************************************************************************************/
+
+// select the button element. Then Will return an element. Now on that element, we can call the addEventListener method, call it using the parenthesis.
+// Pass-in the type of the event: 'click'. Tell the event listener what to do, specify the reaction to the 'click' event. We do that by defining a
+// function which will contain exactly the code that should be executed whenever this click event happens on this 'Check!' btn. That function will be
+// event handler. The addEventListener method is a special kind of function since as a second argument, it expects this event handler function that
+// we just talked about. Pass-in a function value as an argument as a function is just another type of value.
+// In the function body, specify what should happen - log to console the value in the input field. 
+
+document.querySelector('.check').addEventListener('click', function() {
+    console.log(document.querySelector('.guess').value);
+});
+
+// Now, theUser can type a number in to the input box, click the 'Check!' button and it will appear in the console.
