@@ -68,3 +68,19 @@ there are lots more API's such as timers, the fetch API, etc.
 
 ***************************************************************************************************************************************/
 
+
+
+/**************************************************************************************************************************************** 
+ * 
+ * 72. Selecting and Manipulating Elements:
+ * 
+ * 
+***************************************************************************************************************************************/
+
+// console.log(document.querySelector('.message').textContent);
+
+// Besides getting the text content, we can set the conent of the element, i.e. Correct Number! that's the winning phase.
+// write what we want the new content to be:
+console.log(document.querySelector('.message').textContent);
+document.querySelector('.message').textContent = 'Correct Number! 🎉';
+
