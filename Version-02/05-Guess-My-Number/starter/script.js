@@ -127,8 +127,38 @@ console.log(document.querySelector('.guess').value); // 23
 // we just talked about. Pass-in a function value as an argument as a function is just another type of value.
 // In the function body, specify what should happen - log to console the value in the input field. 
 
+// When we get an input from the user, its usally a String. We can make it a Number to compare with a Number.
+
 document.querySelector('.check').addEventListener('click', function() {
-    console.log(document.querySelector('.guess').value);
+    const guess =  Number(document.querySelector('.guess').value);
+// We can do some DOM manipulation here:
+// document.querySelector('.message').textContent = 'Correct Number! 🎉';
+console.log(guess, typeof guess);
+// Implement the game logic: is there a value, if not we print somethings as a response. if we get no response. Will get evaluated as a Boolean.
+// 0 is a falsy value and will get converted to false. But we want something to happen when its false. So we use: !guess means if NOT a guess then print out: No number!
+if (!guess) {
+    document.querySelector('.message').textContent = '⛔️ No number!'
+}
 });
 
 // Now, theUser can type a number in to the input box, click the 'Check!' button and it will appear in the console.
+// Summary:
+// 1. Select the btn with the: document.querySelector. 2. Use the addEventListener method on that element to attached an event handler, which is the function.
+// This is just a function expression. We not storing in a variable but passing into the addEventListener method. First argument is the name of the event we are
+// listening or, then as second arguement we have the function value, which contains the code we wish to execute when the event happens.
+// We only define the function but not call it. Then pass to the event handler. Its the JS engine that calls the function as soon as the event happens.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
