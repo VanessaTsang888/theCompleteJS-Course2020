@@ -77,10 +77,28 @@ there are lots more API's such as timers, the fetch API, etc.
  * 
 ***************************************************************************************************************************************/
 
-// console.log(document.querySelector('.message').textContent);
+// Do more DOM manipulation:
+
+// textContent: Start guessing...
+console.log(document.querySelector('.message').textContent);
 
 // Besides getting the text content, we can set the conent of the element, i.e. Correct Number! that's the winning phase.
 // write what we want the new content to be:
-console.log(document.querySelector('.message').textContent);
 document.querySelector('.message').textContent = 'Correct Number! 🎉';
+
+// We need the HTML to get all the class names of the elements we want to manipulate.
+
+// Set the '?' (which in the HTML is: .number) to 13
+ 
+document.querySelector('.number').textContent = 13;
+document.querySelector('.score').textContent = 10;
+
+// Manipulate the input field. We can get data from here and set it.
+// The input field has class of guess ( class="guess"). Its an input element. 
+
+// Manipulate this element:
+document.querySelector('.guess').value = 23;
+console.log(document.querySelector('.guess').value); // 23
+
+// If we want a number to appear when we click the Check! button, handlng a click of a button is in next video.
 
