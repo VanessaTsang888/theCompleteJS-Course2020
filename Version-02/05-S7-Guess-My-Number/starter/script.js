@@ -237,15 +237,13 @@ if (!guess) {
  * 
  * The DOM includes CSS styles, so with DOM manipulation we can also change styles. 
  * 
+ * Do inline styles: style that's added directly into the HTML using the style attribute.
  * Change the background colour when the user guesses the corret number - when the player wins the game. Also, the winning number box wider.
  * We need to manipulate the styles of this page - the CSS. We do this in the code where the:
  * (guess === secretNumber)
  * First select the whole body this page, select the element we want to manipulate - When the player wins.
  * 
- * 
- * 
- * 
- * 
+ * My code is within the other code above.
  ******************************************************************************************************************************************************/
 
 
