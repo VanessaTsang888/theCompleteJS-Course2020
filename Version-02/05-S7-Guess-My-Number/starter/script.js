@@ -165,6 +165,10 @@ if (!guess) {
 // the app.
 // Define the number, a random number between 1 and 20 using the Math.random() function.
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+// initial score:
+let score = 20;
+
 // Select that number. The class name is: number. We use textContent to set it, we use the assigment operator with the number we just calculated.
 document.querySelector('.number').textContent = secretNumber;
 
@@ -177,18 +181,44 @@ console.log(guess, typeof guess);
         document.querySelector('.message').textContent = '⛔️ No number!'
         // if there is a guess and its the same as the secret number then the correct number message should be displayed. 
     } else if (guess === secretNumber) {
-        document.querySelector('.message').textContent = 'Correct Number! 🎉';
-// if the guess is greater than the secret number, then select the msg, then print out: Too high!
+        document.querySelector('.message').textContent = 'Correct Number!';
     } else if (guess > secretNumber) {
+        // Below should happen while the score is still above zero.
+    if (score > 1) {
         document.querySelector('.message').textContent = 'Too high!';
+        // decrease the score:
+        score--;
+        // update the score element:
+        document.querySelector('.score').textContent = score;  
+    // if guess is zero, then display this message: 
+    }                  
+    else {
+        document.querySelector('.message').textContent = 'You lost the game!';
+        // update the score element:
+        document.querySelector('.score').textContent = 0;
+    }
  // if the guess is lower than the secret numer, then select the msg, then print out: Too low!       
     } else if (guess < secretNumber) {
-        document.querySelector('.message').textContent = 'Too low!';
+        if (score > 1) {
+            document.querySelector('.message').textContent = 'Too low!';
+            // decrease the score:
+            score--;
+            // update the score element:
+            document.querySelector('.score').textContent = score;  
+        // if guess is zero, then display this message: 
+        }                  
+        else {
+            document.querySelector('.message').textContent = 'You lost the game!';
+            // update the score element:
+            document.querySelector('.score').textContent = 0;
+        }
+        
     }
 });
 
 // Implement this: We start with a score of 20. Every time we guess wrong, the score decreases.
 // Implement this in the code where the score is Too high or Too low.
+// Create a variable for the score in the code and then update that variable, increase or decrease it. then display the value of that variable. 
 
 
 
