@@ -119,7 +119,7 @@ console.log(document.querySelector('.guess').value); // 23
  * In order to listen for events, first select the element where the event should happen. In this case we want to listen to the event on this the button
  * element: the 'Check!' as this where it will happen. When we click on this button, something should happen. 
 ******************************************************************************************************************************************************/
-
+/*
 // select the button element. Then Will return an element. Now on that element, we can call the addEventListener method, call it using the parenthesis.
 // Pass-in the type of the event: 'click'. Tell the event listener what to do, specify the reaction to the 'click' event. We do that by defining a
 // function which will contain exactly the code that should be executed whenever this click event happens on this 'Check!' btn. That function will be
@@ -147,10 +147,48 @@ if (!guess) {
 // This is just a function expression. We not storing in a variable but passing into the addEventListener method. First argument is the name of the event we are
 // listening or, then as second arguement we have the function value, which contains the code we wish to execute when the event happens.
 // We only define the function but not call it. Then pass to the event handler. Its the JS engine that calls the function as soon as the event happens.
+*/
 
+/******************************************************************************************************************************************************
+ * 
+ * 74. Implementing the Game Logic:
+ * 
+ * Three Scenarios to implement:
+ * Implement when the guess is correct, when it's equal to the secret number. Also, impliment when what happens when the guess is too low or too high.
+ * 
+ * 1. define the secret number, so we have something to compare the guess to
+ * 2. 
+ * 
+ *****************************************************************************************************************************************************/
 
+// Where should we define the secret number? Outside of the button handler (before the document.quearySelector) as we only want that secret number to be defined once, only when we start
+// the app.
+// Define the number, a random number between 1 and 20 using the Math.random() function.
+const secretNumber = Math.trunc(Math.random() * 20) + 1;
+// Select that number. The class name is: number. We use textContent to set it, we use the assigment operator with the number we just calculated.
+document.querySelector('.number').textContent = secretNumber;
 
+document.querySelector('.check').addEventListener('click', function() {
+    const guess =  Number(document.querySelector('.guess').value);
+// We can do some DOM manipulation here:
+console.log(guess, typeof guess);
+// Implement the game logic: is there a value, if not we print somethings as a response. if we get no response. Will get evaluated as a Boolean.
+    if (!guess) {
+        document.querySelector('.message').textContent = '⛔️ No number!'
+        // if there is a guess and its the same as the secret number then the correct number message should be displayed. 
+    } else if (guess === secretNumber) {
+        document.querySelector('.message').textContent = 'Correct Number! 🎉';
+// if the guess is greater than the secret number, then select the msg, then print out: Too high!
+    } else if (guess > secretNumber) {
+        document.querySelector('.message').textContent = 'Too high!';
+ // if the guess is lower than the secret numer, then select the msg, then print out: Too low!       
+    } else if (guess < secretNumber) {
+        document.querySelector('.message').textContent = 'Too low!';
+    }
+});
 
+// Implement this: We start with a score of 20. Every time we guess wrong, the score decreases.
+// Implement this in the code where the score is Too high or Too low.
 
 
 
