@@ -163,6 +163,10 @@ if (!guess) {
 
 // Where should we define the secret number? Outside of the button handler (before the document.quearySelector) as we only want that secret number to be defined once, only when we start
 // the app.
+// Implement this: We start with a score of 20. Every time we guess wrong, the score decreases.
+// Implement this in the code where the score is Too high or Too low.
+// Create a variable for the score in the code and then update that variable, increase or decrease it. then display the value of that variable. 
+
 // Define the number, a random number between 1 and 20 using the Math.random() function.
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
@@ -177,11 +181,21 @@ document.querySelector('.check').addEventListener('click', function() {
 // We can do some DOM manipulation here:
 console.log(guess, typeof guess);
 // Implement the game logic: is there a value, if not we print somethings as a response. if we get no response. Will get evaluated as a Boolean.
-    if (!guess) {
+
+// When there is no input    
+if (!guess) {
         document.querySelector('.message').textContent = '⛔️ No number!'
         // if there is a guess and its the same as the secret number then the correct number message should be displayed. 
+
+    // When player wins    
     } else if (guess === secretNumber) {
         document.querySelector('.message').textContent = 'Correct Number!';
+        
+        document.querySelector('body').style.backgroundColor = '#60b347';
+
+        document.querySelector('.number').style.width = '30rem';
+
+    // When guess is too high     
     } else if (guess > secretNumber) {
         // Below should happen while the score is still above zero.
     if (score > 1) {
@@ -197,7 +211,7 @@ console.log(guess, typeof guess);
         // update the score element:
         document.querySelector('.score').textContent = 0;
     }
- // if the guess is lower than the secret numer, then select the msg, then print out: Too low!       
+ // When guess is too low, lower than the secret numer, then select the msg, then print out: Too low!       
     } else if (guess < secretNumber) {
         if (score > 1) {
             document.querySelector('.message').textContent = 'Too low!';
@@ -216,11 +230,23 @@ console.log(guess, typeof guess);
     }
 });
 
-// Implement this: We start with a score of 20. Every time we guess wrong, the score decreases.
-// Implement this in the code where the score is Too high or Too low.
-// Create a variable for the score in the code and then update that variable, increase or decrease it. then display the value of that variable. 
 
-
+/******************************************************************************************************************************************************
+ * 
+ * 75. Manipulating CSS Styles:
+ * 
+ * The DOM includes CSS styles, so with DOM manipulation we can also change styles. 
+ * 
+ * Change the background colour when the user guesses the corret number - when the player wins the game. Also, the winning number box wider.
+ * We need to manipulate the styles of this page - the CSS. We do this in the code where the:
+ * (guess === secretNumber)
+ * First select the whole body this page, select the element we want to manipulate - When the player wins.
+ * 
+ * 
+ * 
+ * 
+ * 
+ ******************************************************************************************************************************************************/
 
 
 
