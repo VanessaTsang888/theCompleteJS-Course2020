@@ -173,8 +173,6 @@ const secretNumber = Math.trunc(Math.random() * 20) + 1;
 // initial score:
 let score = 20;
 
-// Select that number. The class name is: number. We use textContent to set it, we use the assigment operator with the number we just calculated.
-document.querySelector('.number').textContent = secretNumber;
 
 document.querySelector('.check').addEventListener('click', function() {
     const guess =  Number(document.querySelector('.guess').value);
@@ -190,9 +188,11 @@ if (!guess) {
     // When player wins    
     } else if (guess === secretNumber) {
         document.querySelector('.message').textContent = 'Correct Number!';
-        
+        // Select that number. The class name is: number. We use textContent to set it, we use the assigment operator with the number we just calculated.
+        document.querySelector('.number').textContent = secretNumber;
+        // Change the background colour when the user guesses the corret number - when the player wins the game:
         document.querySelector('body').style.backgroundColor = '#60b347';
-
+        // Make the winning number box wider:
         document.querySelector('.number').style.width = '30rem';
 
     // When guess is too high     
@@ -245,9 +245,6 @@ if (!guess) {
  * 
  * My code is within the other code above.
  ******************************************************************************************************************************************************/
-
-
-
 
 
 
