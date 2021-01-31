@@ -13,7 +13,7 @@ SECTION 7. JavaScript in the Browser: DOM and Events Fundamentals.
 // Select an element in JavaScript - a class
 // Select the textContent element from a page:
 // executed from left to right. The .textContent is text: Start guessing...
-console.log(document.querySelector('.message').textContent);
+// console.log(document.querySelector('.message').textContent);
 
 // First DOM manipulation:
 // Open the live server in Terminal.
@@ -247,6 +247,60 @@ if (!guess) {
  ******************************************************************************************************************************************************/
 
 
+
+ /***************************************************************************************************************************************  
+
+1. hide the secret number, make it to display a question mark: ?
+Move this code:
+document.querSelector('.number').textContent = secretNumber;
+
+ to the situation where the player wins:
+ (guess === secretNumber)
+
+ Now we have the questin mark and we can start guessing. Now its a real game as we don't know what the secret number is.
+ The Highscore is also working.
+
+Implement a game rest functionality, so that the player can make a new guess!
+
+Your tasks:
+
+1. Select the element witht he 'again' class and attach a click event handler.
+
+2. In the handler function, restore initial values of the 'score' and 'secretNumber' variables.
+
+3. Restore the initial conditions of the message, number, score and guess input fields.
+
+4. Also restore the original background color(#222) and number width(15rem).
+
+***************************************************************************************************************************************/
+
+// This is an anonymous handler function as it don't have a name.
+// 1. Create the 'agin' class and attached a 'click' event handler.
+// 2. Restore the initial values of the 'score' and 'secretNumber' variables:
+// the score at the beginning of game is 20. Then I need a new secret number. Reassign the value to secretNumber (let not const).
+// New number and reassign the variable.
+// 3. Restore the initial conditions of the message, number, score and guess input fields for the user to play the game again without reloading the browser.
+// The initail message is: Start guessing. 
+// Change the score: set it to the score variable as it already holds the number 20.  
+// change the number and set it to the question mark.
+// Change the value in the input box to an empty string as the user input will always be a string. Also, change the value in the input box to the
+// empty string/the abance of any value in the input box.
+// 4. Restore the original background color(#222) and number width(15rem) when user starts a new game.
+
+
+document.querySelector('.again').addEventListener('click', function() {
+    let score = 20;
+    let secretNumber = '?';
+    // let guess = '';
+    secretNumber = Math.trunc(Math.random() * 20) + 1;
+    document.querySelector('.message').textContent = 'Start Guessing Now...';
+    document.querySelector('.score').textContent = score;
+    document.querySelector('.number').textContent = '?';
+    document.querySelector('.guess').value = '';
+
+    document.querySelector('body').style.backgroundColor = '#222';
+    document.querySelector('.number').style.width = '15rem';
+});
 
 
 
