@@ -172,6 +172,8 @@ const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // initial score:
 let score = 20;
+let highscore = 0;
+
 
 
 document.querySelector('.check').addEventListener('click', function() {
@@ -190,10 +192,18 @@ if (!guess) {
         document.querySelector('.message').textContent = 'Correct Number!';
         // Select that number. The class name is: number. We use textContent to set it, we use the assigment operator with the number we just calculated.
         document.querySelector('.number').textContent = secretNumber;
+
         // Change the background colour when the user guesses the corret number - when the player wins the game:
         document.querySelector('body').style.backgroundColor = '#60b347';
         // Make the winning number box wider:
         document.querySelector('.number').style.width = '30rem';
+        
+        // The condition: if the score of the current game is greater than the highscore that we already had, then the highscore will become the new current score.
+    if (score > highscore) {
+      highscore = score;
+      // display the new highscore:
+      document.querySelector('.highscore').textContent = highscore;
+    }
 
     // When guess is too high     
     } else if (guess > secretNumber) {
@@ -304,8 +314,18 @@ document.querySelector('.again').addEventListener('click', function() {
 
 /******************************************************************************************************************************************************
  * 
+ * 77. Implementing Highscores:
  * 
+ * The aim of the game is to achieve a better highscore each time you play the game. The higher the number of your highscore the better.
+ * When the user clicks on the 'Again!' to play the game again, the highscore will remain the same and the goal is to beat that highscore.
+ * Once the user has completed the next game but the score is lower than their previous score, the highscore will remain the same as the score is NOT
+ * higher than highscore. The first highscore is always going to be 0.
+ * Need to check if the current score is greater than the highscore? The code for this should go insdie the first 'else if' block as an 'if-statement',
+ * this is where the player has won the game. If the new score is NOT greater than the highscore, then the highscore will remain the same.
+ * I need to create a new 'highscore' variable at the top, after the 'score' variable.
  * 
+ * Buy clicking the Again! buttom, everything will reset but keeping the highscore
+ * .
  ****************************************************************************************************************************************************/
 
 
