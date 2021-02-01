@@ -168,13 +168,18 @@ if (!guess) {
 // Create a variable for the score in the code and then update that variable, increase or decrease it. then display the value of that variable. 
 
 // Define the number, a random number between 1 and 20 using the Math.random() function.
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // initial score:
 let score = 20;
 let highscore = 0;
 
-
+/* What is this for?
+const displayMessage = function (message) {
+    document.querySelector('.message').textContent = message;
+  };
+  */
+  
 
 document.querySelector('.check').addEventListener('click', function() {
     const guess =  Number(document.querySelector('.guess').value);
@@ -260,6 +265,8 @@ if (!guess) {
 
  /***************************************************************************************************************************************  
 
+ Coding Challenge 1:
+
 1. hide the secret number, make it to display a question mark: ?
 Move this code:
 document.querSelector('.number').textContent = secretNumber;
@@ -300,8 +307,8 @@ Your tasks:
 
 document.querySelector('.again').addEventListener('click', function() {
     let score = 20;
-    let secretNumber = '?';
-    // let guess = '';
+    // let secretNumber = '?';
+    // variable shadowing - i defined same variable twice in different scopes. so the global variable 'secretNumber' not available to use.
     secretNumber = Math.trunc(Math.random() * 20) + 1;
     document.querySelector('.message').textContent = 'Start Guessing Now...';
     document.querySelector('.score').textContent = score;
@@ -324,8 +331,28 @@ document.querySelector('.again').addEventListener('click', function() {
  * this is where the player has won the game. If the new score is NOT greater than the highscore, then the highscore will remain the same.
  * I need to create a new 'highscore' variable at the top, after the 'score' variable.
  * 
- * Buy clicking the Again! buttom, everything will reset but keeping the highscore
- * .
+ * Buy clicking the Again! buttom, everything will reset but keeping the highscore.
+ * See my code above.
  ****************************************************************************************************************************************************/
 
+/******************************************************************************************************************************************************
+
+78. Refactoring Our Code: The DRY Principle:
+
+Try to avoid duplicated code where possible. Use a technique called refactoring which means to restructure the code, without changing how it works.
+It improves the code and to eliminate duplicate code. 
+
+1. identify duplicated code:
+The code for When guess is too high is almost the same as the code for When the guess is too low. We need to eliminate half of this code.
+Both checks if the guess:
+(guess > secretNumber)
+(guess < secretNumber)
+is basically checking is the guess is different to the secretNumber:
+so when ever the guess is different from the secretNumber then all of the code should get execued.
+The only thing that chances is the String of: Too high! or Too low!
+So we just need one block of code for when the guess is different.
+First add a new else-if block, then delete the old code.
+
+
+ ****************************************************************************************************************************************************/
 
