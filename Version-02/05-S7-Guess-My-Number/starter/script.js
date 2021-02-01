@@ -180,6 +180,12 @@ const displayMessage = function (message) {
   };
   */
   
+  // Set the message and put it into this display message function that we can use everywhere.
+  const displayMessage = function(message) {    
+    document.querySelector('.message').textContent = message;
+
+
+  }
 
 document.querySelector('.check').addEventListener('click', function() {
     const guess =  Number(document.querySelector('.guess').value);
@@ -189,12 +195,16 @@ console.log(guess, typeof guess);
 
 // When there is no input    
 if (!guess) {
-        document.querySelector('.message').textContent = '⛔️ No number!'
+        // document.querySelector('.message').textContent = '⛔️ No number!'
         // if there is a guess and its the same as the secret number then the correct number message should be displayed. 
+        // This argument will become the message when this function is called.
+        displayMessage('No number!');
 
     // When player wins    
     } else if (guess === secretNumber) {
-        document.querySelector('.message').textContent = 'Correct Number!';
+        // document.querySelector('.message').textContent = 'Correct Number!';
+        displayMessage('Correct Number'); // cleaner and DRY.
+
         // Select that number. The class name is: number. We use textContent to set it, we use the assigment operator with the number we just calculated.
         document.querySelector('.number').textContent = secretNumber;
 
@@ -209,40 +219,55 @@ if (!guess) {
       // display the new highscore:
       document.querySelector('.highscore').textContent = highscore;
     }
+    // When guess is wrong or different to the secretNumber:
+} else if(guess !== secretNumber) {
+    if(score > 1) {
+        // document.querySelector('.message').textContent = guess > secretNumber ? 'Too high!' : 'Too low!';
+    displayMessage(guess > secretNumber ? 'Too high!' : 'Too low!');
 
-    // When guess is too high     
-    } else if (guess > secretNumber) {
-        // Below should happen while the score is still above zero.
-    if (score > 1) {
-        document.querySelector('.message').textContent = 'Too high!';
-        // decrease the score:
         score--;
-        // update the score element:
-        document.querySelector('.score').textContent = score;  
-    // if guess is zero, then display this message: 
-    }                  
-    else {
-        document.querySelector('.message').textContent = 'You lost the game!';
-        // update the score element:
+        document.querySelector('.score').textContent = score;
+    
+    } else {
+        // document.querySelector('.message').textContent = 'You Lost The Game!';
+        displayMessage('You Lost The Game!');
         document.querySelector('.score').textContent = 0;
     }
- // When guess is too low, lower than the secret numer, then select the msg, then print out: Too low!       
-    } else if (guess < secretNumber) {
-        if (score > 1) {
-            document.querySelector('.message').textContent = 'Too low!';
-            // decrease the score:
-            score--;
-            // update the score element:
-            document.querySelector('.score').textContent = score;  
-        // if guess is zero, then display this message: 
-        }                  
-        else {
-            document.querySelector('.message').textContent = 'You lost the game!';
-            // update the score element:
-            document.querySelector('.score').textContent = 0;
-        }
+}
+
+    // When guess is too high     
+//     } else if (guess > secretNumber) {
+//         // Below should happen while the score is still above zero.
+//     if (score > 1) {
+//         document.querySelector('.message').textContent = 'Too high!';
+//         // decrease the score:
+//         score--;
+//         // update the score element:
+//         document.querySelector('.score').textContent = score;  
+//     // if guess is zero, then display this message: 
+//     }                  
+//     else {
+//         document.querySelector('.message').textContent = 'You lost the game!';
+//         // update the score element:
+//         document.querySelector('.score').textContent = 0;
+//     }
+//  // When guess is too low, lower than the secret numer, then select the msg, then print out: Too low!       
+//     } else if (guess < secretNumber) {
+//         if (score > 1) {
+//             document.querySelector('.message').textContent = 'Too low!';
+//             // decrease the score:
+//             score--;
+//             // update the score element:
+//             document.querySelector('.score').textContent = score;  
+//         // if guess is zero, then display this message: 
+//         }                  
+//         else {
+//             document.querySelector('.message').textContent = 'You lost the game!';
+//             // update the score element:
+//             document.querySelector('.score').textContent = 0;
+//         }
         
-    }
+//     }
 });
 
 
@@ -310,7 +335,8 @@ document.querySelector('.again').addEventListener('click', function() {
     // let secretNumber = '?';
     // variable shadowing - i defined same variable twice in different scopes. so the global variable 'secretNumber' not available to use.
     secretNumber = Math.trunc(Math.random() * 20) + 1;
-    document.querySelector('.message').textContent = 'Start Guessing Now...';
+    // document.querySelector('.message').textContent = 'Start Guessing Now...';
+    displayMessage('Start Guessing Now...');
     document.querySelector('.score').textContent = score;
     document.querySelector('.number').textContent = '?';
     document.querySelector('.guess').value = '';
@@ -351,8 +377,16 @@ is basically checking is the guess is different to the secretNumber:
 so when ever the guess is different from the secretNumber then all of the code should get execued.
 The only thing that chances is the String of: Too high! or Too low!
 So we just need one block of code for when the guess is different.
-First add a new else-if block, then delete the old code.
+First add a new else-if block - When guess is wrong, the guess is diffent to the secretNumber. Then delete the old code.
+Too high should only happen when the guess is higher than the secretNumebr. We need conditional to workout if the guess is greater or lower than the
+secretNumber. Use a Ternary operator which will return a value.
+Summary:
+Unify the 2 conditions, as both means if the guess is different to the secretNumber. The only thing that chances is the message that is displayed on the
+web page.  See code above.
 
+Other duplicated code:
+Setting the message, setting the number, setting the score and calculating the random secret number. We can refactor functionality we use over and over again
+into their own functions in order to make code more DRY.
 
  ****************************************************************************************************************************************************/
 
