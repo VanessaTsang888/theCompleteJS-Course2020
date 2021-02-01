@@ -181,8 +181,10 @@ const displayMessage = function (message) {
   */
   
   // Set the message and put it into this display message function that we can use everywhere.
+  // Message: Between 1 and 20
   const displayMessage = function(message) {    
-    document.querySelector('.message').textContent = message;
+    document.querySelector('.message', '.between').textContent = message;
+    // document.querySelector('.between').textContent = message;
 
 
   }
@@ -209,7 +211,7 @@ if (!guess) {
         document.querySelector('.number').textContent = secretNumber;
 
         // Change the background colour when the user guesses the corret number - when the player wins the game:
-        document.querySelector('body').style.backgroundColor = '#60b347';
+        document.querySelector('body').style.backgroundColor = '#962ed3';
         // Make the winning number box wider:
         document.querySelector('.number').style.width = '30rem';
         
@@ -390,3 +392,16 @@ into their own functions in order to make code more DRY.
 
  ****************************************************************************************************************************************************/
 
+/******************************************************************************************************************************************************
+ * 
+ * 79. Project 2: Modal Window:
+ * Develop our first UI Component which is a Modal Window.
+ * 
+ * Manipulating classes is the main way in which we manipulate webpagges. 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *  ****************************************************************************************************************************************************/
