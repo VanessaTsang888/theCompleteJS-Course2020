@@ -36,6 +36,7 @@ At the start we don't see the dice or any scores and both Current scores are on 
 // hash is the selector for the "id". There is 2 ways to select an id. They both work the same way but the getElementById works a little faster, but this
 // is only relevant if I'm selecting many elements at once. The score0El is a DOM element.
 // Selecting Elements:
+
 const score0El = document.querySelector('#score--0');
 const score1El = document.getElementById('score--1');
 const current0El = document.getElementById('current--0');
@@ -44,6 +45,10 @@ const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
+// Switching Players. Player 0 always starts first:
+const player0El = document.querySelector('.player--0');
+const player1El = document.querySelector('.player--1');
+
 
 // Starting conditions:
 // Now use the variable to do something on them, multiple times throughout the app. We define them once at the top of file only.
@@ -54,13 +59,28 @@ score1El.textContent = 0;
 // Create a hidden class and add it at the begining of the game.
 diceEl.classList.add('hidden');
 
+// store total scores for both players in an array (zero based).
+const scores = [0, 0];
+
+
+
 // Persist the value of the current score, needs to keep existing outside in the main program, no inside of the btnRoll function:
 let currentScore = 0;
+// set to player 1 if that is the active player.
+let activePlayer = 0;
 
 
-// Rolling dice functionality:
-// Implement the Roll Dice functionality, we want the dice to be visible. Then remove that class from the dice.
-// We want to react to clicking that roll button > select that button element and then add an event handler.
+
+/************************************************************************************************************************************************ 
+ * 
+83. Rolling the Dice:
+
+Rolling dice functionality:
+Implement the Roll Dice functionality, we want the dice to be visible. Then remove that class from the dice.
+We want to react to clicking that roll button > select that button element and then add an event handler.
+ 
+ ************************************************************************************************************************************************/
+
 // Select all 3 buttons (new, roll, hold) - see above variables.
 btnRoll.addEventListener('click', function() {
     // 1. Generating a random dice roll. Not a global variable as we want to generate a new number everytime the dice is rolled. Define that variable here.
@@ -78,20 +98,41 @@ btnRoll.addEventListener('click', function() {
     // keep adding the rolled dice number to the current score - if the number is NOT a 1.
     // We need a way to save the current score somewhere in the DOM. Display the current score and store in the variable. define this variable.
     if(dice !== 1) {
-     // Add current dice to current score:   
-    //  currentScore = currentScore + dice;
+    // Add current dice to current score:   
+    // currentScore = currentScore + dice;
     // Display the score on the current Player.
      currentScore+= dice;
-     current0El.textContent = currentScore; // change later as not always for Player 1.
+     // Select the score element dynamically based in which based on whcih is the active player at that moment.
+     document.getElementById(`current--${activePlayer}`).textContent = currentScore;   
 
+    // incase the rolled number is a 1. Switch to the next Player. Change value from 0 to 1 or the other way round using the Ternary operator.
+    // if the active player is 0 then we want the new active player to be 1, else it should be 0. So if active player is 0, then the result is 1.
+    // if condition is false / the active player is 1, then the active player will become 0. So the condition allows us to switch from player 0 to player 1.
+    // set the text conten back to 0.
 
-    // incase the rolled number is a 1. Switch to the next Player.
     } else {
-
+        document.getElementById(`current--${activePlayer}`).textContent = 0;
+        activePlayer = activePlayer === 0 ? 1 : 0;
+        // set the current score to 0 for the next player.
+        currentScore = 0;
+        // Will remove the class if its there, if not it will add it. Toggle will ensure its only on one of the element at one time.
+        player0El.classList.toggle('player--active');
+        player1El.classList.toggle('player--active');
     }
 
 
 });
+
+/************************************************************************************************************************************************ 
+
+84. Switching the Active Player:
+
+See above code - the else block. When ever the active Player rolls a 1, it will enter the else block. Make this work for both player 0 and player 1.
+So we need to keep track of which player is the current player. track of Which player is the ative player at the moment that the dice was rolled.
+
+See my code above.
+
+***********************************************************************************************************************************************/
 
 
 
