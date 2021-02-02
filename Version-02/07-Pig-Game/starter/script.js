@@ -32,4 +32,29 @@ At the start we don't see the dice or any scores and both Current scores are on 
 // We need to the class names and the id's from the HTML file to identify and select the elements.
 // In the HTML file, "player--0" is Player 1, and "player--1" is Player 2.
 // HTML > p tags > main tag > section tag > the scores are stored in here. Each player has their own section tag.
-// Each Player has same score class but different id. So, we need to select the element using their unque id NOT its class name.
+// Each Player has same score class but different id. So, we need to select the element using their unque id (i.e. #score) NOT its class name.
+// hash is the selector for the "id". There is 2 ways to select an id. They both work the same way but the getElementById works a little faster, but this
+// is only relevant if I'm selecting many elements at once. The score0El is a DOM element.
+// Selecting Elements:
+const score0El = document.querySelector('#score--0');
+const score1El = document.getElementById('score--1');
+const diceEl = document.querySelector('.dice');
+
+// Starting conditions:
+// Now use the variable to do something on them, multiple times throughout the app. We define them once at the top of file only.
+// Set the initial conditions of score 0 element, use text content, set to 0.
+// We set 0 as Number but JS will auto set them to Strings.
+score0El.textContent = 0;
+score1El.textContent = 0;
+// Create a hidden class and add it at the begining of the game.
+diceEl.classList.add('hidden');
+
+// Implement the Roll Dice functionality, we want the dice to be visible. Then remove that class from the dice.
+// 
+
+
+
+
+
+
+
