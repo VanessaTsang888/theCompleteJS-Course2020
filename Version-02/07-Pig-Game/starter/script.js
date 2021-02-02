@@ -38,6 +38,8 @@ At the start we don't see the dice or any scores and both Current scores are on 
 // Selecting Elements:
 const score0El = document.querySelector('#score--0');
 const score1El = document.getElementById('score--1');
+const current0El = document.getElementById('current--0');
+const current1El = document.getElementById('current--1');
 const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
@@ -51,6 +53,10 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 // Create a hidden class and add it at the begining of the game.
 diceEl.classList.add('hidden');
+
+// Persist the value of the current score, needs to keep existing outside in the main program, no inside of the btnRoll function:
+let currentScore = 0;
+
 
 // Rolling dice functionality:
 // Implement the Roll Dice functionality, we want the dice to be visible. Then remove that class from the dice.
@@ -70,10 +76,16 @@ btnRoll.addEventListener('click', function() {
 
     // 3. Check for rolled 1: if true, switch to next player.
     // keep adding the rolled dice number to the current score - if the number is NOT a 1.
+    // We need a way to save the current score somewhere in the DOM. Display the current score and store in the variable. define this variable.
     if(dice !== 1) {
+     // Add current dice to current score:   
+    //  currentScore = currentScore + dice;
+    // Display the score on the current Player.
+     currentScore+= dice;
+     current0El.textContent = currentScore; // change later as not always for Player 1.
 
 
-// incase the rolled number is a 1.
+    // incase the rolled number is a 1. Switch to the next Player.
     } else {
 
     }
