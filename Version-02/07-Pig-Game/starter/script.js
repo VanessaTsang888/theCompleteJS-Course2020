@@ -62,12 +62,23 @@ diceEl.classList.add('hidden');
 // store total scores for both players in an array (zero based).
 const scores = [0, 0];
 
-
-
 // Persist the value of the current score, needs to keep existing outside in the main program, no inside of the btnRoll function:
 let currentScore = 0;
 // set to player 1 if that is the active player.
 let activePlayer = 0;
+
+// Function to switch player:
+const switchPlayer = function() {
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    // set the current score to 0 for the next player.
+    currentScore = 0;
+    // Will remove the class if its there, if not it will add it. Toggle will ensure its only on one of the element at one time.
+    player0El.classList.toggle('player--active');
+    player1El.classList.toggle('player--active');
+};
+
+
 
 
 
@@ -111,13 +122,7 @@ btnRoll.addEventListener('click', function() {
     // set the text conten back to 0.
 
     } else {
-        document.getElementById(`current--${activePlayer}`).textContent = 0;
-        activePlayer = activePlayer === 0 ? 1 : 0;
-        // set the current score to 0 for the next player.
-        currentScore = 0;
-        // Will remove the class if its there, if not it will add it. Toggle will ensure its only on one of the element at one time.
-        player0El.classList.toggle('player--active');
-        player1El.classList.toggle('player--active');
+        switchPlayer();
     }
 
 
@@ -135,8 +140,34 @@ See my code above.
 ***********************************************************************************************************************************************/
 
 
+/************************************************************************************************************************************************ 
+
+85. Holding Current Score:
+
+To implement the functionality of holding the score, which happens when the user clicks on that button to hold the score. We want to add the current
+score to the total score. Then switch player, which only happens when the score is below 100, as when the current score is at least 100, then that
+current player wins.
+The button we need to target is the variable named: btnHold.
+
+***********************************************************************************************************************************************/
+
+btnHold.addEventListener('click', function() {
+    // 1. Add current score to active player's score. Define the current player score. The scores variable is the scores array which at the same time holds the score of player 0 and player 1.
+    // Now we can use the activePlayer variable to get the correct score of the current player.
+    // scores at the position of activePlayer will be equal that score plus the current score
+    scores[activePlayer] += currentScore;
+    // scores[1] = scores[1] + currentScore
+    // display it:
+    document.getElementById(`current--${activePlayer}`).textContent = scores[activePlayer];
 
 
+    // 2. Chehck if player's score is >= 100. If so, then finish the game.
 
+
+    // 3. Switch to the next player.
+    switchPlayer();
+
+
+})
 
 
