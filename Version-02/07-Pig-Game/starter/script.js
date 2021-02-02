@@ -39,6 +39,9 @@ At the start we don't see the dice or any scores and both Current scores are on 
 const score0El = document.querySelector('#score--0');
 const score1El = document.getElementById('score--1');
 const diceEl = document.querySelector('.dice');
+const btnNew = document.querySelector('.btn--new');
+const btnRoll = document.querySelector('.btn--roll');
+const btnHold = document.querySelector('.btn--hold');
 
 // Starting conditions:
 // Now use the variable to do something on them, multiple times throughout the app. We define them once at the top of file only.
@@ -49,8 +52,34 @@ score1El.textContent = 0;
 // Create a hidden class and add it at the begining of the game.
 diceEl.classList.add('hidden');
 
+// Rolling dice functionality:
 // Implement the Roll Dice functionality, we want the dice to be visible. Then remove that class from the dice.
-// 
+// We want to react to clicking that roll button > select that button element and then add an event handler.
+// Select all 3 buttons (new, roll, hold) - see above variables.
+btnRoll.addEventListener('click', function() {
+    // 1. Generating a random dice roll. Not a global variable as we want to generate a new number everytime the dice is rolled. Define that variable here.
+    // Generate a random number between 0-1 and multiple by 6, truc it so its a whole number, then add 1 to elevate that from 5 to 6.
+    const dice = Math.trunc(Math.random() * 6) + 1;
+    console.log(dice);
+
+
+    // 2. Display dice (will be a number between 1 and 6) . Remove the hidden class.
+    // Manipulate the scr attribute (in the HTML) from our JS to display the image according to the rolled number. Use the src property.
+    diceEl.classList.remove('hidden');
+    diceEl.src = `dice-${dice}.png`;
+
+    // 3. Check for rolled 1: if true, switch to next player.
+    // keep adding the rolled dice number to the current score - if the number is NOT a 1.
+    if(dice !== 1) {
+
+
+// incase the rolled number is a 1.
+    } else {
+
+    }
+
+
+});
 
 
 
