@@ -66,6 +66,9 @@ const scores = [0, 0];
 let currentScore = 0;
 // set to player 1 if that is the active player.
 let activePlayer = 0;
+// When game finishes, disable the 2 buttons so user cannot use them. Will be a Boolean value as at the begining of game, we are playing, so playing is true.
+// Then at the end of game, we set playing to false.
+let playing = true;
 
 // Function to switch player:
 const switchPlayer = function() {
@@ -77,10 +80,6 @@ const switchPlayer = function() {
     player0El.classList.toggle('player--active');
     player1El.classList.toggle('player--active');
 };
-
-
-
-
 
 /************************************************************************************************************************************************ 
  * 
@@ -94,11 +93,12 @@ We want to react to clicking that roll button > select that button element and t
 
 // Select all 3 buttons (new, roll, hold) - see above variables.
 btnRoll.addEventListener('click', function() {
+    // playing is already a Boolean variable so we don't need tocheck the condition here.
+    if (playing) {
     // 1. Generating a random dice roll. Not a global variable as we want to generate a new number everytime the dice is rolled. Define that variable here.
     // Generate a random number between 0-1 and multiple by 6, truc it so its a whole number, then add 1 to elevate that from 5 to 6.
     const dice = Math.trunc(Math.random() * 6) + 1;
-    console.log(dice);
-
+    // console.log(dice);
 
     // 2. Display dice (will be a number between 1 and 6) . Remove the hidden class.
     // Manipulate the scr attribute (in the HTML) from our JS to display the image according to the rolled number. Use the src property.
@@ -124,8 +124,7 @@ btnRoll.addEventListener('click', function() {
     } else {
         switchPlayer();
     }
-
-
+}
 });
 
 /************************************************************************************************************************************************ 
@@ -152,22 +151,34 @@ The button we need to target is the variable named: btnHold.
 ***********************************************************************************************************************************************/
 
 btnHold.addEventListener('click', function() {
+    if(playing) {
     // 1. Add current score to active player's score. Define the current player score. The scores variable is the scores array which at the same time holds the score of player 0 and player 1.
     // Now we can use the activePlayer variable to get the correct score of the current player.
     // scores at the position of activePlayer will be equal that score plus the current score
     scores[activePlayer] += currentScore;
     // scores[1] = scores[1] + currentScore
     // display it:
-    document.getElementById(`current--${activePlayer}`).textContent = scores[activePlayer];
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
 
 
-    // 2. Chehck if player's score is >= 100. If so, then finish the game.
-
-
+// 2. Chehck if player's score is >= 100. If so, then finish the game.
+    if (scores[activePlayer] >= 20) {
+    // Finish the game, assign a player winner class.
+    // When we using querySelector, we need to use a class which is the period or dot: .player--
+    // Winner class: create a variable that holds the Winner state: when the game has finished user can no longer click any of the 2 buttons: ROLL DICE, and HOLD.
+    // At the end of the game, Set the playing to false.
+        playing = false;
+        // add the hidden class back on:
+        diceEl.classList.add('hidden');
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+    } else {
     // 3. Switch to the next player.
     switchPlayer();
+    }
+}
+});
 
 
-})
-
-
+/************************************************************************************************************************************************ 
+***********************************************************************************************************************************************/
