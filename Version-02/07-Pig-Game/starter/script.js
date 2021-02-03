@@ -181,4 +181,37 @@ btnHold.addEventListener('click', function() {
 
 
 /************************************************************************************************************************************************ 
+ * 
+ * 86. Resetting the Game:
+ * 
+ * To implement the NEW GAME button.
+ * Reset all the initial conditions of the game.
+ * 
+ * 
+ * 
+ * 
+ * 
 ***********************************************************************************************************************************************/
+
+// button: NEW GAME:
+
+// The Visable Part of the UI:
+// Reset all the scores (both the total and current scores for both Players):
+score0El.textContent = 0;
+score1El.textContent = 0;
+current0El.textContent = 0; 
+
+// Remove the winner class (the black colour & the activate the 2 buttons).
+player0El.classList.remove('player--winner');
+player1El.classList.remove('player--winner');
+// Remove both active classes as we don't know at that point which is the active player.
+player0El.classList.add('player--active'); // If active Player 1 is not the active Player then add it as Player 1 always gets to start the game at the begining.
+player1El.classList.remove('player--active'); // If Player 2 is the active player then Remove this.
+
+
+
+
+
+
+
+
