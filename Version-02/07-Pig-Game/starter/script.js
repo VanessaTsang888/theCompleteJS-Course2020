@@ -49,26 +49,45 @@ const btnHold = document.querySelector('.btn--hold');
 const player0El = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
 
+// Declaring global varibles outside of any function without assigning them any values so that they are accessible within any function:
+let scores, currentScore, activePlayer, playing;
 
-// Starting conditions:
-// Now use the variable to do something on them, multiple times throughout the app. We define them once at the top of file only.
-// Set the initial conditions of score 0 element, use text content, set to 0.
-// We set 0 as Number but JS will auto set them to Strings.
-score0El.textContent = 0;
-score1El.textContent = 0;
-// Create a hidden class and add it at the begining of the game.
-diceEl.classList.add('hidden');
+// Starting Conditions: when the NEW GAME button gets click or the page gets loaded for the first time:
+// Set internal state variables back to the initial state: init stands for initialisation: This function is for when page gets loaded for the first time or when
+// the NEW GAME button gets clicked.
+const init = function() {
+    // Store total scores for both players in an array (zero based).
+    // Assigning values to variables:
+    scores = [0, 0];
+    // Persist the value of the current score, needs to keep existing outside in the main program, no inside of the btnRoll function:
+    currentScore = 0;
+    // set to player 1 if that is the active player.
+    activePlayer = 0;
+    // When game finishes, disable the 2 buttons so user cannot use them. Will be a Boolean value as at the begining of game, we are playing, so playing is true.
+    // Then at the end of game, we set playing to false.
+    playing = true;
+    
+    // Now use the variable to do something on them, multiple times throughout the app. We define them once at the top of file only.
+    // Set internal state variables back to the initial state:
+    // Set the initial conditions of score 0 element, use text content, set to 0.
+    // We set 0 as Number but JS will auto set them to Strings.
+    score0El.textContent = 0;
+    score1El.textContent = 0;
+    current0El.textContent = 0;
+    current1El.textContent = 0;
 
-// store total scores for both players in an array (zero based).
-const scores = [0, 0];
+    // Create a hidden class and add it at the begining of the game.
+    diceEl.classList.add('hidden');
+    // Remove the winner class (the black colour & the activate the 2 buttons).
+    player0El.classList.remove('player--winner');
+    player1El.classList.remove('player--winner');
+    // Remove both active classes as we don't know at that point which is the active player.
+    player0El.classList.add('player--active'); // If active Player 1 is not the active Player then add it as Player 1 always gets to start the game at the begining.
+    player1El.classList.remove('player--active'); // If Player 2 is the active player then Remove this.
+};
+// JS will find this function definition and run it.
+init();
 
-// Persist the value of the current score, needs to keep existing outside in the main program, no inside of the btnRoll function:
-let currentScore = 0;
-// set to player 1 if that is the active player.
-let activePlayer = 0;
-// When game finishes, disable the 2 buttons so user cannot use them. Will be a Boolean value as at the begining of game, we are playing, so playing is true.
-// Then at the end of game, we set playing to false.
-let playing = true;
 
 // Function to switch player:
 const switchPlayer = function() {
@@ -186,32 +205,14 @@ btnHold.addEventListener('click', function() {
  * 
  * To implement the NEW GAME button.
  * Reset all the initial conditions of the game.
- * 
- * 
- * 
- * 
- * 
+
 ***********************************************************************************************************************************************/
 
 // button: NEW GAME:
 
-// The Visable Part of the UI:
+// The Visable Part of the UI: changed classes and manipulate the content.
 // Reset all the scores (both the total and current scores for both Players):
-score0El.textContent = 0;
-score1El.textContent = 0;
-current0El.textContent = 0; 
-
-// Remove the winner class (the black colour & the activate the 2 buttons).
-player0El.classList.remove('player--winner');
-player1El.classList.remove('player--winner');
-// Remove both active classes as we don't know at that point which is the active player.
-player0El.classList.add('player--active'); // If active Player 1 is not the active Player then add it as Player 1 always gets to start the game at the begining.
-player1El.classList.remove('player--active'); // If Player 2 is the active player then Remove this.
-
-
-
-
-
-
+// Its JS that calls the init function when user clicks the NEW GAME button.
+btnNew.addEventListener('click', init);
 
 
