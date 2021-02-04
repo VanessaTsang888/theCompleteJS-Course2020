@@ -99,7 +99,53 @@ Source Code: Step 1. Compliation > Portable File - machine code: > Step 2. Execu
 Interpretation: interpreter runs through the source code and executes it line by line.
 The source code is converted before it's executed.
 JS used to be an interpreted language but its much slower than compiled languages. Today, low performance is no longer acceptable. 
-Modern JS uses a mix between compilation and interpretation called just-in-time compilation.
+
+Modern JS uses a mix between compilation and interpretation called Just-In-Time (JIT) Compilation:
+Entire source code is converted into machine code at once, then executed immediately. Then executes it straight away. Still have 2 steps of regular ahead of time
+compilation but no portable file to execute. The execution happens immediately after a comilation.
+
+Parsing: a process of JS reading our source code.
+During the process, the source code is parsed into a data structure called the abstract syntax tree or AST.
+
+Diagram:
+Parsing > Copilation (Just-In_Time compilation) > Execution > Optimisation.
+
+Execution happens in the JS engines call stack.
+This process is what makes mdern engines like V-eight so fast. All this parsing, compliation and optimisation happens in some special threads inside the engine
+that we cannot access from our code.
+
+JS RUNTIME:
+In the browser - Chrome, Safari, ????, Firefox.
+
+A container inclduing all the things that we need to use JS - in this case in the browser.
+The heart of any JS Runtime is JS Engine - Heap and Call Stack. Without the engine there is no runtime and the other way so they come as a pair.
+In order for it to work, we also need access to the web APIs = DOM, Timers, Fetch API, console.log etc.
+Web APIs are functionalities provided to the engine but not part of the JS language. JS gets access to these APIs through the global window object.
+JS Runtime also includes CALLBACK QUEUE:
+click | timer | data ...
+i.e. we attached event handler functions to DOM elements like a button to react to certain events. These event handler functions are also called Callback Functions.
+The CB function is passed to the Stack so that it can be exectuted. This happens due to the event loop.
+
+JS can exist outside of browsers, i.e. in Node.js This is what Node.js JS Runtime looks like: the above:
+The JS Engine, the Web APIs, the Callback Queue going into the Call Stack using the event loop. Instead of the Web APIs, we have multiple C++ bindings & thread Pool.
+Therefore, different JS Runtime do exist.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
