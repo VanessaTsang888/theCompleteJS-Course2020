@@ -130,37 +130,30 @@ JS can exist outside of browsers, i.e. in Node.js This is what Node.js JS Runtim
 The JS Engine, the Web APIs, the Callback Queue going into the Call Stack using the event loop. Instead of the Web APIs, we have multiple C++ bindings & thread Pool.
 Therefore, different JS Runtime do exist.
 
+****************************************************************************************************************************************************** */
 
 
+/******************************************************************************************************************************************************* 
 
+91. Execution Contexts and The Call Stack:
 
+Execution Contexts:
 
+Human-readable Code: Function body only executed when called! > Compilation > Creation of Global Exectution Context (for top-level code, NOT inside a function)
+| Then computer CPU processing the machine code that it received | Then functions starts to execute as well > Execution Context: environment in which a piece of
+JS is executed. Stores all the necessary info for some code to be executed. Similar to a pizza (JS code) in side a box (execution context) with cutlary, receipt
+which is needed to execute our source code.
 
+In one JS project, only one global execution context, its the default and created for code that is not inside any function (top-level).
 
+One execution context per function:
+for each function call a new execution context is created. Same for methods since they're functions attached to objects.
 
-
-
-
-
-
-
-
-
-
-
-
+The execution contexts make up the Call Stack.
 
 
 
 ****************************************************************************************************************************************************** */
-
-
-
-
-
-
-
-
 
 
 
