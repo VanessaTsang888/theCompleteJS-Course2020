@@ -71,3 +71,63 @@ function into the addEventListener function as argument just as it was a regular
  them in the background and puts them back in the main thread once they are finished.
 
 ****************************************************************************************************************************************************** */
+
+
+/******************************************************************************************************************************************************* 
+
+90. The JS Engine and Runtime:
+
+JS Engine:
+Program that executes JS code. Most well known egine is Google's V-Eight, which powers Chrome and Node.js that's JS runtime - we use to build server-side
+apps with JS, so outside of any browser. The other browsers have their own JS Engines.
+
+The Engines Components and How It Works?
+JS Engine.
+
+Call Stack is where our code is executed, using execution context.
+The Heap is an unstructured memory pool that stores all the objects that our app needs - Object in memory.
+
+How can our code ecompliled to machine code to machine code so that it actually can be executed afterwards?
+The difference between compilation and interpretation.
+Computer's processor only understands 0's and 1's. 
+
+Compilation: our entire source code is converted into machine code at once, and written to a binary file that can be executed by a computer.
+
+Source Code: Step 1. Compliation > Portable File - machine code: > Step 2. Execution > Program Running.
+
+
+Interpretation: interpreter runs through the source code and executes it line by line.
+The source code is converted before it's executed.
+JS used to be an interpreted language but its much slower than compiled languages. Today, low performance is no longer acceptable. 
+Modern JS uses a mix between compilation and interpretation called just-in-time compilation.
+
+
+
+
+
+
+****************************************************************************************************************************************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
