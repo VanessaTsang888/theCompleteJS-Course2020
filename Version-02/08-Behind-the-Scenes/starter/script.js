@@ -150,8 +150,43 @@ One execution context per function:
 for each function call a new execution context is created. Same for methods since they're functions attached to objects.
 
 The execution contexts make up the Call Stack.
+Its the event loop that provides these Callback Functions.
 
+Execution Context In Detail:
+What's Inside Exectuion Context?
 
+Variable Environment:
+1. let, const and var declarations.
+2. Functions.
+3. Arguments Object.
+
+Scope Chain:
+Consists of references to variables that are located outside of the current function. It's stored in each execution context. 
+
+'this' keyword:
+Each context also gets a
+special variable called the 'this' keyword.
+
+The content of the execution context, so the variable environment, scope chain, and 'this' keyword is generated in a so-called creation phase which happens
+right before execution. Execution context belonging to Arrow Functions do not get their own arguments obk=ject or 'this' keyword. Instead they can use the arguments
+object and 'this' keyword from their closest regular function parent. 
+
+Simulate The Creation Phase for a code example.
+
+The Call Stack:
+A place where execution contexts get stacked on top of each other, to keep track of where we are in the programs execution.
+
+'Places' where execution contexts get stacked on top of each other, to keep track of where we are in the execution.
+
+return c:
+The function exectution context, will be popped off the stack and disappear from the computer's memory.
+Then the previous exectution context will become the active exectution context again.
+
+Only when the program is finished is when the global execution context is also popped off the stack. 
+
+Concluseion:
+
+Our JS code runs inside of execution contexts that are in the stack.
 
 ****************************************************************************************************************************************************** */
 
