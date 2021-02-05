@@ -284,7 +284,72 @@ SUMMARY:
 
 ****************************************************************************************************************************************************** */
 
+/******************************************************************************************************************************************************* 
 
+93. Scoping in Practice:
+
+****************************************************************************************************************************************************** */
+
+// CalcAge functiion declaration that will receive a birthYear. It will calculate an age.
+// The current year minus the birth year.
+// The calcAge is defined in the Global Scope as its in the top level code.
+// This function creates its own scoope which will be equivalent to the variable environment of its execution context.
+// The firstName variable NOT in the calcAge function, but it's a global varible that I've defined outside of the CalcAge function. Therefore, through the
+// scope chain it will be made available also inside the calcAge function.
+
+function CalcAge(birthYear) {
+    const age = 2037 - birthYear;
+    // console.log(firstName); // Jonas // when this was executed, JS did not find this variable in this scope so it did a variable lookup in the scope chain.
+    
+    // Will create a new scope:
+    function printAge() {
+        const output = `${firstName}, born in ${birthYear}`;
+        console.log(output);
+
+        // Check if the person based on the birthYear is a millennial - if you were born between 1981 - 1996.
+        // birthYear must be at least 1981 and below 1996. This is a Block Scope. The lookup for the firstName is evern longer.
+        if(birthYear >= 1981 && birthYear <= 1996) {
+            var millenial = true;
+            // Creating New variable with same name oas outer scope's variable:
+            const firstName = 'Steven'; // this would work as this variable is in same scope. So JS will use that variable and not perform variable lookup. Variable shadowing?
+            
+            // Reassigning outer scope's variable:
+            output = 'NEW OUTPUT!';
+
+            const str = `Oh, and you're a millenial, ${firstName}`;
+            console.log(str); // Oh, and you're a millenial, Jonas
+
+            // function that will add two values:
+            function add (a, b) {
+                return a + b;
+            }
+
+        }
+        // console.log(str); // This will throw an error as const and let variables block scoped so avaiable only inside the block in which they were created.
+        console.log(millenial); // JS can acutally find the millenial variable since it was declared with var keyword which are function scoped. They simply ignor the Block as they not block scoped.
+        // the scope of the add function is defined within the if-statement block, so only there we can use the add function which means functions are blocked scoped in strict mode.
+        // add(2, 3); // add is not deined
+    }
+    printAge(); // You are 46, born in 1991.
+    return age;
+}
+
+// A Global variable:
+const firstName = 'Jonas';
+CalcAge(1991);
+
+// Even though the variable firstName was defined after the calcAge function which is fine as the code in the function is only executed one its called
+// which happens after the declaration of the firstName variable.
+// The engine as its executing the printAge function is trying to find the age variable in the current scope but can't find it there so it goes to the
+// parent scope where it found it within the calcAge function. Same for the birthYear variable as for scoping the parameter of a function works just
+// like normal variables.
+
+// console.log(age); // age variable is not accessible outside of the calcAge function
+// printAge(); // Same for functions.
+
+// Create a Block scope within the printAge function. See code above.
+// Block scopes started in ES6.
+// firstName are different variables and defined in different scopes? We can have repeated variable names same as same parameter names.
 
 
 
