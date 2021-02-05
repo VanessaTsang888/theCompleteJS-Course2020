@@ -191,10 +191,98 @@ Our JS code runs inside of execution contexts that are in the stack.
 ****************************************************************************************************************************************************** */
 
 
+/******************************************************************************************************************************************************* 
 
+92. SCOPE AND THE SCOPE CHAIN:
 
+Each Execution Context has a variable environment, Scope chain, 'this' keyword.
 
+What Scoping means? Scope Concepts:
 
+Scoping controls how our program's variables are organised and accesed by the JS Engine. "Where do variables live? or "Where can we access a certain variable 
+and where not?"
+
+Lexical Scoping: scoping is controlled by placement of functions and blocks in the programs code;
+Child functions have access to its parent function.
+
+Scope: Space or environment in which a certain variable is declared (variable environment in case of functions). There is global scope, function scope and block scope;
+
+Scope of a variable: is the entire region of our code where a certain variable can be accessed.
+
+Global Scope:
+
+const me = 'Jonas';
+const job = 'teacher';
+const year = 1989;
+
+1. outside of any function or block.
+2. Variables declared in glabal scope are accessible everywhere.
+
+Function Scope:
+
+1. Each function creates a scope called Function Scope and the variables declared inside that function scope are only accessible inside that function, NOT outside.
+2. Also called local scope.
+Local variables live in the function. Al types of functions create their own scope.
+
+Block Scope (ES6):
+
+Blocks also create scopes.
+Everything between braces are blocks or blocks of code i.e. blocks within an if-statement or for-loop:
+
+if (year >= 1981 && year <= 1996) {
+    const millenial = true;
+    const food = 'Avocado toast';
+}
+
+console.log(millenial);
+
+1. Variables declared inside of a blcok are only accessible only inside block (block scoped) NOT outside of the block.
+2. However, this only applies to declared with let or const variables. Only let and const are restricted to the block in which they were created.
+That's why we say let and const variables are blocked scoped. var variables are function scoped. ES5 and before we only had Global Scope and Function Scope.
+3. In ES6, all functions are now also block scoped, at least in 'strict mode'. Functions that are declared inside a block are only accessible inside that block.
+
+The Scope Chain:
+Look at code and build the scope chain. Starting with the Global Scope, the variable declaration:
+myName = 'Jonas';
+
+First Scope is: first()
+has the age variable.
+Second Scope (a function inside a function) has the job variable: job = 'teacher';
+
+How will the JS Engine know the values of inside the second scope when they are declared in the first scope? Every scope always has access to all the variables
+from all its outter or parents scopes (function inside a function). 
+
+Variable Look-up:
+Scope has access to variables from all outer scopes. The second() scope will look-up in scope chain for the variable in the first() scope and if can't find it
+there, then will look-up in the Global scope. If it can't find the variable then it will throw an error. When it has found the variable, then it will use it.
+This do not work the other way round. A certain scope will never have access to the variables of an inner scope. i.e. The first() scope will never get access to
+the job variable that is stored in the second() scope. So one scope can only look up in the scope chain, but it can not look down. So only parent scope can be
+used but no child scopes.
+
+Both the if block scope and the second() scope are child (or sibling scopes) scopes of the first() scope so the if block scope can't look down in the second() scope
+due to the rules of Lexical Scoping - they cannot have access to each others variables as one is not written inside of the other one.
+
+Scope Chain Vs. Call Stack:
+
+What is the difference? 
+Scope Chain: order in which functions are written in the code. Has nothing to do with the order in which functions were called.
+Call Stack - order in which funtions were called.
+
+Variable Environment (VE).
+c and b can NOT be found in third() scope.
+The order the function is called do not affect the scope chain. 
+
+SUMMARY:
+1. Scoping is all about: scoping asks the question Where do variales live? or Where can we access a caertain variable, and where not?
+2. Three types of scopes: the global scope, scopes defined by functions, and scopes defined by blocks.
+3. Only let and const variables are block-scoped. Variables declared with car edn up in the closest function scope;
+4. Lexical Scoping: the rules of where we can access variables are based on exactly where in the code functions and blocks are written;
+5. The Scope Chain: every scope always has access to all the variables from all its outer scopes.
+6. Variable Lookup: When a variable is not in the current scope, the engine looks up in the scope chain until it finds the variable it's looking for.
+7. The scope chain is a one-way street: a scope will never have access to the variables of an inner scope. Only of outter scopes.
+8. The scope chain has nothing to do with the order in which the functions were called. It does not affect the scope chain at all.
+
+****************************************************************************************************************************************************** */
 
 
 
