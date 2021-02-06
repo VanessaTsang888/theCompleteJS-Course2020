@@ -352,8 +352,58 @@ CalcAge(1991);
 // firstName are different variables and defined in different scopes? We can have repeated variable names same as same parameter names.
 
 
+/******************************************************************************************************************************************************* 
 
 
+94. Variables Environment: Hoisting and The TDZ:
+
+Execution ceontext always contains 3 parts: a variable environment, the scope chain in the current context, and the 'this' keyword.
+
+The Variable Environment - how variables are acutally created in JS.
+In JS we have a mechanism called Hoisting:
+1. Makes some types of variables accessible /usable in the code befoe they are actually declared, "Variables lifted to the top of their scope".
+
+Behind The Scenes: how oisting really works:
+Before execution, code is scanned for variable declarations, and for each variable, a new property is created in the variable environlment object.
+
+Hoisting don't work for all variable types due to the way hosting works for:
+
+                                                HOISTED?          INITIAL VALUE:                       SCOPE:        What This Means?
+
+1. Function Declarations:                        YES             Set to the Actual function            Block          We can use function declarations before they are actually declared in the code as they are stored in the variable environment object even before the code starts executing. Function declarations work this way due to Hoisting.                        
+
+2. variables defined with var:                   YES              undefined (bugs, dont use car)       Function
+
+3. Variables defined with let or const:          NO                Set to <uninitialised>, TDZ          Blcok         No value to work with. These variables are placed in a Temporal Dead Zone (TDZ).
+
+4. Function expressions & arrow functions:      Depends on if they were created using var, const or let. 
+
+Temporal Dead Zone, Let and Const:
+
+Example: TDZ for the job variable within the if-statement:
+
+if (myName === 'Jonas') {
+    console.log(`Jonas is a ${job}'); 
+    const age = 2037 - 1989;
+    console.log(age); // ReferenceError: Cannot access 'job' before initialization.
+    const job = 'teacher';
+    console.log(x);
+}
+
+job variable: It's the region of the scope in which the variable is defined, but can't be used in anyway.
+Each const and let variables get their own TDZ that starts at the begining of the scope untik the line where it is defined. The variable is only safe to use after
+the TDZ.
+
+Why TDZ?
+Introduced in ES6. The behavior makes it easier to avoid and catch errors: accessing variables before declaration is bad practice and should be avoided as using
+a variable that is set to undefined can cause serious bugs.
+const should never be reassigned and only assigned when execution actually reaches the declaration. That makes it impossible to use it before.
+
+If hoisting creates so many problems why it exist in the first place?
+So we can use function declarations before we use them - this is essential for some programming techneques such as mutual recursion, and make code a lot more
+readable. We use let and const to work around this problem.
+
+****************************************************************************************************************************************************** */
 
 
 
