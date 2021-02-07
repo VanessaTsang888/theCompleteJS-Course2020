@@ -431,3 +431,101 @@ This is not important for me to learn ReactJS. Therefore, I'm only going to watc
 This is not important for me to learn ReactJS. Therefore, I'm only going to watch this video without taking any notes.
 
 ****************************************************************************************************************************************************** */
+
+
+/*******************************************************************************************************************************************************
+ * 
+ * 98. Regular Functions vs. Arrow Functions
+ *
+ * The 'this' keyword related to regular functions and Arrow Functions:
+ * How each of the different functions work in regards to the 'this' keyword, so I can use them according to my specific needs.
+ *
+ * The argument keyword only exist in regular functions: function declaration and function expression but not arrow functions.
+ * There is a more modern way to deal with parameters.
+ * 
+ * ****************************************************************************************************************************************************** */
+ 
+// Variables created with var, creates properties on the global object. Don't use var to declare variables.
+var firstName = 'Matila';
+
+// To this jonas object, add a second method (a simple greet method) but this time use an Arrow Function:
+const jonas = {
+    firstName: 'Jonas',
+    year: 1991,
+    calcAge: function() {
+        // console.log(this);
+        console.log(2037 - this.year);
+        
+// Solution 1:        
+        // extra variable that we normall call self and set to 'this'. Self is defined as 'this':
+        // ES6 solution is to use an arrow funtion.
+        // const self = this; // true
+
+        // // return ?? if a person is a Millennial.
+        // const isMillenial = function () {
+        //     console.log(self); // Undefined
+        //     console.log(self.year >= 1981 && self.year <= 1996);
+        // };
+
+// solution 2
+// This will work as we can use 'this' keyword in this type of function.
+// Using the parent scope  the jonas object so the this keyword is true.
+        const isMillenial = function () {
+            console.log(this); // true
+            console.log(this.year >= 1981 && this.year <= 1996);
+        };
+
+        isMillenial(); // a regular function call that happens inside a method
+    },
+// a simple greet method:
+// Arrow Functions do not get its own 'this' keyword and will use the 'this' keyword from its suroundings - its parents scope of this greet method is the
+// Use case of the arrow function:
+    greet: () => {
+        console.log(this);
+        console.log(`Hey ${this.firstName}`) // window object, Hey Matila due to the var used on that variable.
+    },
+};
+
+// global scope that is the window object.
+// When we try to access a property that doesn't exist on a certain object, we do not get an error, but undefined.
+// On the Window Object there isn't the firstName, so we get the: Undefined logout.
+jonas.greet(); // Hey undefined
+jonas.calcAge();
+console.log(this.firstName);
+
+// For Best Practice, never use an arrow function as a method.
+// Hey Undefined is still a bug and can be avoided by just using a regular function.
+// A clear rule: a regular function call has the 'this' keyword set to undefined. There is 2 solutions to this problem:
+// first use an extra variable that we normall call self.
+// second solution: ES6 solution is to use an arrow funtion. 
+
+// Functions also get access to an arguments keyword, not just to the 'this' keyword - onlyi available in regular functions:
+// Arguments keyword
+
+const addExpre = function (a, b) {
+    console.log(arguments);
+    return a + b;
+};
+addExpre(2, 5); // an array with 2 and 5
+
+var addArrow = (a, b) => {
+    console.log(arguments);
+    return a + b;
+};
+addArrow(1, 5, 8); // arguments is not defined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
