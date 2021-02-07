@@ -297,6 +297,7 @@ SUMMARY:
 // The firstName variable NOT in the calcAge function, but it's a global varible that I've defined outside of the CalcAge function. Therefore, through the
 // scope chain it will be made available also inside the calcAge function.
 
+/*
 function CalcAge(birthYear) {
     const age = 2037 - birthYear;
     // console.log(firstName); // Jonas // when this was executed, JS did not find this variable in this scope so it did a variable lookup in the scope chain.
@@ -333,6 +334,7 @@ function CalcAge(birthYear) {
     printAge(); // You are 46, born in 1991.
     return age;
 }
+*/
 
 // A Global variable:
 const firstName = 'Jonas';
@@ -406,5 +408,26 @@ readable. We use let and const to work around this problem.
 ****************************************************************************************************************************************************** */
 
 
+/******************************************************************************************************************************************************* 
 
+95. Hoisting and TDZ in Practice:
 
+This is not important for me to learn ReactJS. Therefore, I'm moving leaving this out.
+
+****************************************************************************************************************************************************** */
+
+/******************************************************************************************************************************************************* 
+
+96. The 'this' keyword:
+
+This is not important for me to learn ReactJS. Therefore, I'm only going to watch this video without taking any notes.
+
+****************************************************************************************************************************************************** */
+
+/******************************************************************************************************************************************************* 
+
+97. The 'this' keyword in Practice:
+
+This is not important for me to learn ReactJS. Therefore, I'm only going to watch this video without taking any notes.
+
+****************************************************************************************************************************************************** */
