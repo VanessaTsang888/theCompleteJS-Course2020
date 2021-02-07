@@ -570,10 +570,12 @@ value - the memory address i.e. D30F. This is how reference values work in JS.
 */
 
 
+/*******************************************************************************************************************************************************
 
+100. Primitives vs. Objects in Practice:
 
+I watched this video without taking notes as I feel I don't need to take notes for this lecture.
 
-
-
+ ********************************************************************************************************************************************************/
 
 
