@@ -515,11 +515,59 @@ var addArrow = (a, b) => {
 addArrow(1, 5, 8); // arguments is not defined
 
 
+/*******************************************************************************************************************************************************
 
+99. Primatives vs. Objects:
 
+Primatives: ie. numbers, strings and Booleans.
 
+ ********************************************************************************************************************************************************/
 
+// This works as expected.
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age); // 31
+console.log(oldAge); // 30
 
+// but now a different scenario which has an object.
+const me = {
+    name: 'Jonas',
+    age: 30,
+};
+// Copy this object as i have a friend also called Jonas as well.
+const friend = me;
+// The is the same but the ages are different.
+friend.age = 27;
+console.log('Friend:', friend); // 27
+console.log('Me:', me); // 27
+
+// Why is both age 27?
+
+/* 
+
+PRIMITIVES, OBJECTS AND THE JS ENGINE:
+
+PRIMITIVES Number. String, Boolean, Undefined, Null, Symbol, BigInt. Everything else are Objects.
+OBJECTS: those are NOT primitives - objects created with the:
+Object Literal, Arrays, Functions, many more...
+
+When talking about memory and memory management, it's usual to call primitives, primitive types, and Objects reference types as of the different way due
+to the different ways they are stored in memory.
+
+THE JS ENGINE: has 2 components - The Call Stack where functions are executed and Heap where objects are stored in memory. All our objects or reference types
+will get stored in the memory Heap.
+Primitive types are stored in the Call Stack as that's where execution context run.
+
+HOw do all this work?
+
+Reference to memory address in Heap.
+Conclusion:
+Call variables declared with const are immutable but only true for primitive values not for reference values.
+Both me and friend points to same object in the memory heap. So when something chances, it will be reflected in both friend and me. Pointing to the exact same
+value - the memory address i.e. D30F. This is how reference values work in JS.
+
+*/
 
 
 
