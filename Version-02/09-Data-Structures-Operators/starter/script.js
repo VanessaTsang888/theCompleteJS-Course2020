@@ -46,7 +46,73 @@ let restaurant = {
 orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address, }) {
   console.log(`Oder received ${ this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   },
+// To order pasta with 3 ingredients and logout.
+  orderPasta: function(ing1, ing2, ing3) {
+    console.log(`Here is your declicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  }
+
+
+
 };
+
+// With Spread Operator:
+// we can use the Spread Operator whenever we would otherwise write multiple values separate by commas: 
+// Without Spread Operator: use ... to expand the array
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr); // (5) [1, 2, 7, 8, 9]
+// to expand an arry: ...arr
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+// Use Spread Operator to log the individual elements of the array and when we need to pass multiple elements into a function.
+console.log(...newArr); // 1 2 7 8 9
+
+// Create an array with one more food item in the main menu array. Create new main menu.
+// Need to expand the array then add your new fod items
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu); // (4) ["Pizza", "Pasta", "Risotto", "Gnocci"]
+
+// Copy array: put all the elements from the mainMenu into this new mainMenuCopy variable. Create a shallow copy of the array: mainMenu
+const mainMenuCopy = [...restaurant.mainMenu]
+
+// Join 2 or more arrays. Create an array that contains both the main menu and the starter menu.
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]; 
+console.log(menu); // (4) ["Pizza", "Pasta", "Risotto", "Gnocci"] 
+                  // ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad", "Pizza", "Pasta", "Risotto"]
+
+// The spread operator works on all so-called iterable. 
+// There are different iterable in JS: arrays, strings, maps or sets. So most of the built-in data structures are now iterables but except objects.
+// We can use the spread operator on iterables.
+const str = 'Jonas';
+const letters = [ ...str, '', 'S. '];
+console.log(letters); // logout each individual elements of the string Jonas, empty string, and 'S'
+console.log(...str); // 
+
+// Call the orderPasta function to order pasta:
+
+// Real-world example:
+// Function that exepects multiple arguments. Then use the Spread Operator to pass those arguments.
+// Build an array with the 3 ingredients.
+const ingredients = [
+  // prompt("Let's make pasta! Ingredient 1?"), prompt("Ingredient 2?"), prompt("Ingredient 3?")
+];
+console.log(ingredients); // (3) ["a", "b", "c"]
+// Call the orderPasta function. Will write the 3 elements of the array. Spread the ingredients array.
+restaurant.orderPasta(...ingredients); // (3) ["chese", "ham", "tomatoes"]
+// The old way ES5 is: longer, not as clean.
+restaurant.orderPasta(ingredients[1], ingredients[2], ingredients[3]); // the 3 element that user inputs in the prompt boxes.
+
+// Objects are not iterables. Copy all properties from restaurant object to the newRestaurant object.
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+// Shallow copy on Objects using the Spread Operator.
+const restaurantCopy = { ...restaurant};
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name); // istorante Roma
+console.log(restaurant.name); // Classico Italiano
+
+
 
 restaurant.orderDelivery( {
   time: '22:30',
@@ -61,8 +127,6 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
  
-// const {name, openingHouts }
-
 
 const {
   name: restaurantName,
@@ -72,9 +136,9 @@ const {
 } = restaurant;
 console.log(restaurantName, hours, tags);
 
-// Default values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+// // Default values
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
 
 // Mutating variables
 let a = 111;
@@ -169,10 +233,17 @@ console.log(o, c); // 11 23
 
 104. Destructuring Objects:
 
+Coded within the above code.
 
+********************************************************************************************************************************************************/
 
+/*******************************************************************************************************************************************************
 
+105. The Spread Operator (…)
 
+similar to Destructuring as it also helps us get elements out of arrays.
+To expand an array into all its elements - unpacking all the elements at once. See above code.
 
+Only use the Spread Operator only when building an array, when pass values into a function.
 
 ********************************************************************************************************************************************************/
