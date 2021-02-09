@@ -54,9 +54,31 @@ orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', addr
   orderPizza: function (mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
-  }
-
+  },
 };
+
+// Loop over our entire menu. Start by creating again the array with the entire menu by expand the restaurant starter meanu and the main menu.
+// The for-of loop is simplar than the regular for-loop.
+// Will log the items one by one.
+// The item variable is always the current element in each iteration. We don't need a code block as we only have 1 statement to execute.
+// No need to worry about counters and conditions. We can still use the continue and break keywords.
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const item of menu) console.log(item); // Focaccia  Bruschetta  Garlic Bread  Caprese Salad  Pizza  Pasta  Risotto.
+
+// To get the current index and not just the current element, its a bit of a pain when we need that index as originally the for-of loop was meant to just give
+// you the element.
+// results: each of the item (x7) is an array with the index in the array element itself.
+for (const [i, el] of menu.entries()) {
+  // console.log(item); // (2) [0, "Focaccia"]
+  // Display menu. If item is an array we can just destructure it. Destructure it using 2 elements: i, el.
+  console.log(`${ i + 1} : ${ el }`); // 
+}
+
+// An array in which each position contains a new array, which contains the element and the index number of that element in that original array.
+// console.log([...menu.entries()]);
+
+
+
 
 // 1. Destructuring:
 // How Rest Pattern works in Destructing Assignments: in Arrays:
@@ -335,8 +357,14 @@ Create another method within the restaurant Object to demo Rest Parameter. See m
 ********************************************************************************************************************************************************/
 
 
+/*******************************************************************************************************************************************************
 
+110. Looping Arrays: The for-of Loop:
 
+New way of looping through arrays is using the for-of loop. 
 
+Loop over our entire menu. Start by creating again the array with the entire menu by expand the restaurant starter meanu and the main menu.
+See code above.
 
+********************************************************************************************************************************************************/
 
