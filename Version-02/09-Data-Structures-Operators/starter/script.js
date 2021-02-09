@@ -15,7 +15,6 @@ To simulate a food delivery app: Italian Restuarant:
 // Starter data:
 // We can have a function return an array and then immediately destruct the result into different variables. This allows us to return multiple values from a funtion.
 
-
 let restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -46,19 +45,93 @@ let restaurant = {
 orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address, }) {
   console.log(`Oder received ${ this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   },
-// To order pasta with 3 ingredients and logout.
+// Method To order pasta with 3 ingredients and logout.
   orderPasta: function(ing1, ing2, ing3) {
     console.log(`Here is your declicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+// Rest Parameters. This pizza need to have at least 1 ingredient, the other ingredients are optional.
+// Will collect the rest of the aruments into an array. Now order pizza by calling this function further down, just after the add(...x);
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
   }
 
-
-
 };
+
+// 1. Destructuring:
+// How Rest Pattern works in Destructing Assignments: in Arrays:
+// SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+
+// REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others); // script.js:59 1 2 (3) [3, 4, 5]
+
+// can use the 3 dots on both side of the array. do not include any skipped elements. Rest Pattern must be the last in the destructing assignment.
+// Collect the pizza, risotto from the mainMenu and put the rest from starterMenu in an array.
+// The Rest element must be the last element. Can only be only 1 Rest element in any destructuring assignment.
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu,];
+console.log(pizza, risotto, otherFood); // Pizza Risotto (4) ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"]
+
+// How Rest Pattern works in Destructing Assignments: in Objects:
+// Similar with arrays but the remaining elements will be collected into a new object and not a new array.
+// Create Object ONLY for the x2 weekdays. Take out Saturday into its own variable, then collect the rest the properties into a New Object.
+// logout: an object only containing fri and thu.
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays); // {thu: {…}, fri: {…}}
+
+// 2. Functions: Rest Parameters:
+// For the Spread Operator, the second use case was to pass multiple arguments into a function all at the same time.
+// Example: ingredients: we had an array, then we expanded all of the elements of the array to pass these elements then as individual arguments of the function.
+// The Rest Operator can do the opposite. Take some arguments and add them together. Any amount of arguments should work for this function.
+// Instead of specifying 7 arguments, we use the Rest Pattern - in this case its called Rest Parameters.
+// Use the rest syntax: ...
+// We call the argument: numbers
+// ...numbers
+// Create a working function that can accept any number of parameters. Pack the values into an Array.
+const add = function(...numbers) {
+  // console.log(numbers); // 3 arrays
+  // Simple logic to add all our numbers which is an Array. We want the length of that array.
+  // In each iteration we add the current number to the current sum value.
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  // logout sum to get some results.
+  console.log(sum);
+};
+// This function will be called 3 times, we expect 3 results.
+// logout: 3 arrays with all the arguments that we passed into the functions but they are Arrays. 
+// 
+// (2) [2, 3]
+// (4) [5, 3, 7, 2]
+// (7) [8, 2, 5, 3, 2, 1, 4]
+add(2, 3)
+add(5, 3, 7, 2)
+add(8, 2, 5, 3, 2, 1, 4)
+
+// Now order our pizza from the 'orderPizza method above' by specifying as many ingredients as we like.
+// logout results: mushrooms, and an array of the other ingredients that we passed in: (3) ["onlins", "olives", "spinach"]
+// This is the result of the Rest Arguments.
+restaurant.orderPizza('mushrooms', 'onlins', 'olives', 'spinach');
+// Order pizza with only mushrooms. The remaining arguments will be put in an empty array. In this case there are non to collect, but we still get empty array that
+// we can work with if we wish.
+restaurant.orderPizza('mushrooms');
+
+// The rest syntax is taking multiple numbers/values and then packs tem all into one array. It's doing the opposit to the Spread Operator.
+
+// Another example: unpack the values.
+// To take these values and call the add function with these 3 values, we use the Spread operator. So we are taking all the numbers of the array and Spreading them
+const x = [23, 5, 7]; // 
+// this would be same as wirting: 23, 5, 7
+add( ...x ); // 
+
+
+
+/*
 
 // With Spread Operator:
 // we can use the Spread Operator whenever we would otherwise write multiple values separate by commas: 
 // Without Spread Operator: use ... to expand the array
-const arr = [7, 8, 9];
+// const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 console.log(badNewArr); // (5) [1, 2, 7, 8, 9]
 // to expand an arry: ...arr
@@ -227,7 +300,7 @@ console.log(o, c); // 11 23
 
 // const [p = 1, q = 1, r = 1] = [8, 9];
 // console.log(p, q, r); // 8 9 undefined
-
+*/
 
 /*******************************************************************************************************************************************************
 
@@ -247,3 +320,23 @@ To expand an array into all its elements - unpacking all the elements at once. S
 Only use the Spread Operator only when building an array, when pass values into a function.
 
 ********************************************************************************************************************************************************/
+
+/*******************************************************************************************************************************************************
+
+106. Rest Pattern and Parameters:
+
+Two use case of the Spread Operator: we use the Spread Operator to build new arrays, or the pass multiple values into a function - expand an array
+into individual elements. The Rest Pattern uses the same syntax however, to collect multiple element and condense them into an array - the opposite
+of spread opportator. Rest is to pack elements into an array.
+Use Rest Pattern on the left-hand side of the assignment operator. The Rest element must be the last element.
+
+Create another method within the restaurant Object to demo Rest Parameter. See my code above.
+
+********************************************************************************************************************************************************/
+
+
+
+
+
+
+
