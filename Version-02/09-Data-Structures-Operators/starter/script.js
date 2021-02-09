@@ -12,6 +12,32 @@ To simulate a food delivery app: Italian Restuarant:
 
 ********************************************************************************************************************************************************/
 
+// Enhanced Object Literal:
+// An array with all the weekdays:
+// take some of them out rather than write them out manually by using the square brackets syntax.
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+
+// First Solution:
+// We have an object that is outside of this object, i.e. the openingHours object. We take this and create a separate object with it.
+// We still want to have the opening hours object inside of the restaurant object.
+// Before we could only compute the values but not the property names but now with Enhanced Object Literals we can do that as well.
+// (7) ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [`day-${2 + 4}`]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Starter data:
 // We can have a function return an array and then immediately destruct the result into different variables. This allows us to return multiple values from a funtion.
 
@@ -22,36 +48,30 @@ let restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  // Before ES6: the problem is that the property name is the same as the variale name from which we're getting this new object. With Enhanced Object Litral I don't
+  // need this. Now in ES6 Enhanced Object Literal its just this:
+  // result: we get a property named: hours
+openingHours, 
 
-  order: function (starterIndex, mainIndex) {
+// Second Enhancement to Object Literals is about writting methods. In ES6 we no longer have to create property then set to a function expression. We can write
+// in an easier way.
+
+  order (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
   // want an order delivery
-orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address, }) {
+orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address, }) {
   console.log(`Oder received ${ this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   },
+
 // Method To order pasta with 3 ingredients and logout.
-  orderPasta: function(ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(`Here is your declicious pasta with ${ing1}, ${ing2}, ${ing3}`);
   },
 // Rest Parameters. This pizza need to have at least 1 ingredient, the other ingredients are optional.
 // Will collect the rest of the aruments into an array. Now order pizza by calling this function further down, just after the add(...x);
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza (mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
@@ -99,7 +119,7 @@ console.log(pizza, risotto, otherFood); // Pizza Risotto (4) ["Focaccia", "Brus
 // Similar with arrays but the remaining elements will be collected into a new object and not a new array.
 // Create Object ONLY for the x2 weekdays. Take out Saturday into its own variable, then collect the rest the properties into a New Object.
 // logout: an object only containing fri and thu.
-const { sat, ...weekdays } = restaurant.openingHours;
+// const { sat, ...weekdays } = restaurant.openingHours;
 console.log(weekdays); // {thu: {…}, fri: {…}}
 
 // 2. Functions: Rest Parameters:
@@ -367,4 +387,22 @@ Loop over our entire menu. Start by creating again the array with the entire men
 See code above.
 
 ********************************************************************************************************************************************************/
+
+
+/*******************************************************************************************************************************************************
+
+111. Enhanced Object Literals:
+
+In the code above: Our restaurant object is an Object Literal as we wrote the object literally in our code using the curly braces syntax.
+ES6 introduced 3 ways to write object literals like this.
+
+1. we have an object that is outside of this object, i.e. the openingHours object. We take this and create a separate object with it.
+
+********************************************************************************************************************************************************/
+
+
+
+
+
+
 
