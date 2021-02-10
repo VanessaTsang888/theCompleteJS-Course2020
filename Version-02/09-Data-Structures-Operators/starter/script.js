@@ -401,8 +401,92 @@ ES6 introduced 3 ways to write object literals like this.
 ********************************************************************************************************************************************************/
 
 
+/*******************************************************************************************************************************************************
+
+118. SUMMARY: Which Data Structure to Use?
+
+Now we have 4 data structures we can choose from incl. Arrays, Sets, Objects, Maps.
+
+Sources Of Data:
+1. From the program itself: Data written directly in source code (e.g. status messages)
+2. From the UI: Data input from the user or data written in DOM (e.g. tasks in ToDo app)
+3. From external sources: Data fetched for example from web API (e.g. We can use web API to get data from other apps i.e. to get current weather in any city
+  or data about movies. or currency converstion rates etc. recipe objects).
+
+The Pros & Cons of each data structure and when to choose them:
+We store collection of data in Data Structures. There are 4 Data Structures in JS and we need a way to decide between them.
+
+Collection Of Data > Data Structure > 
+
+                      Simple List:
+                      Arrays or Sets - we have a list without any description.
+
+                      Key/Value Pairs:
+                      Objects or Maps - keys allow us to describe values.
+
+Getting data from a web API = most common source of data. This data comes in special format called JSON (JSON data format). Looks like a long string. Can be
+converted to JS objects as it ueses the same formating JS Objects and Arrays. In the example, the values are described by a key to tell us what the different
+values actually are. This is why here data is stored in an Object not an Array. Each of the recipe objects itself can be seen as a value and since we have many
+of them it means we have a collection of data. Therefore, we need a data structure to store them. An array of Objects is perfect for this recipes data.
+
+Other Data Structures Built in to JS:
+1. WeakMap
+2. WeakSet
+Other Data Structures Not Built in to JS:
+1. Stacks, 2. Queues, 3. Linked Lists, 4. Trees, 5. Hash Tables.
+
+Built in to JS: Arrays vs. Sets and Objects vs. Maps: 5:52
+When do we use them?
+
+Arrays vs. Sets:
+Arrays:
+1. Use when you need ordered list of values (might contain duplicates).
+2. Use when you need to manipulate data.
+
+Sets:
+1. Use when you need to work with unique values. Are to compliment Arrays when dealing with unique values.
+2. Use when high performance is really important.
+3. Use to remove duplicates from arrays.
+
+Objects vs. Maps;
+Objects:
+1. More "traditional" key/value store ("abused" objects).
+2. Easier to write and access values with . and []
+3. Use when you need to include functions (methods)
+4. Use when working with JSON data format (can convert to map)
+
+Maps:
+1. Better Performance - better for simple key-value stores as they offer.
+2. Map keys can have any data type
+3. Easy to iterate
+4. Easy to compute size of a Map.
+5. Use when you simply need to map key to values.
+6. Use when you need keys that are not strings.
+7. can't use the 'this' keyword in maps.
+
+At the moment Maps is more important than Sets.
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+********************************************************************************************************************************************************/
 
