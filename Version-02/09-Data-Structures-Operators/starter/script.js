@@ -476,15 +476,15 @@ At the moment Maps is more important than Sets.
 
 120. Working with Strings P1:
 
-Airplanes & Airlines:
-
+Example: Airplanes & Airlines:
 
 ********************************************************************************************************************************************************/
 
+/*
 // Comparing Arrays with Strings;
 // airline variable
 const airline = 'TAP Air Portugal';
-const plane = 'A320';
+let plane = 'A320';
 // Do something with this
 console.log(plane[0]); // A
 console.log(plane[1]); // 3
@@ -553,7 +553,111 @@ console.log(new String('jonas')); // result: the string looks like an Object
 console.log(typeof new String('jonas')); // object
 
 // All String methods return Primitives. The result of this is back being a String.
-console.log(typeof new String('jonas').slice(1));
+console.log(typeof new String('jonas').slice(1)); // string
+
+*/
+
+/*******************************************************************************************************************************************************
+
+121. Working with Strings P2:
+
+Simple String methods. Frist two are for chnaging the case of a string.
+all methods are case sensitive.
+
+
+********************************************************************************************************************************************************/
+
+// Simple String methods. Frist two are for chnaging the case of a string. No arguments needed.
+// Change the whole string to lower case letters only.
+const airline = '';
+console.log(airline.toLowerCase());
+// Change the whole string to upper case letters only.
+console.log(airline.toUpperCase());
+
+// Fix capitalisation on a passenger name. This needs to be fix. First step put everything into lower case.
+const passenger = 'jOnAS'; // Jonas
+ // convert the whole string to lower case.
+const passengerLower = passenger.toLowerCase();
+// Convert character in location 0 to upper case letter, then the remaining of the string all lower case, slice from position 1.
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect); // Jonas
+
+// Comparing user emails. Compare the 2 emails to find out if they are kind of the same?
+// Its just a matter of capitalisations and for Emails they are still valid.
+const email = 'hello@jonas.io';
+const loginEmail = ' Hello@Jonas.Io \n';
+// Check user input. First convert to lowercase using the toLowerCase method.
+// const lowerEmail = loginEmail.toLowerCase();
+// Remove all the white space, the Enter counts a white space using the trim method.
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail); // hello@jonas.io
+
+// We can do all of this in one step. This will return a new string. On strings we can call string methods. Call the trim method on the: loginEmail string.
+const normalisedEmail = loginEmail.toLowerCase().trim();
+console.log(normalisedEmail); // hello@jonas.io
+// will return true or false
+console.log(email === normalisedEmail); // true
+
+// Replacing part of strings. We have price for a flight. 
+const priceGB = '288,97£';
+// Compute the price in US using the period rather than the comma. This returns a string.
+// Remove the period, do chaining again.
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS); // 288,97$
+
+// We can replace entire words not just characters. Replace the word: door with the word: gate. Replace also creates a brand new string, it don't mutate the
+// original one.
+const announcement = 'All passengers come to boarding door 23. Boarding door 23!';
+console.log( announcement.replace('door', 'gate'));
+// Use the ReplaceAll method to replace all 'door' words with 'gate'.
+console.log( announcement.replaceAll('door', 'gate')); //  All passengers come to boarding gate 23. Boarding gate 23!
+// If the replaceAll method not working, use the regular express solution - Use the 'g' flag that stands for global
+// console.log( announcement.All(/door/g, 'gate')); 
+
+// 3 simple methods that return Booleans: includes, starts with, ends with.
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320')); // true
+console.log(plane.includes('Boeing')); // false
+// will return true as the value of the plane variable do start with the word 'Air'. It don't have to match the entire word:
+console.log(plane.startsWith('Air')); // true
+
+// Check that the current plane is part of the New Airbus family.
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the NEW Airbus Family'); // Part of the NEW Airbus Family
+}
+
+/*  Practice Exercise: using String methods on Strings:  */
+
+// Check if a certain passenger's baggage is allowed to be checked-in.
+// Check if the baggage includes a knife, a gun, COVID or Nigel . If so, that passenger is not allowed on board.
+
+const checkBaggage = function(items) {
+  const baggage = items.toLowerCase(); // first convert everything to lowercase so we don't have to check for all the variations of capitalisation. So we can easly compare with one standard.
+  if(baggage.includes('knif') || baggage.includes('gun') || baggage.includes('COVID-19') || baggage.includes('Nigel W')) {
+    console.log('You are NOT allowed on board! ⛔️')
+  } else {
+    console.log('Welcome aboard!');
+  }
+}
+
+checkBaggage('I have a laptop, some Food and a pocket Knife'); // You are NOT allowed on board! ⛔️
+checkBaggage('Socks and camera'); //Welcome aboard!
+checkBaggage('Got some snacks and a gun for protection as I\'m from the US'); // You are NOT allowed on board! ⛔️
+checkBaggage('I have Nigel in bag as he can\'t be trusted at home on his own'); // Welcome aboard!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
