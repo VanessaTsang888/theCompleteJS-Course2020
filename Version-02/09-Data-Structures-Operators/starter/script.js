@@ -564,7 +564,6 @@ console.log(typeof new String('jonas').slice(1)); // string
 Simple String methods. Frist two are for chnaging the case of a string.
 all methods are case sensitive.
 
-
 ********************************************************************************************************************************************************/
 
 // Simple String methods. Frist two are for chnaging the case of a string. No arguments needed.
@@ -633,7 +632,7 @@ if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
 
 const checkBaggage = function(items) {
   const baggage = items.toLowerCase(); // first convert everything to lowercase so we don't have to check for all the variations of capitalisation. So we can easly compare with one standard.
-  if(baggage.includes('knif') || baggage.includes('gun') || baggage.includes('COVID-19') || baggage.includes('Nigel W')) {
+  if(baggage.includes('knif') || baggage.includes('gun') || baggage.includes('COVID-19') || baggage.includes('Fred')) {
     console.log('You are NOT allowed on board! ⛔️')
   } else {
     console.log('Welcome aboard!');
@@ -643,9 +642,16 @@ const checkBaggage = function(items) {
 checkBaggage('I have a laptop, some Food and a pocket Knife'); // You are NOT allowed on board! ⛔️
 checkBaggage('Socks and camera'); //Welcome aboard!
 checkBaggage('Got some snacks and a gun for protection as I\'m from the US'); // You are NOT allowed on board! ⛔️
-checkBaggage('I have Nigel in bag as he can\'t be trusted at home on his own'); // Welcome aboard!
+checkBaggage('I have Fred in bag as he can\'t be trusted at home on his own'); // Welcome aboard!
 
 
+/*******************************************************************************************************************************************************
+
+122. Working with Strings P3:
+
+
+
+********************************************************************************************************************************************************/
 
 
 
