@@ -15,6 +15,7 @@ To simulate a food delivery app: Italian Restuarant:
 // Enhanced Object Literal:
 // An array with all the weekdays:
 // take some of them out rather than write them out manually by using the square brackets syntax.
+/*
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 
@@ -165,6 +166,7 @@ restaurant.orderPizza('mushrooms');
 const x = [23, 5, 7]; // 
 // this would be same as wirting: 23, 5, 7
 add( ...x ); // 
+*/
 
 
 
@@ -344,6 +346,7 @@ console.log(o, c); // 11 23
 // console.log(p, q, r); // 8 9 undefined
 */
 
+
 /*******************************************************************************************************************************************************
 
 104. Destructuring Objects:
@@ -466,27 +469,103 @@ Maps:
 
 At the moment Maps is more important than Sets.
 
+********************************************************************************************************************************************************/
 
 
+/*******************************************************************************************************************************************************
 
+120. Working with Strings P1:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Airplanes & Airlines:
 
 
 ********************************************************************************************************************************************************/
+
+// Comparing Arrays with Strings;
+// airline variable
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+// Do something with this
+console.log(plane[0]); // A
+console.log(plane[1]); // 3
+console.log(plane[2]); // 2
+// to logout the B from the String
+console.log('b737' [0]);
+
+// Read the length property of String
+console.log(airline.length); // 16
+console.log('B737'.length); // 4
+
+// Strings also have methods and some are similar to the array methods.
+// Get the position in which a cerain letter is in the String. Strings are also zero based.
+// Will logout: 6 as it includes the space between the P and A within the value of the airline variable.
+// indexOf : gets the first occurance
+// lastIndexOf : gets the last occurance
+console.log(airline.indexOf('r')); // 6
+console.log(airline.lastIndexOf('l')); // 15
+console.log(airline.indexOf('Portugal')); // 8
+
+// What can we do with the index? 1 use case is to extract part of a String using the slice method - to return new string.
+// slice method needs indexes as arguments. Sometimes it can be useful to first figure out the index of part of a string to then extract that.
+// Start slice at position 4. The slice method starts to extract from the letter A form the above String.
+// The result is called a subString as its just a part of the original string. This dont change the underlying or original string as its impossible to mutate
+// strings they are Primatives. So these methods always will return new strings.
+console.log(airline.slice(4)); // Air Portugal
+// we also specify an end parameter.
+// Location 7 is a space which is the end value and not included in the string - it stops extracting before reaching index number 7.
+// The length of the extracted string will always be the end minus the begining: 7 - 4 = 3
+console.log(airline.slice(4, 7)); // Air
+
+// What if we don't know the string we will receive? 
+// Extrac the first word of the same string but without knowing any of the indexes. You can't hardcode the values.
+console.log(airline.slice(0, airline.indexOf(' '))); // TAP
+// Extract the last word start slice at the last space. It will keep extracting everything until the end. The space at the front is included so we need to add: +1 
+console.log(airline.slice(airline.lastIndexOf(' ') + 1 )); // Portugal
+
+// Define a negative begining argument. It will Start extracting from the end
+// Result: last two letters from the word Portual
+console.log(airline.slice(-2)); // al
+// Specify a negative end parameter. Starts position 1 and the last character is cut off.
+console.log(airline.slice(-2)); // AP Air Portuga
+
+// Write a function that receives an airplane seat and logs to the console whether its a middle seat or not.
+// Check if the seat we receive contain a B or E and if so they are middle seats.
+// Take the last character of the string and test whether its a B or an E.
+const checkMiddleSeat = function(seat) {
+  // B and E are middle seats. to extract the last character, We use -1 as the begin character. It will start extracting one from the right side.
+  const s = seat.slice(-1);
+  if(s === 'B' || s === 'E')
+  console.log('You got the middle seat');
+  else console.log('You got lucky');
+}
+
+checkMiddleSeat('11B'); // You got the middle seat
+checkMiddleSeat('23C'); // You got lucky
+checkMiddleSeat('3E'); // You got the middle seat
+
+// Calling a method on a String:
+// String are just Primitives and they have methods available. When we call a method on a String, JS will auto behind the scenes convert that string primitive to
+// a string object with the same content. Then its on that object where the methods are called. This process is called boxing as it takes our string and puts it
+// in to a box which is the object.
+// JS will call this string function. Once the opporation is done, the object is converted back to a regular String primitive.
+console.log(new String('jonas')); // result: the string looks like an Object 
+// this is now an Object
+console.log(typeof new String('jonas')); // object
+
+// All String methods return Primitives. The result of this is back being a String.
+console.log(typeof new String('jonas').slice(1));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
