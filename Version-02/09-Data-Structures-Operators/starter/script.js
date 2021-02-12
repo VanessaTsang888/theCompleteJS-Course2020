@@ -476,15 +476,15 @@ At the moment Maps is more important than Sets.
 
 120. Working with Strings P1:
 
-Example: Airplanes & Airlines:
+Airplanes & Airlines:
+
 
 ********************************************************************************************************************************************************/
 
-/*
 // Comparing Arrays with Strings;
 // airline variable
 const airline = 'TAP Air Portugal';
-let plane = 'A320';
+const plane = 'A320';
 // Do something with this
 console.log(plane[0]); // A
 console.log(plane[1]); // 3
@@ -554,8 +554,6 @@ console.log(typeof new String('jonas')); // object
 
 // All String methods return Primitives. The result of this is back being a String.
 console.log(typeof new String('jonas').slice(1)); // string
-
-*/
 
 /*******************************************************************************************************************************************************
 
@@ -628,7 +626,7 @@ if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
 /*  Practice Exercise: using String methods on Strings:  */
 
 // Check if a certain passenger's baggage is allowed to be checked-in.
-// Check if the baggage includes a knife, a gun, COVID or Nigel . If so, that passenger is not allowed on board.
+// Check if the baggage includes a knife, a gun, COVID or Fred . If so, that passenger is not allowed on board.
 
 const checkBaggage = function(items) {
   const baggage = items.toLowerCase(); // first convert everything to lowercase so we don't have to check for all the variations of capitalisation. So we can easly compare with one standard.
@@ -643,27 +641,6 @@ checkBaggage('I have a laptop, some Food and a pocket Knife'); // You are NOT al
 checkBaggage('Socks and camera'); //Welcome aboard!
 checkBaggage('Got some snacks and a gun for protection as I\'m from the US'); // You are NOT allowed on board! ⛔️
 checkBaggage('I have Fred in bag as he can\'t be trusted at home on his own'); // Welcome aboard!
-
-
-/*******************************************************************************************************************************************************
-
-122. Working with Strings P3:
-
-
-
-********************************************************************************************************************************************************/
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
