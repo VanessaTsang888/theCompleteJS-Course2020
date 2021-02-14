@@ -480,6 +480,7 @@ Airplanes & Airlines:
 
 
 ********************************************************************************************************************************************************/
+/*
 
 // Comparing Arrays with Strings;
 // airline variable
@@ -528,6 +529,10 @@ console.log(airline.slice(-2)); // al
 // Specify a negative end parameter. Starts position 1 and the last character is cut off.
 console.log(airline.slice(-2)); // AP Air Portuga
 
+*/
+
+/*
+
 // Write a function that receives an airplane seat and logs to the console whether its a middle seat or not.
 // Check if the seat we receive contain a B or E and if so they are middle seats.
 // Take the last character of the string and test whether its a B or an E.
@@ -554,6 +559,8 @@ console.log(typeof new String('jonas')); // object
 
 // All String methods return Primitives. The result of this is back being a String.
 console.log(typeof new String('jonas').slice(1)); // string
+
+*/
 
 /*******************************************************************************************************************************************************
 
@@ -657,6 +664,7 @@ The Split method
 
 ********************************************************************************************************************************************************/
 
+/*
 // Split and Join:
 // Will split up the string using the plus operator
 console.log('a+very+nice+string'.split('+')); // (4) ["a", "very", "nice", "string"]
@@ -693,6 +701,10 @@ capitaliseName('jessica ann smith davis'); // Jessica Ann Smith Davis
 capitaliseName('vanessa tsang'); // Vanessa Tsang
 // No matter how long we a name we feed into the function it will always give us the correct output.
 
+*/
+
+/*
+
 // Padding a string means to add a number of characters to the string until the string has a certain desired length.
 // Use '+' to padStart to the string so its a total of 20 characters long.
 // Can also pad the end of the string. Add 5 '+' to the end of the string so its 30 characters long. 
@@ -717,6 +729,10 @@ console.log(maskCreditCard(12345678)); // ****5678
 console.log(maskCreditCard(123456789101112)); // ***********1112
 console.log(maskCreditCard('1112131415161718192021')); // ******************2021
 
+*/
+
+/*
+
 // String method: Repeat - allows us to repeat the same string multiple times.
 // There is bad weather at the airport, long messages on the screen, with text repeating which then keeps repeating.
 // Create a bigger string by repeating the original string multiple times.
@@ -736,8 +752,55 @@ planesInLine(12); //There are 12 planes in line 🛩🛩🛩🛩🛩🛩🛩🛩
 // There are more string methods on: mdn website
 // string replace > String.prototype.replace()
 
+*/
 
 
+/*******************************************************************************************************************************************************
 
+124. String Method Practice :
+
+Flight string: Format the messy string for a nice formatted output that is readable.
+This messy string is from a web API, we need to display the data into a readable format.
+The '+' acts as a separator between the 4 pieces of info of flights. Devide up the one string into 4 pieces using the split method.
+
+********************************************************************************************************************************************************/
+
+const flights =
+'_Delayed_Departure;Fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel74399299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// This is what we are going to achieve the formatted version of the above messy string:
+// Delayed Departure from FAO to TXL (11h25)
+// Arrival from BRU to FAO (11h45)
+// Delayed Arrival from HEL to FAO (12h05)
+// Departure from FAO to LIS (12h30)
+
+// Create a small Refactor: arrow function for small use case..
+const getCode = str => str.slice(0,3).toUpperCase();
+
+
+// console.log(flights.split('+')); // array with 4 flights
+
+// Logout 1 line or string per flight by looping over array, create a string in each iterations.
+// Will logout:
+// _Delayed_Departure;Fao93766109;txl2133758440;11:25
+// _Arrival;bru0943384722;fao93766109;11:45
+// _Delayed_Arrival;hel74399299980;fao93766109;12:05
+// _Departure;fao93766109;lis2323639855;12:30
+// 
+// Build each nicely formatted string. Get data out of each arrays, then format each of these pieces and then assemble each of them into final string.
+// Use destructuring to take the 4 pieces out of the array using the array syntax but to specify variables.
+// Creat the output string using Template Literal. Individually format each piece
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = (flight.split(';')); // x4 arrays
+  // The red card emoji: use the startWith method, will return a Boolean so if true will add the red card emoji, otherwise add nothing.
+  // Replace all underscores with a space.
+  // Format the airport codes: take the first 3 letters and convert them to uppercase.
+  // Align right: Apply the padStart method on the entire sting - empty space which is an default. This formatting should be apart of the string itself.
+  // Now each line is 36 characters long.
+
+  const output = `${type.startsWith('_Delayed') ? '🔴' : ' '}${type.replaceAll('_', ' ')} ${getCode(from)} ${getCode(to)} (${time.replace(':', 'h')})`.padStart(36); 
+
+  console.log(output); // x4 strings // _Delayed_Departure Fao93766109 txl2133758440 (11:25)
+}
 
 
