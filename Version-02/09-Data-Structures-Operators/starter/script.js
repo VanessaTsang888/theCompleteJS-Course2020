@@ -476,7 +476,8 @@ At the moment Maps is more important than Sets.
 
 120. Working with Strings P1:
 
-Example: Airplanes & Airlines:
+Airplanes & Airlines:
+
 
 ********************************************************************************************************************************************************/
 
@@ -484,7 +485,7 @@ Example: Airplanes & Airlines:
 // Comparing Arrays with Strings;
 // airline variable
 const airline = 'TAP Air Portugal';
-let plane = 'A320';
+const plane = 'A320';
 // Do something with this
 console.log(plane[0]); // A
 console.log(plane[1]); // 3
@@ -554,7 +555,6 @@ console.log(typeof new String('jonas')); // object
 
 // All String methods return Primitives. The result of this is back being a String.
 console.log(typeof new String('jonas').slice(1)); // string
-
 */
 
 /*******************************************************************************************************************************************************
@@ -565,9 +565,10 @@ Simple String methods. Frist two are for chnaging the case of a string.
 all methods are case sensitive.
 
 ********************************************************************************************************************************************************/
-
+ 
 // Simple String methods. Frist two are for chnaging the case of a string. No arguments needed.
 // Change the whole string to lower case letters only.
+/*
 const airline = '';
 console.log(airline.toLowerCase());
 // Change the whole string to upper case letters only.
@@ -624,11 +625,15 @@ console.log(plane.startsWith('Air')); // true
 if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
   console.log('Part of the NEW Airbus Family'); // Part of the NEW Airbus Family
 }
+*/
+
 
 /*  Practice Exercise: using String methods on Strings:  */
 
 // Check if a certain passenger's baggage is allowed to be checked-in.
-// Check if the baggage includes a knife, a gun, COVID or Nigel . If so, that passenger is not allowed on board.
+// Check if the baggage includes a knife, a gun, COVID or Fred . If so, that passenger is not allowed on board.
+
+/*
 
 const checkBaggage = function(items) {
   const baggage = items.toLowerCase(); // first convert everything to lowercase so we don't have to check for all the variations of capitalisation. So we can easly compare with one standard.
@@ -644,35 +649,94 @@ checkBaggage('Socks and camera'); //Welcome aboard!
 checkBaggage('Got some snacks and a gun for protection as I\'m from the US'); // You are NOT allowed on board! ⛔️
 checkBaggage('I have Fred in bag as he can\'t be trusted at home on his own'); // Welcome aboard!
 
+*/
 
 /*******************************************************************************************************************************************************
 
 122. Working with Strings P3:
 
-
+The Split method
 
 ********************************************************************************************************************************************************/
 
+// Split and Join:
+// Will split up the string using the plus operator
+console.log('a+very+nice+string'.split('+')); // (4) ["a", "very", "nice", "string"]
 
+// The goal is to get one array with 2 elements, 1 for each name. Split using a space. This is a common one to use.
+console.log('Jonas Schmedtmann'.split(' ')); // (2) ["Jonas", "Schmedtmann"]
 
+// Use the power of destructuring to create variables directly. The firstName and lastName will be the result of this split. This will create an array with too
+// elemetns. From that array, the first one will be taken into variable firstName, and the second one into lastName.
+const [firstName, lastName] = 'Jonas Schedtmann'.split(' ');
+// Create an array that makes the lastName uppercase and add Mr at the begining using the join method (the opposit to slit). Joint it. Specify a divider string (this could be anything but a space here is good for this example).
+// Store the result of this into a variable named: new Name. The result will be one string composed of the 3 parts of the array, joined together by the joining string.
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
 
+// Write a function to Capitalise a name with multiple names inside it. Using different string methods all in one function.
+// The strategy to transform the first letter of each name into a capita letter is put the names inside an arary so we can loop over them. We use the split method for that.
+const capitaliseName = function(name) {
+    const names = name.split(' '); // array
+    const namesUpper = []; // start it as empty array.
 
+    // loop over the array using the for-of loop to capitalise the names. Take the first letter, convert to uppercase, join it with the rest of the word. Slice everything execpt the first letter which is in position 0.
+    for(const n of names) {
+      // push this into an array so that we get the names capitalised and join the array together. In each iteration, we push this array.
+      // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+      // This will give me same result:
+      namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+    }
+    // Join together using the space as a separator.
+    console.log(namesUpper.join(' ')); 
+};
+// Call the function with a name/your name.
+capitaliseName('jessica ann smith davis'); // Jessica Ann Smith Davis
+capitaliseName('vanessa tsang'); // Vanessa Tsang
+// No matter how long we a name we feed into the function it will always give us the correct output.
 
+// Padding a string means to add a number of characters to the string until the string has a certain desired length.
+// Use '+' to padStart to the string so its a total of 20 characters long.
+// Can also pad the end of the string. Add 5 '+' to the end of the string so its 30 characters long. 
+const message = 'Go to gate 23!';
+console.log(message.padStart(20, '+').padEnd(30, '+')); // ++++++Go to gate 23!++++++++++
 
+// Will add more '+' as the initail string as its a lot shorter and needs to reach a total of 20 characters. Then do the padEnd part so that the total character is 30.
+console.log('Jonas'.padStart(20, '+').padEnd(30, '+')); // +++++++++++++++Jonas++++++++++
 
+// String Methode: Masking: only show the last 4 digits of a long number like a credit card.
+// Function will receive a number. The Number will get converted into a String.
+// Call the function with the credit number. Use padStart to pad with some kind of symbol. Use slice with a negative parameter.
+// Return the last 4 characters and pad it with '*' at the start all the way until the original length of the string.
+// So we took the last 4 digits then padded the rest of the string until it match the original length of the string.
+const maskCreditCard = function(number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+}
 
+console.log(maskCreditCard(12345678)); // ****5678
+console.log(maskCreditCard(123456789101112)); // ***********1112
+console.log(maskCreditCard('1112131415161718192021')); // ******************2021
 
+// String method: Repeat - allows us to repeat the same string multiple times.
+// There is bad weather at the airport, long messages on the screen, with text repeating which then keeps repeating.
+// Create a bigger string by repeating the original string multiple times.
+const message2 = 'Bad Weather... All Departures Delayed By At Last 1 hour... ';
+console.log(message2.repeat(8)); // message repeated 8 times
 
+// Due to bad weather there are many planes in line waiting for take off.
+// Parameter of 'n' for number. Dynamically logout the number of planes that are in line waiting to take off.
+const planesInLine = function(n) {
+  console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}`);
+}
+// Call the function as many times as I like as now we can more than 1 airport in London.
+planesInLine(8); // There are 8 planes in line 🛩🛩🛩🛩🛩🛩🛩🛩
+planesInLine(3); // There are 3 planes in line 🛩🛩🛩
+planesInLine(12); //There are 12 planes in line 🛩🛩🛩🛩🛩🛩🛩🛩🛩🛩🛩🛩
 
-
-
-
-
-
-
-
-
-
+// There are more string methods on: mdn website
+// string replace > String.prototype.replace()
 
 
 
