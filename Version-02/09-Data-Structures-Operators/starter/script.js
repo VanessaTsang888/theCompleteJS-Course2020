@@ -481,7 +481,6 @@ Airplanes & Airlines:
 
 ********************************************************************************************************************************************************/
 
-/*
 // Comparing Arrays with Strings;
 // airline variable
 const airline = 'TAP Air Portugal';
@@ -555,7 +554,6 @@ console.log(typeof new String('jonas')); // object
 
 // All String methods return Primitives. The result of this is back being a String.
 console.log(typeof new String('jonas').slice(1)); // string
-*/
 
 /*******************************************************************************************************************************************************
 
