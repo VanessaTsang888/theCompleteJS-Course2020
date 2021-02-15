@@ -55,3 +55,54 @@ checkIn(flight, jonas); // Wrong passport!
 // reference, only passing by value. However, the reference itself is still a value - its a value that contains a memory address.
 // We pass a reference to the function but we do not pass by reference, 
 
+/**************************************************************************************************************************************************** 
+
+129. FIRST-CLASS AND HIGHER-ORDER FUNCTIONS:
+
+JS treats functions as first-class citizens.
+This means functions are simply values and treated as values.
+Functions ar just another type of object.
+
+Pass Functions as Arguments to OTHER functions:
+since objects are values, functions are values too, so we can do some interesting things with them:
+storing them in variables or object properties. We can also pass functions as argumetns to other functions, i.e. when adding event listeners or event handlers
+to DOM objects: we pass the greet function into the addEventListener function as a value. 
+
+Return functions FROM functions:
+We can also return a function from anyother function - crazy but can
+be very useful. 
+
+Call methods on functions:
+as functions are objects. There are function methods which are methods that we can call on functions, i.e. the 'bind' method.
+
+First-class functions allows us to write higher-order functions:
+Higher-order function is either a function that receives another function as an argument, or a function that returns a new function or both.
+
+A function that receives another function:
+The addEventListener function is the Higher-order function as it receives another function as an input - the greet function. The function that has been
+passed-in the known as the Callback Function as the Callback function will be called later by the higher-order function, the addEventListener will call
+the greet callback later as soon as the click event happens.
+
+The confusion between First-class functions and Higher-order functiions:
+The are NOT the same thing, they mean different things.
+First-class functions: just a feature that a language either has or does not have = it means all functions are values. No First-class functions in
+practice as its just a concept.
+
+Higher-order functiions:
+There are Higher-order functiions in practice as JS supports First-class functions.
+
+
+****************************************************************************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
