@@ -198,6 +198,8 @@ Create a function that returns a new function.
 
 ****************************************************************************************************************************************************/
 
+/*
+
 // Return a new function value that has a parameter - will be able to receive arguments.
 const greet = function(greeting) {
     return function(name) {
@@ -230,6 +232,166 @@ greet('Hello')('Jonas'); // Hello Jonas
 const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 // Call it with a message.
 greetArr('Hi 你好')('I\'m Vanessa'); // Hi 你好 I'm Vanessa
+
+*/
+
+
+/**************************************************************************************************************************************************** 
+
+133. The Bind Method:
+
+This method also allows us to manually set the 'this' keyword (a special variable) for any function call. The difference is that 'bind' do not immediately
+call the function instead it returns a new function where 'this' keyword is bound. So it sets whatever value we pass into bind.
+
+We continue to use the aireline example from previous lecture and now we need to use the book function for EuroWings all the time
+
+
+****************************************************************************************************************************************************/
+
+///////////////////////////////////////
+// The call and apply Methods
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    // book: function() {}
+    book(flightNum, name) {
+      console.log(
+        `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+      );
+      this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+    },
+  };
+  
+  lufthansa.book(239, 'Jonas Schmedtmann');
+  lufthansa.book(635, 'John Smith');
+  
+  const eurowings = {
+    airline: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+  };
+  
+  const book = lufthansa.book;
+  
+  // Does NOT work
+  // book(23, 'Sarah Williams');
+  
+  // Call method
+  book.call(eurowings, 23, 'Sarah Williams');
+  console.log(eurowings);
+  
+  book.call(lufthansa, 239, 'Mary Cooper');
+  console.log(lufthansa);
+  
+  const swiss = {
+    airline: 'Swiss Air Lines',
+    iataCode: 'LX',
+    bookings: [],
+  };
+  
+  book.call(swiss, 583, 'Mary Cooper');
+  
+  // Apply method
+  const flightData = [583, 'George Cooper'];
+  book.apply(swiss, flightData);
+  console.log(swiss);
+  
+  book.call(swiss, ...flightData);
+  
+
+
+// book.call(eurowings, 23, 'Sarah Williams');
+
+const bookEW = book.bind(eurowings); //
+// Creating one booking function for each of the airlines. Define the 'this' keyword once then we can use these functions.
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+// This will not call the book function, instead it will return a new function  where this keyword will always be set to Eurowings.
+// Now use this function: pass-in the flight number, name, 
+bookEW(23, 'Steven Williams'); // this already has the 'this' keyword set
+
+// In the call method, we can pass multiple arguments here besides the 'this' keyword (eurowings). So in the bind method we can do the same.
+// then all the arguments also be set in stone. So they will be defined and the function will then always be called with these same arguments.
+// Example, we could use bind for one specific airline and a specific flight number.
+// The number was already preset here in the bind method.
+// Specifing parts of the arguments beforehand is a common pattern called partial Application which means a part of the arguments of the original function are already
+// applied / already set - the book function but with 23 already defined.
+const bookEW23 = book.bind(eurowings, 23);
+
+// Book a flight for myself. Then book a flight for my Mum.
+// This allows us to set in stone certain arguments so the bookEW23 function - the resulting function becomes even simpler. So all we need to pass-in is
+// the passenger name. Everything else happens automatically.
+bookEW23('Vanessa Tsang'); // Vanessa Tsang booked a seat on Eurowings flight EW23
+bookEW23('Mrs Tsang'); // Mrs Tsang booked a seat on Eurowings flight EW23
+
+// We can use the bind method when we use objects togehter with event listeners.
+// Add new property but only to the lufthansa object, set it to 300, this company has 300 plans.
+// new method only to the lufthansa object - to buy a new plane.
+// We want to add a new plane when user clicks the Buy new plane button.
+// Log the 'this' keyword to the console. Attach the Event Listener to the button element. The button has the class: buy
+// The addEventListener higher-order function receives a callback function.
+// The function buyPlanes takes the current number of planes and increase it by one: this.planes++
+// In an eventHandler function, the 'this' keyword always points to the element on which that handler is attached to. So the 'this' keyword is set dynamically.
+// That element is: lufthansa.buyplane which is the Callback funtion. Bind will return a new function so we use bind with the callback function. So the 'this'
+// keyword is lufthansa so that is what we define. When the button element gets clicked on, we should see the lufthansa object in the console.
+lufthansa.planes = 300;
+lufthansa.buyPlanes = function() {
+    console.log(this); // this points to lufthansa object.
+
+    this.planes++;
+    console.log(this.planes);
+};
+// the lufthansa object will get logout in the console when the button element gets clicked. The number of planes will increase each time User clicks onto the
+// plane button element in the UI. So the 
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlanes.bind(lufthansa)); // will point to the lufthansa object due to the bind method used here.
+
+// Partial Application: we can preset parameters:
+// Another use case for the bind method. This time not interested in the this keyword but still use bind.
+// General function for adding tax. Use decimal numbers: 0.1 for 10%. This tax we use all the time so we need a function for that.
+// Can use the bind function on the addTax function and Preset the rate always to 23%. So we have a function for only the VAT for whatever value we pass into it.
+// We use null as we not using the this keyword and nothing will happen to it and its standard to use null. Then set the rate value, i.e. 23%
+// Now its set, we can use that. Since we want to preset the rate, the order of the arguments are important.
+// Using bind gives us a new function. It's as if we returnd a new specific function from the addTax function.
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// same as this:
+// addVAT = value => + value * 0.23;
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+// Challenge: return a new function from another function. Another way of doing the above.
+// The new function is the one that takes in the value.
+const addTaxRate = function(rate) {
+    return function(value) {
+        return value + value * rate;
+    };
+};
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+console.log(addVAT2(23));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
