@@ -112,6 +112,7 @@ Learn What is Abstraction:
 Create a function that accepts other functions as an input. But to start with create two generic functions that do simple string transformations.
 
 ****************************************************************************************************************************************************/
+/*
 
 // Create a function that accepts other functions as an input. But to start with create two generic functions that do simple string transformations.
 // This will replaces all spaces in a word.
@@ -185,6 +186,52 @@ document.body.addEventListener('click', high5); // 👋
 // My task: write my own example of Higher-order function using something I see in the real world using the same concept.
 // Within the built-in functions i.e. for-each method, these Callback functions are so important as we use them to tell these function what they should
 // so. The high5 is the lower level function with lowwer level of Abstraction.
+
+*/
+
+/**************************************************************************************************************************************************** 
+
+131. Functions Returning Functions
+
+Create a function that returns a new function.
+
+
+****************************************************************************************************************************************************/
+
+// Return a new function value that has a parameter - will be able to receive arguments.
+const greet = function(greeting) {
+    return function(name) {
+        // Will logout the greeting and the name of the person we pass into this function
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+// Use the greeting function by passing-in a string Hey which is the greeting. The result of this function call will be the greet function.
+// Store it in a variable named greeterHey which is a function now that's the function that is being returned with the template litral.
+// So we can call the greeterHey function just as if it was any other function we define ourselves.
+const greeterHey = greet('Hey');
+// Call the greeterHey function with an argument of a name.
+// The greeterHey is esstentally the return function.
+// This works due to closures.
+greeterHey('Jonas'); //  Hey Jonas
+greeterHey('Steven'); // Hey Steven
+
+// The first function greet returned a new function that we stored into a new variable named greeterHey which makes it a function that we can call after
+// using the parenthesis syntax with an argument. We can do this all in one job which will make it a function so we can immediately call it.
+greet('Hello')('Jonas'); // Hello Jonas
+
+// Functions returning other functions will be useful if we are using programming paragdigm called functional programming.
+
+// Rewrite the greet function using only Arrow Functions - only one line of code which returns something:
+// Don't need the braces or the return statement.
+// Takes greeting as an argument. Going to return a new function.
+// It's simply one arrow function returning another arrow function.
+// This is a shorter way of writing the greet function but more confusing than the more traditional way above.
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+// Call it with a message.
+greetArr('Hi 你好')('I\'m Vanessa'); // Hi 你好 I'm Vanessa
+
+
 
 
 
