@@ -376,15 +376,64 @@ console.log(addVAT2(100));
 console.log(addVAT2(23));
 
 
+/**************************************************************************************************************************************************** 
 
 
+136. Closures:
 
+A feature that happens behind the sensces.
+Brings together the concepts - the Execution Content, the Call Stack, and the Scope Chain in a magical way.
+Not a feature that we explicitly use, so we don't create them manually like we create a new array or a function.
+It happens automatically in certain situations, we just need to recognise those situations. We will create one of those situation and take a look
+at a Closure.
 
+****************************************************************************************************************************************************/
 
+// The secureBooking function will create the Closure.
+// The passengerCount variable cannot be accessed from the outside of this scope.
+// The secureBooking function will return a new function that will update the passengerCount variable, the variable that is defined in the parent function:
+// secureBooking. Then log the new passengerCount to the console.
+// Call the secureBooking function, store the results in a variable named booker. So now booker become a function as well. 
+// First the Global Scope contains the secureBooking. Then secureBooking is executed. A new execution context is put on top of the execution stack.
+// Each execution context has a variable environment, which contains all local variables, in this case it only contains the passengerCount set to 0.
+// This variable environment is also the scope of this function. passengerCount is in the local scope but has access to variables in the parent scope.
+// In this case just the global scope. 
 
+const secureBooking = function() {
+    let passengerCount = 0;
 
+    return function() {
+        passengerCount++;
+        console.log(`${passengerCount} passengers`);
+    };
+};
 
+// A new function will be returned and stored in the booker variable. So the Global Context now also contains the booker variable. Also, now execution context
+// pops off the stack and disapears. So the secureBooking function has done its job and finished exection.
+const booker = secureBooking();
 
+// Now use the booker function:
+// Now we know how the booker function was created, we now call it 3 times. No need for any arguments.
+// The booker function was able to increment the passengerCount to one, then two, then to three.
+booker(); // 1 passengers
+booker(); // 2 passengers
+booker(); // 3 passengers
+
+// How can the booker function update the passengerCount variable that's defined in the secureBooking function that has already finished executing, no longer on
+// the Stack? Still the inner function which is the booker function is still able to access the passengerCount variable that's inside of the booker function 
+// that no longer exist. Closure makes this possible. The booker function exists in the Global Scope. The environment in which the function was created is no
+// longer active but still the booker function still has access to the variable (passengerCount) that was present at the time that the function was created.
+// A Closure makes a function  remember all the variables that existed at the function's birth place which is the secureBooking of the booker function. So
+// the booker function remembers everything at its birth-place by the time it was created.
+// The passengerCount variable was defined in the scope where the booker function was actually created so scope chain is actually preserved through the Closure,
+// even when a scope has already been destroyed. Even when the execution context has been destroyed the variable environment keeps living Somewhere in the engine.
+// Thanks to the Clourse a function does not lose connection to variables that existed at the function's birthplace.
+// When executing the booker function, JS will look into the Closure to see if there is a variable there. The Clousre has priority over the scope chain.
+
+// Take a look at the function itself in the console.
+// The Closure is the variable environment of the secureBooking function that is being preserved by the Closure.
+// Double brackets: its internal property that we can't access from our code.
+console.dir(booker); // the arguments, the name property, Scopes internal property, Closure (secureBooking): passengerCount: 3
 
 
 
