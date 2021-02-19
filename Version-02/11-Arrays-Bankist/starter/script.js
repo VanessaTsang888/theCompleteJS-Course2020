@@ -193,6 +193,34 @@ currenciesUnique.forEach(function (value, _, map) {
 });
 
 
+/***************************************************************************************************************************************************** 
+
+147. Data Transformation: Map, Filter, Reduce:
+
+There are 3 important array methods we use to perform Data Transformations. These are methods that we use to create new arrays based on transforming
+data from other arrays.
+
+The Tools are: Map, Filter and Reduce. These are 3 array methods.
+
+1. Map returns a new array containing the results of applying an operation (Callback function) on all original array elements:
+
+  current * 2
+
+2. Filter returns a new array containing the array elements that passed a specified test condition, i.e. if the current element is greater than 2, then
+this will result in true and the element will get passed into the new array that is the filtered array:
+
+  current > 2
+
+3. Reduce boils (reduces) all array elements down to one single value e.g. adding all elements together in that array, i.e: we have a variable named:
+acc (for Accumulator), as this method loops over the array it keeps adding the current element onto the accumulator until at the end of the loop we
+have the total sum of all the elements. This is like a snow ball that keeps getting bigger and bigger as it rolls down the hill:
+
+  acc + current
+
+We say this whole process has reduced the original array to one single value and the reduced value in our case is 13. This value gets returned from the Reduce
+method in the end. So no new array in this case but only the reduced value.
+
+**************************************************************************************************************************************************** */
 
 
 
