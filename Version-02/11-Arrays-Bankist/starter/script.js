@@ -68,12 +68,13 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
+/*
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
+*/
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -96,7 +97,7 @@ forEach method uses a Higher-order anonymous function.
 // then compare the forEach loop to this one. Log something to console according to the movement value.
 // If current movement is greater than zero then log to console "You deposited {the movement}", else You withdrew {movement} use Maths function here to
 // take the absolute value - removing the sign
-// 
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // What if we need access to the counter variable in the here? Just like we can access the current index off the array in the for of loop.
@@ -141,16 +142,55 @@ movements.forEach(function (mov, i, arr) {
 // 9:18
 // The continue and break statement will not work in the forEach as it will loop over the entire array. So if you need to break out of a loop, you need to use
 // the forOf loop. Other than that its personal preference.
+*/
+
+/***************************************************************************************************************************************************** 
+
+143. forEach Method With Maps and Sets;
+
+How do forEach works with Maps and Set? 
 
 
+**************************************************************************************************************************************************** */
+
+// Using forEach method on the Maps data structure:
+// Each inner array within this currencies array is one entry of the Map, with the key and the value.
+// We can call forEach method on a Map. 
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+// Calling forEach on a Map, with 3 arguments: the current value in the current iteration, the key, and the entire map that is being looped over.
+// Argument 1. the value is the current element of the array. Argument 2. the index. Argument 3. the entire array.
+// The arguments in the function are similar to the one in the forEach on an array, the previous lecture.
+// Log a String show the forEach do exist in the Maps data structure.
+// In the console we got the key and the value for each inner array.
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`); // USD: United States dollar | EUR: Euro | GBP: Pound sterling
+})
 
 
+// Using forEach method on the Set data structure:
+// Inside the Set, pass-in an iterable, i.e. a set of strings.
+// 
 
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+// Will only logout the unique values.
+console.log(currenciesUnique);
 
+// Call forEach on this Set.
+// The Callback function has the parameters of value, key and maps.
+// The key is exactly the same as the value as a Set don't have keys or indexes either. So there is No Value that makes sense for the key.
+// We keep the same 3 parameters in the Callback function but set the second parameter to the first parameter by replace the value with an underscore.
+// In JS the underscore used like this means a throw-away variable as its just a convention.
 
-
-
-
+currenciesUnique.forEach(function (value, _, map) {
+  console.log(`${value}: ${value}`); // USD: USD | GBP: GBP | EUR: EUR
+});
 
 
 
