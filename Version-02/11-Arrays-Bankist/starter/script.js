@@ -157,6 +157,7 @@ How do forEach works with Maps and Set?
 // Each inner array within this currencies array is one entry of the Map, with the key and the value.
 // We can call forEach method on a Map. 
 
+/*
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
@@ -191,6 +192,7 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`); // USD: USD | GBP: GBP | EUR: EUR
 });
+*/
 
 
 /***************************************************************************************************************************************************** 
@@ -223,13 +225,99 @@ method in the end. So no new array in this case but only the reduced value.
 **************************************************************************************************************************************************** */
 
 
+/***************************************************************************************************************************************************** 
+
+148.The Map Method:
 
 
+ Using the Map data transformation method in practice.
+ A way to loop over arrays but unlike forEach, the map method will give us a brand new array with the new elements that can be stored somewhere. 0:23
+ 
+
+**************************************************************************************************************************************************** */
+/*
+
+// The fundamentals of how the map method works:
+
+// Functional Programming: modern JS:
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd;
+// });
+
+// the original array
+console.log(movements); // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// the new array with the new elements of the returned results.
+// console.log(movementsUSD); // (8) [220.00000000000003, 495.00000000000006, -440.00000000000006, 3300.0000000000005, -715.0000000000001, -143, 77, 1430.0000000000002]
 
 
+// The same but using the forOf Loop:
+// We loop over one array and then manually create a new one.
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSD.push(mov * eurToUsd);
+console.log(movementsUSDfor);
 
+// Same as the map method but using Arrow Function:
+// Some people say: cleaner but bad readability makes difficult to understand.
+const movementsUSD = movements.map(mov => mov * eurToUsd);
 
+// Use the map method to loop aagain over the movements array, but create a string similar to the one step we printed to the console earlier but using forEach.
+// Return the string so it gets put in the new array that results from the map method.
+// Store the result in a new variable named: movementsDescriptions
 
+const movementsDescriptions = movements.map((mov, i) => {
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+);  
+
+console.log(movementsDescriptions);
+
+// With the map method we just return each of the stings from the Callback (got added into a new array). Then we logged that entire array to the console and
+// not the elements one by one. We did not create a side affect in each of the iteration. We just built a new array.
+
+*/
+
+/***************************************************************************************************************************************************** 
+150. The Filter Method:
+
+Used to filter elements that specify a certain condition. 
+We use a Callback function to specify the conditon.
+There is a big push in JS for functional programming and chaning methods together.
+
+**************************************************************************************************************************************************** */
+
+// movements array:
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// work with the current element using the filter method.
+// deposits are only the movements above 0. Only the elements that pass (true) the condition will make it into the new array.
+// We can chain methods togeher, one after another.
+const deposits = movements.filter(function(mov) {
+  return mov > 0;
+})
+// test out the function:
+// console.log(movements);
+// Array with only the positive values.
+console.log(deposits); // (5) [200, 450, 3000, 70, 1300]
+
+// Same but using forOf Loop:
+// Can't do chaning methods with forLoop.
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+
+console.log(depositsFor);
+
+// Create array for the withdrawals with a condition:
+const withdrawals = movements.filter(function(mov) {
+  return mov < 0;
+})
+
+// test out the function:
+// Only the negative numbers remain now.
+console.log(withdrawals); // (3) [-400, -650, -130]
 
 
 
