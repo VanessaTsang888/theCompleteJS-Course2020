@@ -64,6 +64,28 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 */
 
+// This is not working as I've missed out lecture 149. Computing Usernames.
+displayMovements(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+createUsernames(accounts);
+
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -281,6 +303,7 @@ console.log(movementsDescriptions);
 */
 
 /***************************************************************************************************************************************************** 
+
 150. The Filter Method:
 
 Used to filter elements that specify a certain condition. 
@@ -318,6 +341,64 @@ const withdrawals = movements.filter(function(mov) {
 // test out the function:
 // Only the negative numbers remain now.
 console.log(withdrawals); // (3) [-400, -650, -130]
+
+
+/***************************************************************************************************************************************************** 
+
+151. The Reduce Method:
+To boil-down all the elements in an array to one single value, i.e. adding up all the numbers in an array.
+The reduce method is looping throught the array and there is no need to manually code the loop i.e. using a for-loop.
+
+
+
+**************************************************************************************************************************************************** */
+
+// Use the movements array again, add-up both the deposit and withdrawals to get a global balance of the account.
+// Call the reduce method on the movements array. The result of the reduced movement array will be the global balance of the account.
+// The result is named: balance which is one single value.
+// Callbacks: an accumulator (curr): a snowball that keeps accumulating the value that we ultimatly want to return
+// - adding all the elements/numbers togther that will be the sum.
+// current element in array (curr). then the the index then the entire array.
+// The Callback fn will be called in each iteration of the array.
+// Add the current value to the accumulater. In each iteration the acc will be the current sum of all the previous values.
+// 0 is the intial value of the first interation.
+
+console.log(movements);
+
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   console.log(cur, i, acc);
+//   return acc + cur;
+// }, 0);
+
+// Same but using Arrow Function:
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+console.log(balance);
+
+// Same but using a for-loop:
+// To use for-loop we always need external variable. Using the Reduce method avoids this variable.
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2); // 3840
+
+// Get the Maximum value of the movements array here. Can use Reduce method.
+// Reduce down to the maxiumn number.
+// Loop through the arry until get to the current max which is the 3000 figure. There is no value greater than 300 so we store that number.
+// The acc will keep track of the current Max value.
+// If the accumulater is greater than the current value then return the accumulater. We always have to reture the acc to the next iteration. We want to 
+// keep the acc at the value it already is and not change it. Change it if the value is greater than the acc.
+// The initial value is movements at position 0.
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov)
+    return acc;
+  else return mov;  
+}, movements[0]);
+console.log(max); // 3000
+
+
+
+
 
 
 
