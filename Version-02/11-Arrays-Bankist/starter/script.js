@@ -64,6 +64,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 */
 
+/*
 // This is not working as I've missed out lecture 149. Computing Usernames.
 displayMovements(account1.movements);
 
@@ -83,6 +84,7 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
+*/
 
 
 
@@ -257,14 +259,16 @@ method in the end. So no new array in this case but only the reduced value.
  
 
 **************************************************************************************************************************************************** */
-/*
+
 
 // The fundamentals of how the map method works:
 
 // Functional Programming: modern JS:
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
+
+/*
 
 // const movementsUSD = movements.map(function (mov) {
 //   return mov * eurToUsd;
@@ -313,7 +317,7 @@ There is a big push in JS for functional programming and chaning methods togethe
 **************************************************************************************************************************************************** */
 
 // movements array:
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // work with the current element using the filter method.
 // deposits are only the movements above 0. Only the elements that pass (true) the condition will make it into the new array.
@@ -349,8 +353,6 @@ console.log(withdrawals); // (3) [-400, -650, -130]
 To boil-down all the elements in an array to one single value, i.e. adding up all the numbers in an array.
 The reduce method is looping throught the array and there is no need to manually code the loop i.e. using a for-loop.
 
-
-
 **************************************************************************************************************************************************** */
 
 // Use the movements array again, add-up both the deposit and withdrawals to get a global balance of the account.
@@ -363,6 +365,7 @@ The reduce method is looping throught the array and there is no need to manually
 // Add the current value to the accumulater. In each iteration the acc will be the current sum of all the previous values.
 // 0 is the intial value of the first interation.
 
+/*
 console.log(movements);
 
 // const balance = movements.reduce(function (acc, cur, i, arr) {
@@ -375,6 +378,10 @@ console.log(movements);
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
 console.log(balance);
+
+*/
+
+/*
 
 // Same but using a for-loop:
 // To use for-loop we always need external variable. Using the Reduce method avoids this variable.
@@ -396,10 +403,45 @@ const max = movements.reduce((acc, mov) => {
 }, movements[0]);
 console.log(max); // 3000
 
+*/
 
+/***************************************************************************************************************************************************** 
 
+153. The Magic of Chaining Methods:
 
+Chaining all the 3 methods together. Can be difficult to debug when one of the results is not what we expect.
+Don't over-use chaining as chaining tons of methods one after the other can cause performance issues if we have huge arrays.
+19:05: It's bad practice to chain methods that mutate the underlying original array, example the Slice or reverse method. In large apps
+// avoid mutating arrays.
 
+**************************************************************************************************************************************************** */
+
+// PIPLINE: Do 3 data transformation all in one go. 
+// Convert all deposits to US dollars.
+// Filter only the deposits, so only the positive numbers in a new Array.
+// Then call the map on that array, get a movement and converit it to US Dollars by multiplying the mov by the eurToUsd.
+// Then Call a Reduce to add all the values together to get one single value. Call with arguments (accumulator, the current movement), return accumulator + the current movement, 0.
+// Store all of this into a new variable named: totalDepositUSD 
+
+const eurToUsd = 1.1;
+// movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+
+const totalDepositsUSD = movements // inputing data
+  .filter( mov => mov > 0 ) // Step 1
+  // .map( mov => mov * eurToUsd ) // Step 2
+  // Whole current array that map is being called on. Called 3 times, once for each positive value.
+  .map(( mov, i, arr) => {
+    // console.log(arr); // the 3 negative movements.
+    return mov * eurToUsd;
+  })
+
+  .reduce((acc, mov) => acc + mov, 0); // Step 3
+// Test and see result.
+  console.log(totalDepositsUSD); 
+
+  // Not able to follow alone with instructor from 7:47 as I had missed out some of the lectures in this section which are not highlighted in dark green.
+  // Therefore, I can only watch without following alone with lecture from 7:47 into the video.
 
 
 
