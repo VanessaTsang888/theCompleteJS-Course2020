@@ -1,7 +1,5 @@
 'use strict';
 
-const btn = document.querySelector('.btn-country');
-const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
 
@@ -83,6 +81,7 @@ use in JS once the data arrives.
 
 *****************************************************************************************************************************************************/
 
+/*
 // Example of Synchronous code with alert window/prompt = long running operation which blocks execution of the code:
 const p = document.querySelector(' .p');
 p.textContent = 'My name is Vanessa';
@@ -111,6 +110,92 @@ img.addEventListener('load', function() { // we are not listening for the load e
     img.classList.add('fadeIn');
 });
 p.style.width = '300px';
+
+*/
+
+/*************************************************************************************************************************************************** 
+
+244. Our First AJAX Call: XML Http Request:
+
+Create 2 nice UI Components. 2 cards that Contains data about certain countries which will come from 3rd party Online API.
+1. A card for Portugal
+2. A card for USA
+Would work for any country in the world.
+
+*****************************************************************************************************************************************************/
+
+// This will take a string as an input of a country
+const getCountryData = function(country) {
+
+    const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
+
+
+// Doing AJAX calls using the XML HTTP request - this exists but its the old school way, many steps.
+// XML HTTP request function:
+// Call the XMLHttpRequest function and store in new variable named: request.
+// We need the URL to which we'll make the AJAX call. The type of request 'GET'. We needa string containing the URL to which the AJAX call should be made.
+// The API we going to use is: GitHub repro: public-apis/public-apis > choose the REST Countries
+// Choose an API with CORS otherwise we can't access it from our code. Scroll down the page until we find the API Endpoint which is a URL. 
+// Search API by country name: https://restcountries.eu/
+// 
+
+const request = new XMLHttpRequest();
+request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
+// Send off request then fetch data in the background.
+// Send off AJAX call is being done in the background while the rest of the code keeps running - asynchronous non-blocking behavior.
+request.send();
+
+// Register a Callback on the request object for the load evernt. Wait for the load event. As soon as the data arrives the Callback fn will be called.
+// The 'this' keyword is the request. Then the response is in the property response text which will only be set once the data has arrived.
+request.addEventListener('load', function() {
+    // console.log(this.responseText); // JSON data
+    // convert the JSON data - big string of text
+    // De-structure the array that contains 1 object.
+    const [data] = JSON.parse(this.responseText);
+    // Object with all the data about Portugal inc. the link to the img of the flag. An array containg one object.
+    // after De-structure the object looks better. 
+    console.log(data); 
+
+    // Build the card component using HTML code.
+    const html = `
+    <article class="country">
+    <img class="country__img" src="${data.flag}" />
+    <div class="country__data">
+    <h3 class="country__name">${data.name}</h3>
+    <h4 class="country__region">${data.region}</h4>
+    <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(1)} people</p>
+    <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+    <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+    </div>
+    </article>
+`;
+        // Insert the html. 
+        countriesContainer.insertAdjacentHTML('beforeend', html);
+        // Set the style to opacity 1:
+        countriesContainer.style.opacity = 1;
+    });
+};
+// 2 AJAX calls happening at same time. This shows the non-blocking behaviour in action.
+// Call the fn with the argument of portugal
+getCountryData('portugal');
+// Call the fn with the argument of USA
+getCountryData('usa');
+// Call the fn with the argument of Germany
+getCountryData('germany');
+
+// For predefined order, would need to chain the request meaning to make the second request only after the first request has finished.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
