@@ -355,6 +355,9 @@ Learn How to consume a promise. We'll consume the promise that was returned by t
 
 Impliment the get country data fn from the first lecture but now using a promise.
 
+Instead of the Callback Hell, we can have a flat chain of promises using Arrow Fn that's easy to understand and read.
+Promises are powerful and elegant solution to handle async code.
+
 *****************************************************************************************************************************************************/
 
 // Call Fetch, url: specify Portugal
@@ -386,11 +389,14 @@ const getCountryData = function(country) {
 };
 
 */
+
+
 // Same but simplified version using Arrow Function: cleaner, easier to read than previous version.
 // 1. We fetch something;
 // 2. Then we get a response which will be Transform to json;
 // 3. Then we take that data and render the country to the DOM
 // Promises don't aviod Callbacks but Callback Hell.
+/*
 
 const getCountryData = function(country) {
     fetch (`https://restcountries.eu/rest/v2/name/${country}`)
@@ -400,6 +406,49 @@ const getCountryData = function(country) {
 // Call the fn:
 getCountryData('portugal'); // portugal card in the console with flag etc
 
+*/
+
+/*************************************************************************************************************************************************** 
+
+249. Chaining Promises:
+
+Chain promises in order to also render the neighboring country of the initial country we give to the fn. We already have a small chain of promises from
+the previous lecture. The 2 'then' methods called and sequence are basically already a small chain.
+Now we'll chain 2 sequential AJAX calls
+
+Promises allows us to handle complex async operations with as many steps as we want.
+
+Do not chain 'this' method directly onto a new nested promise, instead of returning the promise. Then we are back in Callback Hell. Always
+return a promise then handle it outside by simply continuing the chain.
+
+*****************************************************************************************************************************************************/
+
+// Get data about neighbouring country.
+// The second call depends on the first call so they need to be done in sequence.
+// As soon as we get the data, then we need to get the neighbouring country and do the AJAX call for that one as well.
+
+const getCountryData = function(country) {
+    // Contry 1
+    fetch (`https://restcountries.eu/rest/v2/name/${country}`)
+    .then(response => response.json())
+    .then(data => {
+        renderCountry(data[0]);
+        // Get the neighbouring country
+        const neighbour = data[0].borders[0]
+        // if no neighbours then return immediately.
+        if (!neighbour) return;
+        // Country 2:
+        // Return this new promise to chain a new 'then' method on the result of the previous 'then' method
+        return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+    })
+    // Handle the success value of the above promise. Call the json method. The fulfilled value of that promise will become the body, the data that is stored in
+    // the body. Pass-in the css class for the neighbour.
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
+};
+// Call the fn:
+getCountryData('portugal'); // portugal card in the console with flag etc
+// Above, I have 4 steps but I can have more if I want.
 
 
 
