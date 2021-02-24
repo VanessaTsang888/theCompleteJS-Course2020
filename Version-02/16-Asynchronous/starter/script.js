@@ -205,7 +205,7 @@ Nested Callbacks: Neighbour country inside the main country.
 
 *****************************************************************************************************************************************************/
 
-/*
+
 // A fn that simply takes in some data:
 // Change the variable names. The className makes Spain smaller.
 
@@ -230,6 +230,7 @@ const countriesContainer = document.querySelector('.countries');
         countriesContainer.style.opacity = 1;
 
 }
+/*
 
 const getCountryAndNeighbour = function(country) {
 
@@ -277,7 +278,7 @@ request.addEventListener('load', function() {
 // 2 AJAX calls happening at same time. This shows the non-blocking behaviour in action.
 // Call the fn with the argument of portugal
 // getCountryAndNeighbour('portugal');
-getCountryAndNeighbour('usa');
+// getCountryAndNeighbour('usa');
 
 // If we want to do more requests in sequence, like the neighbor of the neighbor of the neighbor, then we'll end-up with Callbacks inside of Callbacks inside of Callbacks...
 // A lot of Nested Callback. For this kind of structure - Callback Hell: in order to execute asynchronous tasks in sequence. This happens to all asynchronous tasks
@@ -344,16 +345,60 @@ builds the promise for us to consume. Most of the time we just comsume a promise
 
 // Call Fetch, url: specify Portugal
 // Will return a Promise and store in the 'request' variable.
-const request = fetch ('https://restcountries.eu/rest/v2/name/portugal');
-console.log(request); // Promise {<pending>}
+// const request = fetch ('https://restcountries.eu/rest/v2/name/portugal');
+// console.log(request); // Promise {<pending>}
 
+/*************************************************************************************************************************************************** 
 
+248. Consuming Promises:
+Learn How to consume a promise. We'll consume the promise that was returned by the fetch fn.
 
+Impliment the get country data fn from the first lecture but now using a promise.
 
+*****************************************************************************************************************************************************/
 
+// Call Fetch, url: specify Portugal
+// Will return a Promise and store in the 'request' variable.
+// const request = fetch ('https://restcountries.eu/rest/v2/name/portugal');
+// console.log(request); // Promise {<pending>}
 
+// Impliment the get country data fn from the first lecture but now using a promise.
+// Call a Fetch fn like this will immediately return a Promise - as soon as we start the request. At the begining this promise is still pending as the async task
+// of geting the data is still running in the background. Then the promise will be setted either in a fulfilled or rejected state. To handle this fulfilled state
+// we can use the '.then' method thats available on all promises. Pass a Callback fn that we want to be executed as soon as the promise is actually fulfilled,
+// as soon as the result is available. The fn will receive 1 argument once called by JS - the resulting value of the fulfilled promise - response of AJAX call.
+// To be able to read the data from the body, we need to call the JSON method on the response. json is available on all response objects that's coming from the
+// Fetch fn - all the resolved values. The json fn is also an Async fn, so will also return a new promise. json will be a new promise and need to handle this as well.
+// Then another Callback fn with data as the argument.
 
+/*
+const getCountryData = function(country) {
+    // const renderCountry;
+    fetch (`https://restcountries.eu/rest/v2/name/${country}`).then(function(
+        response // a resolved value
+        ) {
+        console.log(response); // Response {type: "cors", url: "https://restcountries.eu/rest/v2/name/portugal", redirected: false, status: 200, ok: true, …}
+        return response.json(); // will be a new promise
+    }).then(function(data) {
+        console.log(data); // same data as before but this time using 2 promises: 
+        renderCountry(data[0]);
+    });
+};
 
+*/
+// Same but simplified version using Arrow Function: cleaner, easier to read than previous version.
+// 1. We fetch something;
+// 2. Then we get a response which will be Transform to json;
+// 3. Then we take that data and render the country to the DOM
+// Promises don't aviod Callbacks but Callback Hell.
+
+const getCountryData = function(country) {
+    fetch (`https://restcountries.eu/rest/v2/name/${country}`)
+    .then((response) => response.json())
+    .then(data => renderCountry(data[0]));
+};
+// Call the fn:
+getCountryData('portugal'); // portugal card in the console with flag etc
 
 
 
