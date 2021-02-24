@@ -123,6 +123,7 @@ Create 2 nice UI Components. 2 cards that Contains data about certain countries 
 Would work for any country in the world.
 
 *****************************************************************************************************************************************************/
+/*
 
 // This will take a string as an input of a country
 const getCountryData = function(country) {
@@ -185,6 +186,8 @@ getCountryData('portugal');
 
 // For predefined order, would need to chain the request meaning to make the second request only after the first request has finished.
 
+*/
+
 /*************************************************************************************************************************************************** 
 
 246. Welcome to Callback Hell:
@@ -202,6 +205,7 @@ Nested Callbacks: Neighbour country inside the main country.
 
 *****************************************************************************************************************************************************/
 
+/*
 // A fn that simply takes in some data:
 // Change the variable names. The className makes Spain smaller.
 
@@ -293,6 +297,56 @@ setTimeout(() => {
         },1000);      
     }, 1000);
 }, 1000);
+
+*/
+
+/*************************************************************************************************************************************************** 
+
+247. Promises and the Fetch API:
+
+A modern JS features called Promises to avoid the Callback Hell. 
+
+1. Replace the XML Http request fn with the way of making AJAX calls using the Fetch API
+
+What is a Promise and what can we do with it?
+An object that is used as a placeholder for the future result of an asynchronous operation;
+A container for an asynchronously delivered value;
+A container or placeholder for a future value (i.e. a response from AJAX call)
+
+A promise will handle a future value, i.e. a Lottery Ticket: Promise that I will receive money if I guess correct outcome. 
+I buy the ticket (promise) right now, will wining money in the future if I guess the correct outcome. The lottery draw wich determines if I get the money or not
+happens asynchronously. So I don't have to drop everything and keep waiting until the lottery draw happens. If I did guess the correct outcome then I will
+receive my money as I have my lottery ticket, which the Promise that I brought.
+
+With Promises we no longer need to rely on events and callback fn's to handle asynchronous results.
+Instead of nesting callbacks, we can chain promises for a sequence of asynchronous operations: escaping callback hell.
+
+Since promises work with asynchronous operations they are time sensitive, they change over time and so promises can be in different states - a life cycle of
+a promise.
+
+At the begining we say a promise is pending - before the future value is avaiable. During this time, the Async Task is still doing the work in the background
+When the task is finished, we say the task is Settled and there are 2 different types of settled promises: fulfilled promises and rejected promises.
+2 different states:
+Fullfilled: success! The value is now available, i.e. use promise to fetch data from API.
+Rejected: has been an error happened during the asynchronus task, i.e. data from an API, an error happened would be for example the user is offline and cannot
+connect to the API server.
+A promise is only settled once and from there the state will remain unchanged forever. The promise was fullfilled or rejected but impossible to change that state.
+We use a promise to get a result which is called to Consume a Promise. When we already have a promise, e.g. promise returned from Fetch API. Its the Fetch API that
+builds the promise for us to consume. Most of the time we just comsume a promise and that's what we'll do.
+
+*****************************************************************************************************************************************************/
+
+// const request = new XMLHttpRequest();
+// request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
+// // Send off request then fetch data in the background.
+// // Send off AJAX call is being done in the background while the rest of the code keeps running - asynchronous non-blocking behavior.
+// request.send();
+
+// Call Fetch, url: specify Portugal
+// Will return a Promise and store in the 'request' variable.
+const request = fetch ('https://restcountries.eu/rest/v2/name/portugal');
+console.log(request); // Promise {<pending>}
+
 
 
 
