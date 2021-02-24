@@ -138,7 +138,6 @@ const countriesContainer = document.querySelector('.countries');
 // The API we going to use is: GitHub repro: public-apis/public-apis > choose the REST Countries
 // Choose an API with CORS otherwise we can't access it from our code. Scroll down the page until we find the API Endpoint which is a URL. 
 // Search API by country name: https://restcountries.eu/
-// 
 
 const request = new XMLHttpRequest();
 request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
@@ -180,17 +179,120 @@ request.addEventListener('load', function() {
 // Call the fn with the argument of portugal
 getCountryData('portugal');
 // Call the fn with the argument of USA
-getCountryData('usa');
+// getCountryData('usa');
 // Call the fn with the argument of Germany
-getCountryData('germany');
+// getCountryData('germany');
 
 // For predefined order, would need to chain the request meaning to make the second request only after the first request has finished.
 
+/*************************************************************************************************************************************************** 
 
+246. Welcome to Callback Hell:
 
+The original country is Portugal. The task is to render the neighbouring countries.
 
+Create a sequence of AJAX calls, so that the second one runs only after the first one has finished. 
 
+In the country data > properties of boarding countries borders: Array (1)
 
+The second AJAX call depends on the first one as the data about neighbouring countries is the result of the first call. So without the first call,
+we wouldn't know which data to fetch in the second call. So we need to implement a sequence of AJAX call.
+
+Nested Callbacks: Neighbour country inside the main country.
+
+*****************************************************************************************************************************************************/
+
+// A fn that simply takes in some data:
+// Change the variable names. The className makes Spain smaller.
+
+const renderCountry = function(data, className = '') {
+    const html = `
+    <article class="country ${className}">
+    <img class="country__img" src="${data.flag}" />
+    <div class="country__data">
+    <h3 class="country__name">${data.name}</h3>
+    <h4 class="country__region">${data.region}</h4>
+    <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(1)} people</p>
+    <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+    <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+    </div>
+    </article>
+`;
+
+const countriesContainer = document.querySelector('.countries');
+        // Insert the html. 
+        countriesContainer.insertAdjacentHTML('beforeend', html);
+        // Set the style to opacity 1:
+        countriesContainer.style.opacity = 1;
+
+}
+
+const getCountryAndNeighbour = function(country) {
+
+    const btn = document.querySelector('.btn-country');
+// Doing AJAX calls using the XML HTTP request - this exists but its the old school way, many steps.
+// AJAX call country 1:
+const request = new XMLHttpRequest();
+request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
+// Send off request then fetch data in the background. Send off AJAX call is being done in the background while the rest of the code keeps running - asynchronous non-blocking behavior.
+request.send();
+
+// Register a Callback on the request object for the load evernt. Wait for the load event. As soon as the data arrives the Callback fn will be called.
+// The 'this' keyword is the request. Then the response is in the property response text which will only be set once the data has arrived.
+request.addEventListener('load', function() {
+    // AJAX call country 1
+    const [data] = JSON.parse(this.responseText);
+    console.log(data); 
+
+    // Render country 1
+    renderCountry(data);
+
+    // Get neighbour country (2): destructure.
+    const [neighbour] = data.borders;
+
+    if(!neighbour) return;
+
+// AJAX call country 2: Nested Callbacks:
+// Change country to one of the neighbouring countries like Spain and the code for that is ESP which I can find within the Object - Console.
+// Listen for load event of this request, call this request 2. The way i'm setting this up is dependant on the first one as I'm firing this one in the Callback fn
+// of the first one.
+
+    const request2 = new XMLHttpRequest();
+    request2.open('GET', `https://restcountries.eu/rest/v2/alpha/${neighbour}`); // Now searching for country codes not country names.
+    // Send off request then fetch data in the background. Send off AJAX call is being done in the background while the rest of the code keeps running - asynchronous non-blocking behavior.
+    request2.send();
+
+    request2.addEventListener('load', function() {
+        const data2 = JSON.parse(this.responseText); // the response of this API is no longer an array, when we search for the code.
+        console.log(data2);
+        // Data for Spain - code: ESP
+        renderCountry(data2, 'neighbour');
+    });
+});
+};
+// 2 AJAX calls happening at same time. This shows the non-blocking behaviour in action.
+// Call the fn with the argument of portugal
+// getCountryAndNeighbour('portugal');
+getCountryAndNeighbour('usa');
+
+// If we want to do more requests in sequence, like the neighbor of the neighbor of the neighbor, then we'll end-up with Callbacks inside of Callbacks inside of Callbacks...
+// A lot of Nested Callback. For this kind of structure - Callback Hell: in order to execute asynchronous tasks in sequence. This happens to all asynchronous tasks
+// Which are handled by Callbacks, not just AJAX calls. Example: a set timout fn:
+// Callback Hell makes our code difficult to read, maintain and understand = bugs.
+// In ES6 we can avoid Callback Hell by using Promises.
+
+setTimeout(() => {
+    console.log('1 second passed');
+    setTimeout(() => {
+        console.log('2 second passed');
+        setTimeout(() => {
+            console.log('3 second passed');
+            setTimeout(() => {
+                console.log('4 second passed');
+            },1000); 
+        },1000);      
+    }, 1000);
+}, 1000);
 
 
 
