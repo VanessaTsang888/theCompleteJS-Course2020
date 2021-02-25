@@ -591,10 +591,55 @@ btn.addEventListener('click', function() {
 // Our API will not find any result for this. Reflected with status code of 404 in the console. But what the user see in browser don't realy make sense.
 // getCountryData('xxxxxx'); 
 
+/*************************************************************************************************************************************************** 
 
+253. Asynchronous Behind the Scenes: The Event Loop:
 
+We've used Async code and learnt all about Promises. How do all of it work behind the scense in JS.
 
+JS Runtine is a contain that includes all the pieces necessary to execute JS code. The "Heart" of the runtime is the JS Engine, this is where code is
+executed (in the Call Stack) and object stored in memory (in the Heap). JS only have 1 thread of execution, can only do one thing at a time, no multitasking
+happening in JS itself.
+The Web API Environment: these are some APIs provided to the engine, but not part of the JS language itself, i.e. the DOM, Timers, Fetch API etc
+The Callback Queue: a data structure that holds all the ready-to-be executed Callback fn's that are attached to some event that has occurred.
+When the Call Stack is empty, the event loop takes Callbacks from the Callback queue and puts into Call Stack so they can be executed. So the Event Loop is the
+essential piece that makes async behavior possible = we can have non-blocking concurency model in JS. A concurency model is how JS handles multiple things
+happening at the same time. 
 
+The Essential Parts Of The Runtime:
+Call Stack, Event Loop, Web APIs, and the Callback Queue. The JS Engine was built arond the idea of single thread but if there was only 1 thread of execution in
+the engine how can async code be executed in a non-blocking way? 
+We will learn how the JS Concurrency Model really works behind the scenes, using all the parts of the JS Runtime. Focus on the code, on the Web APIs and Callback
+Queue. 
+Loading an image happens not in the Call Stack, no in the main thread of execution but in the Web APIs environment.
+Think of the Callback Queue like a To Do List (for myself with all the tasks that I have to complete) but with tasks that the call stack will eventually
+will eventually have to complete.
+The timer duration I define is not a guarantee. The only guarantee is that the timer Callback will not run before five seconds, but it may run after five seconds
+have passed. So it depends of the state of Callback Queue and also another queue.
+The Callback Queue also contains Callbacks coming from DOM events like 'click' or KeyPress etc.
+The Event Loop:
+Loops into the Callback and determines whether it's empty or not (except the global context). Then if currently empty (no code currently being executed), then
+it will take the first Callback in the Callback Queue and put in Call Stack to be executed. This is called an Event Loop Tick. So the Event Loop decides when
+each Callback is executed - dose the orchistration of this entire JS runtime. Everything that is async dose not happen in the engine. Its the Engine that
+manages all the async code and the Event Loop that decides which get executed next.
+
+SUMMARY:
+	1. Image stared loading Asynchronousin the Web APIs environment, not in the Call Stack.
+	2. Used addEventListener to attached a callback fn to the image load evnet which is our async code, deferred into the future as we only want to execute it
+    once image has finished loading. In the meantime the rest of the code keeps running.
+	3. This stays in the Web API environment until the load event is fired off.
+	4. Then will get put in the Callback Queue.
+	5. Waits for the Event Loop to pick it up and put in Call Stack.
+	6. This will happen when the Callback is first in line and call stack was empty.
+	7. All this happens so the image did not have to load in the Call Stack but in the background in a non-blocking way.
+	8. So the Web APIs environment, the Callback Queue and the Event Loop all together make it possible that async code can be executed in a non-blocking way.
+
+With Promises, things work in a slightly different way. Let's say that the data has now finally arrived and so the Fetch is done. Callbacks related to Promises
+do not actually go into the Callback Queue. Instead Callbacks of promises have a special queue for themselves, which is the MicroTaks Queue, which has priority
+over the Callback Queue. After a Callback has been taken from the callback queue the event loop will check if there are any callbacks in the MicroTasks queue.
+If so, it will run all of them before it runs anymore callbacks from the regular callback queue. We call these callbacks from Promises MicroTasks.
+
+*****************************************************************************************************************************************************/
 
 
 
