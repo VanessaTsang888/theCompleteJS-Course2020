@@ -1,5 +1,39 @@
 'use strict';
 
+const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
+
+// A fn that simply takes in some data:
+// Change the variable names. The className makes Spain smaller.
+const renderCountry = function(data, className = '') {
+    const html = `
+    <article class="country ${className}">
+    <img class="country__img" src="${data.flag}" />
+    <div class="country__data">
+    <h3 class="country__name">${data.name}</h3>
+    <h4 class="country__region">${data.region}</h4>
+    <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(1)} people</p>
+    <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+    <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+    </div>
+    </article>
+`;
+    // Insert the html. 
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    // Set the style to opacity 1:
+    // countriesContainer.style.opacity = 1;
+}
+
+
+// Create a fn that render some kind of error. Do this outside of the getCountryData fn.
+// Create new fn, attach to countriesContainer, then insert Adjacent Text. Then set opacity back to one.
+const renderError = function (msg) {
+    countriesContainer.insertAdjacentText('beforeend', msg);
+    countriesContainer.style.opacity = 1;
+};
+
+
+
 
 ///////////////////////////////////////
 
@@ -205,7 +239,7 @@ Nested Callbacks: Neighbour country inside the main country.
 
 *****************************************************************************************************************************************************/
 
-
+/*
 // A fn that simply takes in some data:
 // Change the variable names. The className makes Spain smaller.
 
@@ -228,8 +262,9 @@ const countriesContainer = document.querySelector('.countries');
         countriesContainer.insertAdjacentHTML('beforeend', html);
         // Set the style to opacity 1:
         countriesContainer.style.opacity = 1;
-
 }
+*/
+
 /*
 
 const getCountryAndNeighbour = function(country) {
@@ -427,6 +462,7 @@ return a promise then handle it outside by simply continuing the chain.
 // The second call depends on the first call so they need to be done in sequence.
 // As soon as we get the data, then we need to get the neighbouring country and do the AJAX call for that one as well.
 
+/*
 const getCountryData = function(country) {
     // Contry 1
     fetch (`https://restcountries.eu/rest/v2/name/${country}`)
@@ -449,6 +485,116 @@ const getCountryData = function(country) {
 // Call the fn:
 getCountryData('portugal'); // portugal card in the console with flag etc
 // Above, I have 4 steps but I can have more if I want.
+
+*/
+
+/*************************************************************************************************************************************************** 
+
+250. Handling Rejected Promises:
+
+How to Handle errors in promise.
+A promise in which an error happens is a Rejected Promise. How to handle Promise Rejections.
+The only way the fetch promise rejects is when the user loses his internet connection. That is going to be the only error we'll handle here.
+
+To simulate lost of internet connection:
+Broswer > Network > Online: change the speed to: Offline and MAKE SURE THAT NEXT TO OFFLINE THE 'DISABLE CACHE' IS TICKED.
+Then reload the page, everything will disapear. 
+Should logout error msgs x2:
+GET https://restcountries.eu/rest/v2/name/portugal net::ERR_INTERNET_DISCONNECTED 
+Uncaught (in promise) TypeError: Failed to fetch.
+So we have an uncaught promise as we failed to fetch. Now we need to handle this rejection and there is 2 ways to handle rejections:
+1. pass a second callback fn into the 'then' method.
+The second Callback will be called when the promise was rejected.
+We handle the error by displaying an Alert Window. Now we no longer have the Uncaught error msg in the console.
+If the error comes from the second fetch not the first fetch then we would also catch error 'then' method within for the second fetch.
+2. We handle the rejected promises or errors globally instead of writing a second Callback fn's. 
+
+Besides 'then' and 'catch', there is also the 'finally' method which only works on Promises.
+
+*****************************************************************************************************************************************************/
+
+/*
+HANDLING REJECTED PROMISES (catching errors) USING CALLBACK FN ON THE 'THEN' METHOD:
+
+const getCountryData = function(country) {
+    // Contry 1.
+    fetch (`https://restcountries.eu/rest/v2/name/${country}`) // The error could come from this promise?
+    // This first Callback fn will be called for the fulfilled (successful) promise.
+    // Second Callback fn will be called with the error itself. Alert the error. Handled error by displaying this Alert Window.
+    .then(response => response.json(), err => alert(err)) // we caught the error here - catching the error.
+    .then(data => {
+        renderCountry(data[0]);
+        // Get the neighbouring country
+        const neighbour = data[0].borders[0]
+        // if no neighbours then return immediately.
+        if (!neighbour) return;
+        // Country 2:
+        // Return this new promise to chain a new 'then' method on the result of the previous 'then' method
+        return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+    })
+    // Handle the success value of the above promise. Call the json method. The fulfilled value of that promise will become the body, the data that is stored in
+    // the body. Pass-in the css class for the neighbour.
+    .then(response => response.json(), err => alert(err)) // Handle error here in case the rejected promise is from this fetch.
+    .then(data => renderCountry(data, 'neighbour'));
+};
+
+btn.addEventListener('click', function() {
+    // Only call this when a user clicks a button which will make it easier for us to simulate loose internet connection.
+    getCountryData('portugal'); // portugal card in the console with flag etc
+});
+*/
+
+// HANDLING ANY REJECTED PROMISES REJECTIONS (catching errors) GLOBALLY - NO MATTER WHERE IT HAPPENDS IN THE CHAIN:
+// We can handle all the errors no matter where they appear in the chain right at the end of the chain by adding a catch method.
+// Errors propergate down the chain until they are caught. If not caught anywhere, we get the Uncaught error msg in the console.
+
+const getCountryData = function(country) {
+    // Contry 1.
+    fetch (`https://restcountries.eu/rest/v2/name/${country}`) // The error could come from this promise?
+    // This first Callback fn will be called for the fulfilled (successful) promise.
+    .then(response => response.json())
+    .then(data => {
+        renderCountry(data[0]);
+        // Get the neighbouring country
+        const neighbour = data[0].borders[0]
+        // if no neighbours then return immediately.
+        if (!neighbour) return;
+        // Country 2:
+        // Return this new promise to chain a new 'then' method on the result of the previous 'then' method
+        return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+    })
+    // Handle the success value of the above promise. Call the json method. The fulfilled value of that promise will become the body, the data that is stored.
+    .then(response => response.json()) // Will get called when promise is fulfilled.
+    .then(data => renderCountry(data, 'neighbour')) // Will get called when promise is rejected.
+    // .catch(err => alert(err)); // This catch method will catch any errors that occur in place in this whole promise chain. Alert Window will appear instead of the Uncaught error msg in the console.
+    // Catch block: We can logout the error to the console instead of using the Alert Window:
+    .catch(err => { // this is an JS Object that contains the msg properties
+        console.error(`${err} 🧨🧨🧨`); // Print my custom msg in the console.
+        renderError(`Something Went Wrong!!! 🧨 ${err.message}. Try again!`); // Print only my custom msg itself for the User, not the whole JS Object.
+     })
+     // 'finally' method: The Callback fn we define here will always (no matter if promise is fulfilled or rejected) be called whatever happends wtih the Promise.
+     // Apps will show a spinner when an Async operation starts, we can hide this. Fade-in the container at the start.
+     .finally (() => {
+        countriesContainer.style.opacity = 1;
+
+     })
+};
+
+btn.addEventListener('click', function() {
+    // Only call this when a user clicks a button which will make it easier for us to simulate loose internet connection.
+    getCountryData('portugal'); // portugal card in the console with flag etc
+});
+
+// Simulate another error: User trys to search for a country that don't exist:
+// With a 404 error the fetch promise will still gt fulfilled as User has internet connection. In this case we want to tell the User that no country was found
+// with this name.
+// Our API will not find any result for this. Reflected with status code of 404 in the console. But what the user see in browser don't realy make sense.
+// getCountryData('xxxxxx'); 
+
+
+
+
+
 
 
 
