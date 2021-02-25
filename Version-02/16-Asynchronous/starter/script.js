@@ -21,7 +21,7 @@ const renderCountry = function(data, className = '') {
     // Insert the html. 
     countriesContainer.insertAdjacentHTML('beforeend', html);
     // Set the style to opacity 1:
-    // countriesContainer.style.opacity = 1;
+    countriesContainer.style.opacity = 1;
 }
 
 
@@ -547,7 +547,7 @@ btn.addEventListener('click', function() {
 // HANDLING ANY REJECTED PROMISES REJECTIONS (catching errors) GLOBALLY - NO MATTER WHERE IT HAPPENDS IN THE CHAIN:
 // We can handle all the errors no matter where they appear in the chain right at the end of the chain by adding a catch method.
 // Errors propergate down the chain until they are caught. If not caught anywhere, we get the Uncaught error msg in the console.
-
+/*
 const getCountryData = function(country) {
     // Contry 1.
     fetch (`https://restcountries.eu/rest/v2/name/${country}`) // The error could come from this promise?
@@ -640,6 +640,72 @@ over the Callback Queue. After a Callback has been taken from the callback queue
 If so, it will run all of them before it runs anymore callbacks from the regular callback queue. We call these callbacks from Promises MicroTasks.
 
 *****************************************************************************************************************************************************/
+
+
+/*************************************************************************************************************************************************** 
+
+258. Consuming Promises with Async/Await:
+
+A better way to consum Promises and that's with Async/Await. This is how it works:
+On my Mac, I had to enable my location services within my Settings for the geolocation API to work.
+
+Once fn Awaiting for 5 Promises in an easy way (witout Callback Hell and any 'then' methods), using async code.
+
+
+*****************************************************************************************************************************************************/
+
+// Promisifying the Geolocation API
+const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  };
+  
+
+// Recreate the Where am I function.
+// Create an Async fn, add 'async' in front of the fn to make the fn an asynchronous fn - a fn that'll keep running in the background while performing the
+// code that inside of it - not blocking main thread of execution. When this fn is done, it automatically returns a Promise. Inside this async fn, we can have one
+// or more Await statements. Here we need a Promise so we can use the promise returned from the Fetch fn. Will return a Promise.
+// await will stop the code execution at this of the fn until the Promise is fulfilled, until the data has been fetched in this case,
+// Once the promise is resolved, the value of this await expression will be the resolved value of the Promise. So we can store that into a variable named res for
+// response. Now with Async/Await we don't need to worry about Callback Hell or the 'then' method. This way of consuming Promises, makes it easier and cleaner code.
+const whereAmI = async function() { 
+// Geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+
+// Reverse geoCoding API
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    const dataGeo = await resGeo.json();
+    console.log(dataGeo);
+
+// Country data: UK card will appear in the browser:
+    const res = await fetch(`https://restcountries.eu/rest/v2/name/${dataGeo.country}`); // wait for the result of this Promise.
+    const data = await res.json();
+    console.log(data);
+    // Now render country data at position 0:
+    renderCountry(data[0]);
+};
+
+btn.addEventListener('click', function() {
+    // Only call this when a user clicks a button which will make it easier for us to simulate loose internet connection.
+    whereAmI(); // UK card in the console with flag etc
+});
+
+// Call the whereAmI fn:
+// whereAmI('portugal');
+// This string will logout first, then the 'Response' which is an Object.
+// Dont need to pass-in portugal anymore and still get the same data as passed-in the link above dynamically.
+console.log('PRINT THIS FIRST');
+
+
+
+
+
+
+
+
+
 
 
 
