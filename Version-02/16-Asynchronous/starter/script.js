@@ -778,10 +778,9 @@ try catch has nothing to do with Async/Await but can still use it to catch error
 
 What is Async and how it works. 
 
-
-
 *****************************************************************************************************************************************************/
 
+/*
 // Wrap inside try block
 const whereAmI = async function() { 
     try {
@@ -847,9 +846,65 @@ const whereAmI = async function() {
 })();
 // Now everything is using Async/Await and properly receive and handle that return data. Now We have async fn calling other async fn and returning values between
 // them.
+*/
 
+/*************************************************************************************************************************************************** 
 
+261. Running Promises in Parallel:
 
+We want to get data on 3 countries at the same time, but in which order the data arrives do not matter. Now impliment Async fn using everything we learnt
+so far. This async fn will take-in 3 countries, will log the capital of these 3 countries as an array. Wrap our code in 'try...catch' block.
 
+THE JSON fn encapsulates the fetch request, coverts response to a JSON.
+
+The Promise.all combinator fn:
+Allows us to combine multiple Promises
+Whenever I have a situation in which I need to do multiple async operations at the same time, and operations that don't depend on one another, then
+always run them in parallel using Promise.all . This techque is common as its faster to run all the calls and my users will be happy.
+
+*****************************************************************************************************************************************************/
+
+// Taken from solutions file as I had intensionally missed some of the previous lectures.
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+    return fetch(url).then(response => {
+      if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+  
+      return response.json();
+    });
+  };
+
+// Use Destructure to take the first element - data1. Run all these AJAX calls one after another, eventhrough each result do not depend on the previous result.
+const get3Countries = async function (c1, c2, c3) {
+    try {
+        // const [data1] = await getJSON(`https://restcountries.eu/rest/v2/name/${c1}`); // The result of this will be an array with 1 object.
+        // const [data2] = await getJSON(`https://restcountries.eu/rest/v2/name/${c2}`); // The result of this will be an array with 2 objects.
+        // const [data3] = await getJSON(`https://restcountries.eu/rest/v2/name/${c3}`); // The result of this will be an array with 3 objects.
+
+        // The result of this is we want to get the capital of that country.
+        // Will return an array.
+        // console.log([data1.capital, data2.capital, data3.capital]);
+
+// Why should the second call wait for the first one? Instead of running these calls in sequence, we can run them in Paralle to save valuable loading time making
+// the 3 load at the same time, we'll save 1 second as each takes 0.5 seconds.
+// The 'all' is kind of a helper fn on the Promise combinator, so its a static method. This fn takes-in an array of promises, and will return a new Promise, which
+// then run all the Promises in the array at the same time. Then we can handle that Promise in the same way as before.
+        const data = await Promise.all([
+            getJSON(`https://restcountries.eu/rest/v2/name/${c1}`),
+            getJSON(`https://restcountries.eu/rest/v2/name/${c2}`),
+            getJSON(`https://restcountries.eu/rest/v2/name/${c3}`),
+        ]);
+        // 3 AJAX calls now running in Parallel NOT in sequence. Each has an Object that I'm looking for. Receives an array and returns an array.
+        // To create the same output as before, loop over this data and take out the data we want. We want to return an array with the capital cities.
+        // console.log(data); 
+        // If one Promises rejects then promise.all will reject as well. So we say that: Promise.all short circuits when one promise rejects.
+        console.log(data.map(d => d[0].capital));
+    } catch(err) {
+        console.error(err);
+    }
+};
+// Call the fn, with 3 countries as my parameters.
+get3Countries('portugal', 'canada', 'tanzania');
+  
+  
 
 
