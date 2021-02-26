@@ -728,6 +728,60 @@ try catch has nothing to do with Async/Await but can still use it to catch error
 
 // Use try catch to handle errors in async fn's.
 
+// // Wrap inside try block
+// const whereAmI = async function() { 
+//     try {
+//     // Geolocation
+//         const pos = await getPosition();
+//         const { latitude: lat, longitude: lng } = pos.coords;
+    
+//     // Reverse geoCoding API
+//         const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+//         // Handle any error in this fetch. This response property is set to ok, if not true, we want to throw an error.
+//         // I've had to click on the button several times quickly to disply my error msge and its works.
+//         if(!resGeo.ok) throw new Error('Problem getting location data');
+
+//         const dataGeo = await resGeo.json();
+//         console.log(dataGeo);
+    
+//     // Country data: UK card will appear in the browser:
+//         const res = await fetch(`https://restcountries.eu/rest/v2/name/${dataGeo.country}`); // wait for the result of this Promise.
+//         // This one didn't work but the instructor didn't bother with this one.
+//         if(!resGeo.ok) throw new Error('Problem getting country data');
+
+//         const data = await res.json();
+//         console.log(data);
+//         // Now render country data at position 0:
+//         // catch has access to whatever error occurs in the try block. Catch error here. Render the error with an error msg
+//         renderCountry(data[0]); 
+//         } catch(err) {
+//             // This gets rendered in my browser, handles the error and allows the app to continue running
+//             console.error(`${err} 🧨 `); // I'm logging the error myself as renderCountry can't be found - 404 error.
+//             renderError(`🧨! ${err.message}`); // this will force an error msg in console
+//         }
+//     };
+    
+//     btn.addEventListener('click', function() {
+//         // Call fn multiple times to logout the error 
+//         whereAmI();
+//         whereAmI();
+//         whereAmI();
+//     });
+    
+//     // This string will logout first, then the 'Response' which is an Object.
+//     // Dont need to pass-in portugal anymore and still get the same data as passed-in the link above dynamically.
+//     console.log('PRINT THIS FIRST');
+    
+/*************************************************************************************************************************************************** 
+
+260. Returning Values from Async Functions:
+
+What is Async and how it works. 
+
+
+
+*****************************************************************************************************************************************************/
+
 // Wrap inside try block
 const whereAmI = async function() { 
     try {
@@ -742,36 +796,60 @@ const whereAmI = async function() {
         if(!resGeo.ok) throw new Error('Problem getting location data');
 
         const dataGeo = await resGeo.json();
-        console.log(dataGeo);
     
     // Country data: UK card will appear in the browser:
         const res = await fetch(`https://restcountries.eu/rest/v2/name/${dataGeo.country}`); // wait for the result of this Promise.
         // This one didn't work but the instructor didn't bother with this one.
         if(!resGeo.ok) throw new Error('Problem getting country data');
-
         const data = await res.json();
-        console.log(data);
         // Now render country data at position 0:
         // catch has access to whatever error occurs in the try block. Catch error here. Render the error with an error msg
-        renderCountry(data[0]); 
+        renderCountry(data[0]);
+        
+        return `You are in ${dataGeo.city}, ${dataGeo.country}`;
+
         } catch(err) {
             // This gets rendered in my browser, handles the error and allows the app to continue running
             console.error(`${err} 🧨 `); // I'm logging the error myself as renderCountry can't be found - 404 error.
-            renderError(`🧨! ${err.message}`); // this will force an error msg in console
+            renderError(`🧨! ${err.message}`); // this will force an error msg in console.
+
+            // Manually Reject a Promise that's returned from Async Fn. Take the error and throw it again.
+            throw err;
         }
     };
     
-    btn.addEventListener('click', function() {
-        // Call fn multiple times to logout the error 
-        whereAmI();
-        whereAmI();
-        whereAmI();
-    });
-    
-    // This string will logout first, then the 'Response' which is an Object.
-    // Dont need to pass-in portugal anymore and still get the same data as passed-in the link above dynamically.
-    console.log('PRINT THIS FIRST');
-    
+        // will logout 1, then 2 then all the logs coming from the async fn.
+        console.log('1: Will get location');
+        // This is the Async fn that runs in the background until the results are there. Returns a Promise due to Non-blocking code.
+        // This async fn returns a Promise. The value it returns is the string above: You are in .....
+        // const city = whereAmI(); // Promise {<pending>}
+        // console.log(city);
+        // I've successfully returned a value from the async fn. If nothing gets return from the fn, we'll get undefined in the console.
+        // whereAmI().then(city => console.log(city)); // You are in DURSLEY, United Kingdom
+        // Although, undefined x2, The Promise it returned is still fulfilled.
+
+        // whereAmI()
+        //     .then(city => console.log(`2: ${city}`))
+        //     .catch(err => console.error(`2: ${err.message} 🧨 `))
+        //     // To make the 3 printed after the 2. Add a 'finally' here which always be executed.
+        //     .finally(() => console.log(' 3: Finished getting location'));
+
+// Same as above but Handle it using Async/Await using IIFEs - immediately-invoked fn expressions.
+// Store the result of the async fn into city variable.
+(async function () {
+    try {
+        const city = await whereAmI();
+        console.log(`2: ${city}`)
+    } catch(err) {
+        console.error(`2: ${err.message} 🧨 `)
+    }
+    console.log(' 3: Finished getting location')
+})();
+// Now everything is using Async/Await and properly receive and handle that return data. Now We have async fn calling other async fn and returning values between
+// them.
+
+
+
 
 
 
