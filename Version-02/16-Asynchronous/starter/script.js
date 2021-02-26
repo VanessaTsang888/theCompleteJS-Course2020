@@ -669,6 +669,8 @@ const getPosition = function () {
 // await will stop the code execution at this of the fn until the Promise is fulfilled, until the data has been fetched in this case,
 // Once the promise is resolved, the value of this await expression will be the resolved value of the Promise. So we can store that into a variable named res for
 // response. Now with Async/Await we don't need to worry about Callback Hell or the 'then' method. This way of consuming Promises, makes it easier and cleaner code.
+
+/*
 const whereAmI = async function() { 
 // Geolocation
     const pos = await getPosition();
@@ -698,14 +700,78 @@ btn.addEventListener('click', function() {
 // Dont need to pass-in portugal anymore and still get the same data as passed-in the link above dynamically.
 console.log('PRINT THIS FIRST');
 
+*/
+
+/*************************************************************************************************************************************************** 
+
+259. Error Handling With try…catch:
+
+How error handling works with Async/Await. We can't use the 'catch' method as we can't attached it anywhere, so instead use a 'try catch' statement.
+try catch has nothing to do with Async/Await but can still use it to catch errors in async fn's.
 
 
+*****************************************************************************************************************************************************/
 
+// JS will try to execute this code just as normal code with a catch block.
+// Alert a message using try catch statement.
+// We not going to use try catch in our code.
 
+// try {
+//     let y = 1;
+//     const x = 2;
+//     x = 3;
+// } catch (err) {
+//     // Error no long appears in the console.
+//     // Catch the error here and handle the error with Alert Window with msg of:
+//     alert(err.message); // Assignment to constant variable. 
+// }
 
+// Use try catch to handle errors in async fn's.
 
+// Wrap inside try block
+const whereAmI = async function() { 
+    try {
+    // Geolocation
+        const pos = await getPosition();
+        const { latitude: lat, longitude: lng } = pos.coords;
+    
+    // Reverse geoCoding API
+        const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+        // Handle any error in this fetch. This response property is set to ok, if not true, we want to throw an error.
+        // I've had to click on the button several times quickly to disply my error msge and its works.
+        if(!resGeo.ok) throw new Error('Problem getting location data');
 
+        const dataGeo = await resGeo.json();
+        console.log(dataGeo);
+    
+    // Country data: UK card will appear in the browser:
+        const res = await fetch(`https://restcountries.eu/rest/v2/name/${dataGeo.country}`); // wait for the result of this Promise.
+        // This one didn't work but the instructor didn't bother with this one.
+        if(!resGeo.ok) throw new Error('Problem getting country data');
 
+        const data = await res.json();
+        console.log(data);
+        // Now render country data at position 0:
+        // catch has access to whatever error occurs in the try block. Catch error here. Render the error with an error msg
+        renderCountry(data[0]); 
+        } catch(err) {
+            // This gets rendered in my browser, handles the error and allows the app to continue running
+            console.error(`${err} 🧨 `); // I'm logging the error myself as renderCountry can't be found - 404 error.
+            renderError(`🧨! ${err.message}`); // this will force an error msg in console
+        }
+    };
+    
+    btn.addEventListener('click', function() {
+        // Call fn multiple times to logout the error 
+        whereAmI();
+        whereAmI();
+        whereAmI();
+    });
+    
+    // This string will logout first, then the 'Response' which is an Object.
+    // Dont need to pass-in portugal anymore and still get the same data as passed-in the link above dynamically.
+    console.log('PRINT THIS FIRST');
+    
 
 
 
