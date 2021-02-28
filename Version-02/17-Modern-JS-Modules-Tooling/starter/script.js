@@ -81,7 +81,7 @@ special tool to to implement this build process for us and the most popular is W
 transform into a JS bundle. Webpack is the most popular one but can be difficult to set up - a lot of things to configure mannully in order to make it work
 properly. parcel is a Zero Config bundler which works out of the box. These development tools also available on npm.
 
-/*********************************************************************************************************************************************************** 
+***********************************************************************************************************************************************************/
 
 
 /*********************************************************************************************************************************************************** 
@@ -125,4 +125,4 @@ This makes bundling and dead code elimination possible. So knowing all dependenc
 
 Downloading happens in a Async way. Only importing operation itself happens synchronously.
 
-/***********************************************************************************************************************************************************
+**********************************************************************************************************************************************************/
