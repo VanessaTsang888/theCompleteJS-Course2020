@@ -219,6 +219,50 @@ if (module.hot) {
 
 
 
+/*********************************************************************************************************************************************************** 
+
+275: Review: Writing Clean and Modern JS:
+
+Readable Code:
+
+Write code so that others can understand it;
+Write code so that you can understand it in 1 year;
+Avoid too "clever" and overcomplicated solutions;
+User descriptive variable names: what they contain;
+Use descriptive function names: what they do.
+
+General:
+Use DRY principle (refactor your code);
+Don't pollute global namespace, encapsulate instead;
+Don't use var;
+Use strong type checks ( === and !==). The dbl == don't perform type checks only the triple === check both the value and the type.
+
+Writing Functions:
+Generally, fn's should do only one thing, and do that well - small fn's - coheshion.
+Don't use more than 3 fn parameters;
+Use default parameters whenever possible;
+Generally, return same data type as received;
+Use arrow fn's when they make code more readable.
+
+Impliement OOP:
+Use ES6 classes;
+Encapsulate data and don't mutate (so they don't get changed directly by classes within same app) it from outside the class;
+Implement method chanining;
+Do not use arrow fn's as methods (in regular objects).
+
+Avoid Nested Code:
+Use early return (guard clauses);
+Use ternary (condictional) or logical operators instead of if-statements;
+Use multiple if instead of if/else-if;
+Avoid for loops, use array methods instead i.e. map and filter and reduce;
+Avoid callback-based asynchronous APIs.
+
+Asynchronous Code:
+Consume promises with async/await for best readability;
+Whenever possible, run promises in parallel (Promise.all);
+Handle errors and promise rejections (writing error handling code).
+
+**********************************************************************************************************************************************************/
 
 
 
