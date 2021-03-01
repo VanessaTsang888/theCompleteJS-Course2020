@@ -265,4 +265,43 @@ Handle errors and promise rejections (writing error handling code).
 **********************************************************************************************************************************************************/
 
 
+/*********************************************************************************************************************************************************** 
+
+277. Declarative and Functional JS Principle:
+
+Two fundamentally different ways of writing ocde (paradigms).
+
+Imperative:
+Parogrammer explains "How to do things";
+We explain the computer every single step it has to follow to achieve a result;
+Example: step-by-step recipe of a cake.
+
+Declarative:
+Programmer tells "What to do";
+We simply describe the way the computer should achieve the result;
+The how (step-by-step instructions) gets abstracted away; i.e, using the map method on an arry to loop through it.
+Example: description of a cake.
+
+Functional Programming:
+Declarative programming paradigm;
+Based on the idea of writing software by combining many pure fn's, avoiding side effects and mutating data.
+Side effect: Modification (mutation) of any data outside of the function (mutating external variables, logging to console, writing to DOM, etc);
+Pure function: funtion without side effects. Does not depend on external variables.Given the same inputs, always rturns the same outputs.
+
+Immutability: State (data) is never modified! Instead, state is copied and the copy is mutated and returned, i.e. React, Redux.
+
+Functional Programming Techniques:
+Try to avoid data mutations;
+Use built-in methods that don't produce side effects;
+Do data transformations with methods such as .map(), .filter() and .reduce()
+Try to avoid side effects in fn's: this is of course not always possible!
+
+Declarative Syntax:
+
+Use array and object destructuring;
+Use the spread operator(..);
+Use the ternary (conditional) operator;
+Use template literals;
+
+**********************************************************************************************************************************************************/
 
